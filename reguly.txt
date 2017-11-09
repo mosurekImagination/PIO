@@ -10,31 +10,93 @@ Zamówienie może mieć wiele pozycji zamówienia
 Pozycja zamówienia dotyczy jednego zamówienia
 
 Pozycja zamówienia dotyczy jednego towaru
+Pozycja zamówienia aktualizuje dokładnie jedną Kartotekę Magazynową Towaru.
 
 Towar ma jedną kategorię
 Kategoria może posiadać wiele towarów
 
-Towar może znajdować się w wielu cennikach.
-Cennik może zawierać wiele towarów
+Towar może znajdować się w wielu Cennikach
+Cennik może zawierać wiele pozycji Cennika.
+Pozycja Cennika dotyczy znajduje się w jednym cenniku.
 
+Administrator może utworzyć wiele kont Sprzedawców
 
+Zapytanie dotyczy jednego produktu
+Towar może wystąpić w wielu Zapytaniach
+
+Towar znajduje się w jednej Kartotece magazynowej towaru
+Magazyn posiada wiele kartotek magazynowych towaru.
+
+Kartoteka zamówień składa się z wielu zamówień
+___________________________
 Biznesowe:
-Pracownik może złożyć nowe zamówienia
-data składanego zamówienia jest czasem systemowym
-Pracownik może modyfikować zamówienia niezamknięte
-Pracownik może modyfikować status zamówienia
-Pracownik może ustalać wysokoć rabatu z ustalonego przedziału
-Pracownik może usuwać zamówienia
 
-Cennik ma określona datę rozpoczęcia obowiązywania.
-Cennik może mieć określoną datę zakończenia obowiązywania.
+Ogólne:
+	Imię i Nazwisko składa się max z 30 znaków
+	Nazwa składa się maksymalnie z 50 znaków
+	numer id jest zawsze unikalny i większy od zera.
+	ilość towaru nie może być mniejsza od zera
+	Przy zmianie statusu zamówienia na "w realizacji" ilość towaru w kartotece magazynowej zostaje pomniejszona o zamówione towary.
 
-Zamówienia ma 3 statusy: otwarty, w realizacji, zamknięty.
-Data składanego zamówienia jest nie wcześniejsza niż aktualny dzień
+Klient:
+	Numer Nip składa się z 10 cyfr.
+	adres składa się z maks 200 znaków.
 
-Przy zmianie statusu zamówienia na "w realizacji" ilość towaru w magazynie zostaje pomniejszona o zamówione towary.
+Sprzedawca:
+	Sprzedawca może złożyć nowe zamówienia.
+	Sprzedawca ma dostęp do Kartoteki Zamówień.
+	Sprzedawca może wysłać wiele zapytań.
+	Sprzedawca może obsługiwać wiele zapytań.
 
-Fakturę można anulować.
-Dane faktury można edytować.
+	Sprzedawca może modyfikować zamówienia niezamknięte
+	Sprzedawca może modyfikować status zamówienia
+	Sprzedawca może ustalać wysokoć rabatu z ustalonego przedziału
+	Sprzedawca może usuwać zamówienia
 
-Towar ma aktualną ilość towaru w magazynie.
+Pozycja Zamówienia:
+	data składanego zamówienia jest czasem systemowym
+
+Cennik:
+	Cennik ma określona datę rozpoczęcia obowiązywania.
+	Cennik może mieć określoną datę zakończenia obowiązywania.
+
+Dowód sprzedaży:
+	Fakturę można anulować.
+	Dane faktury można edytować.
+	Faktura pobiera dane jednego klienta.
+	Dowód sprzedaży dotyczy jednego zamówienia.
+
+PozycjaCennika:	
+	cena Towaru nie może być mniejsza od zera
+	maxrabat jest z zakresu 0-100%
+	Cena z pozycji cennika pobierana jest z Cennika, którego parametr czyAktualny jest równy true
+
+PozycjaZamowienia:
+	rabat danej Pozycji Zamówienia nie może być większy niż maksymalny rabat odpowiedniej pozycji Cennika.
+	Cena po rabacie jest iloczynem cena*(1-rabat)
+
+Zamówienie:
+	Cena z pozycji cennika pobierana jest z Cennika, którego parametr czyAktualny jest równy true
+	Kwota zamówienia jest sumą wszystkich pozycji zamówienia.
+	Termin realizacji w Zamówieniu jest równy najpóźniejszej dacie pobranej z Zapytania ze wszystkich pozycji zamówienia.
+
+Zapytanie:
+	Notatka w Zapytaniu może składać się maks z 250 znaków.
+	Termin realizacji Zapytania dla produktu aktualnie dostępnego jest równy dacie systemowej.
+
+
+Enum:
+StatusZapytania o produkt może przyjmować wartości: wysłane, zopiniowane, zatwierdzone, otrzucone
+StatusZamówienia może przyjmować wartości: otwarte, przekazane, wRealizacji, zrealizowane, anulowane
+
+Statusy:
+zamówienie w momencie jego założenia ma status otwarty
+Zamówienie ma satus przekazane w momencie wysłania zapytania dla każdej pozycji zamówienia
+zamówienia ma status w realizacji, jeżeli każde zapytanie dla pozycji towaru ma status zatwierdzone.
+Sprzedawca samodzielnie zmienia status zamówienia na anulowane i zrealizowane.
+
+Zapytanie w momencie założenia ma status wysłane.
+Zapytanie jest zopiniowane, gdy zostanie mu nadany termin realizacji przez Pracownika Działu zaopatrzenia.
+Status zatwierdzone nadaje zapytaniu Sprzedawca.
+Status odrzucone nadaje zapytaniu Sprzedawca lub Pracownik działu zaopatrzenia.
+
