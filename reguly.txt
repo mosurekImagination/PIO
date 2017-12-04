@@ -37,10 +37,11 @@ Ogólne:
 	numer id jest zawsze unikalny i większy od zera.
 	ilość towaru nie może być mniejsza od zera
 	Przy zmianie statusu zamówienia na "w realizacji" ilość towaru w kartotece magazynowej zostaje pomniejszona o zamówione towary.
+	Data przedstawiana jest w postaci dd-mm-rrrr, gdzie 'dd' oznacza dzień miesiąca(liczba od 01 do 31), 'mm' oznacza miesiąc (liczba od 01 do 12), 'rrrr' oznacza rok.
 
 Klient:
 	Numer Nip składa się z 10 cyfr.
-	adres składa się z maks 200 znaków.
+	
 
 Sprzedawca:
 	Sprzedawca może złożyć nowe zamówienia.
@@ -83,8 +84,14 @@ Zamówienie:
 Zapytanie:
 	Notatka w Zapytaniu może składać się maks z 250 znaków.
 	Termin realizacji Zapytania dla produktu aktualnie dostępnego jest równy dacie systemowej.
+Towar:
+	Kod kreskowy prezentowany jest w postaci 12-sto cyfrowego ciągu numerycznego.
 
+Faktura:
+	Nabywca przedstawiany jest w postaci ciągu znaków, wyliczanego na podstawie Klienta, składającego Zamówienie.
 
+Adres:
+	Kod pocztowy przedstawiany jest w postaci XX-XXX, gdzie X oznacza cyfrę.
 Enum:
 StatusZapytania o produkt może przyjmować wartości: wysłane, zopiniowane, zatwierdzone, otrzucone
 StatusZamówienia może przyjmować wartości: otwarte, przekazane, wRealizacji, zrealizowane, anulowane
