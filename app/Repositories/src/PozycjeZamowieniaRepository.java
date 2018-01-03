@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class PozycjeZamowieniaRepository {
 
 	/**
@@ -39,7 +41,7 @@ public class PozycjeZamowieniaRepository {
 	 * @param idPozycji
 	 * @param data
 	 */
-	public void zmienDateRealizacji(int idPozycji, Data data) {
+	public void zmienDateRealizacji(int idPozycji, Date data) {
 		// TODO - implement PozycjeZamowieniaRepository.zmienDateRealizacji
 		throw new UnsupportedOperationException();
 	}

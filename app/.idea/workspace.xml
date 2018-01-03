@@ -2,7 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04cf706f-7014-4b92-8ea6-76b23ccaf1cf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Database/POSprzedaż.ddl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Hurtownia.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Controllers/Controllers.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Controllers/src/Controllers.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/Model.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/Klient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/PozycjaZamowienia.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/StatusZamowienia.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/StatusZapytania.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/Towar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/Zamowienie.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Model/src/Zapytanie.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/Repositories.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/src/KlienciRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/src/PozycjeZamowieniaRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/src/TowaryRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/src/ZamowieniaRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Repositories/src/ZapytaniaRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/View.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/ListaTowarowView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/MainView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/ModyfikacjaZamowieniaView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/NoweZamowienieView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/NowyKlientView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/ObslugaZapytaniaView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/View/src/View.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_000f" afterPath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_000f" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_001d" afterPath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_001d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_002d" afterPath="$PROJECT_DIR$/../PO - Sprzedaż.vpp.bak_002d" />
@@ -54,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KlienciRepository.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KlienciRepository.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Repositories/src/KlienciRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="440">
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -67,8 +97,8 @@
       <file leaf-file-name="PozycjeZamowieniaRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Repositories/src/PozycjeZamowieniaRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="853">
+              <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -94,11 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZapytaniaRepository.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ZapytaniaRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Repositories/src/ZapytaniaRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="132">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -150,6 +180,8 @@
         <option value="$PROJECT_DIR$/Model/src/StatusZapytania.java" />
         <option value="$PROJECT_DIR$/View/src/View.java" />
         <option value="$PROJECT_DIR$/Model/src/Zamowienie.java" />
+        <option value="$PROJECT_DIR$/Repositories/src/PozycjeZamowieniaRepository.java" />
+        <option value="$PROJECT_DIR$/Repositories/src/KlienciRepository.java" />
       </list>
     </option>
   </component>
@@ -881,22 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Repositories/src/KlienciRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Repositories/src/PozycjeZamowieniaRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Repositories/src/TowaryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -915,8 +931,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Repositories/src/ZapytaniaRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state relative-caret-position="132">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/src/PozycjeZamowieniaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Repositories/src/KlienciRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding />
         </state>
       </provider>

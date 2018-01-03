@@ -4,7 +4,7 @@ public class KlienciRepository {
 	 * 
 	 * @param nip
 	 */
-	public void sprawdzCzyIstniejeKlient(string nip) {
+	public void sprawdzCzyIstniejeKlient(String nip) {
 		// TODO - implement KlienciRepository.sprawdzCzyIstniejeKlient
 		throw new UnsupportedOperationException();
 	}
