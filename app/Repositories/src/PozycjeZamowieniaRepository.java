@@ -2,8 +2,10 @@ import java.util.Date;
 
 public class PozycjeZamowieniaRepository {
 
+	private PozycjaZamowienia pozycja;
+
 	/**
-	 * 
+	 *
 	 * @param idPozycji
 	 */
 	public void usunPozycje(int idPozycji) {
@@ -12,7 +14,7 @@ public class PozycjeZamowieniaRepository {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param pozycja
 	 */
 	public void dodajPozycje(PozycjaZamowienia pozycja) {
@@ -21,7 +23,7 @@ public class PozycjeZamowieniaRepository {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idPozycji
 	 * @param ilosc
 	 * @param rabat
@@ -37,7 +39,7 @@ public class PozycjeZamowieniaRepository {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idPozycji
 	 * @param data
 	 */
@@ -46,4 +48,11 @@ public class PozycjeZamowieniaRepository {
 		throw new UnsupportedOperationException();
 	}
 
+	public void setPozycja(PozycjaZamowienia pozycja){
+		this.pozycja = pozycja;
+	}
+
+	public PozycjaZamowienia getPozycja() {
+		return pozycja;
+	}
 }

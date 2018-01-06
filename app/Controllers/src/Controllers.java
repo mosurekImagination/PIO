@@ -1,4 +1,14 @@
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Controllers {
+
+	KlienciRepository klienci;
+	PozycjeZamowieniaRepository pozycjaZamowienia;
+	TowaryRepository towar;
+	ZamowieniaRepository zamowienia;
+	ZapytaniaRepository zapytania;
+
 
 	public void dodajNowegoKlienta() {
 		// TODO - implement Controllers.dodajNowegoKlienta
@@ -20,9 +30,9 @@ public class Controllers {
 		throw new UnsupportedOperationException();
 	}
 
-	public void utworzNoweZapytanie() {
-		// TODO - implement Controllers.utworzNoweZapytanie
-		throw new UnsupportedOperationException();
+	public void utworzNoweZapytanie(LocalDate terminRealizacji) {
+		// TODO - to powinno tworzyć nowe zapytanie z datą, dodać je do bieżącej pozycji i zamówienia
+		zamowienia.dodajZapytanie(getPozycjaId(),terminRealizacji);
 	}
 
 	public void usunPozycje() {
@@ -36,12 +46,12 @@ public class Controllers {
 	}
 
 	/**
-	 * 
-	 * @param towar
+	 *
+	 * @param idTowaru
 	 * @param ilosc
 	 * @param rabat
 	 */
-	public void obsluzPozycjeZamowienia(Towar towar, int ilosc, float rabat) {
+	public void obsluzPozycjeZamowienia(int idTowaru, int ilosc, float rabat) {
 		// TODO - implement Controllers.obsluzPozycjeZamowienia
 		throw new UnsupportedOperationException();
 	}
@@ -52,12 +62,12 @@ public class Controllers {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ilosc
 	 * @param rabat
-	 * @param pozycja
+	 * @param idPozycji
 	 */
-	public void obsluzModyfikacjePozycji(int ilosc, float rabat, PozycjaZamowienia pozycja) {
+	public void obsluzModyfikacjePozycji(int ilosc, float rabat, int idPozycji) {
 		// TODO - implement Controllers.obsluzModyfikacjePozycji
 		throw new UnsupportedOperationException();
 	}
@@ -68,7 +78,7 @@ public class Controllers {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param pozycjeZamowienia
 	 */
 	public void utworzNoweZamowienie(PozycjaZamowienia pozycjeZamowienia) {
@@ -82,7 +92,7 @@ public class Controllers {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idZapytania
 	 * @param status
 	 */
@@ -92,7 +102,7 @@ public class Controllers {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idZapytania
 	 */
 	public void wyswietlZapytanie(int idZapytania) {
@@ -100,4 +110,28 @@ public class Controllers {
 		throw new UnsupportedOperationException();
 	}
 
+	public String wybierzTowar() {
+		ListaTowarowView listaTowarowView = new ListaTowarowView();
+		listaTowarowView.wyswietlListeTowarow();
+		Towar towar = listaTowarowView.przekazTowar();
+		PozycjaZamowienia pozycja = zamowienia.utworzPozycjeZamowienia(towar);
+		pozycjaZamowienia.setPozycja(pozycja);
+		return towar.toString();
+	}
+
+	public void dodajPozycje(int ilosc, int rabat) {
+		zamowienia.aktualizujPozycje(getPozycjaId(),ilosc,rabat);
+	}
+
+	private int getPozycjaId(){
+		return pozycjaZamowienia.getPozycja().getId();
+	}
+
+	public void anulujOstatniaPozycje() {
+		zamowienia.usunPozycje(getPozycjaId());
+	}
+
+	public void dodajKlientaDoZamowienia(Klient klient) {
+		zamowienia.dodajKlienta(klient);
+	}
 }

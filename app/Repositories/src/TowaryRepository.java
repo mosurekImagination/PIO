@@ -1,12 +1,18 @@
+import java.util.List;
+
 public class TowaryRepository {
 
+	TowaryContext towaryDB;
+	List<Towar> towary;
+
 	public void pobierzListeTowarow() {
+		towaryDB.getTowaryZBazy();
 		// TODO - implement TowaryRepository.pobierzListeTowarow
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idTowaru
 	 * @param ilosc
 	 */
@@ -15,4 +21,7 @@ public class TowaryRepository {
 		throw new UnsupportedOperationException();
 	}
 
+	public void dodajTowar(Towar towar) {
+		towary.add(towar);
+	}
 }

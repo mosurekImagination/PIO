@@ -3,9 +3,8 @@ import java.util.Observer;
 
 
 
-public class View implements Observer{
+public class View{
 
-	Zamowienie obserwowany;
 
 	public void zamknijOkno() {
 		// TODO - implement View.zamknijOkno
@@ -21,8 +20,5 @@ public class View implements Observer{
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
 
-	}
 }

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Controllers/Controllers.iml" filepath="$PROJECT_DIR$/Controllers/Controllers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DB Contexts/DB Contexts.iml" filepath="$PROJECT_DIR$/DB Contexts/DB Contexts.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Hurtownia.iml" filepath="$PROJECT_DIR$/.idea/Hurtownia.iml" />
       <module fileurl="file://$PROJECT_DIR$/Model/Model.iml" filepath="$PROJECT_DIR$/Model/Model.iml" />
       <module fileurl="file://$PROJECT_DIR$/Repositories/Repositories.iml" filepath="$PROJECT_DIR$/Repositories/Repositories.iml" />

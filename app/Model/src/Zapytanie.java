@@ -1,12 +1,27 @@
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Zapytanie {
 
+	static int current_id = 0;
 	private int id;
 	private StatusZapytania status;
-	private Data terminReal;
-	private string notatka;
+	private LocalDate terminReal;
+	private String notatka;
+	private PozycjaZamowienia pozycja;
+
+	public Zapytanie(LocalDate terminRealizacji) {
+		this.id = current_id;
+		this.terminReal = terminRealizacji;
+		current_id++;
+	}
+
+	public void setPozycja(PozycjaZamowienia pozycja){
+		this.pozycja = pozycja;
+	}
 
 	/**
-	 * 
+	 *
 	 * @param status
 	 */
 	public void zmienStatusZapytania(StatusZapytania status) {
@@ -14,4 +29,15 @@ public class Zapytanie {
 		throw new UnsupportedOperationException();
 	}
 
+	public StatusZapytania getStatus() {
+		return status;
+	}
+
+	public LocalDate getTerminRealizacji() {
+		return terminReal;
+	}
+
+	public Towar getTowar() {
+		return pozycja.getTowar();
+	}
 }

@@ -1,12 +1,17 @@
+import java.util.List;
+
 public class ListaTowarowView extends View {
 
+	TowaryContext towaryContext;
+
 	public void wyswietlListeTowarow() {
-		// TODO - implement ListaTowarowView.wyswietlListeTowarow
+		List<Towar> towary = towaryContext.getTowaryZBazy();
+		//Trzeba wsadzić te towary w widok
 		throw new UnsupportedOperationException();
 	}
 
-	public void przekazTowar() {
-		// TODO - implement ListaTowarowView.przekazTowar
+	public Towar przekazTowar() {
+		// TODO - to będzie na jakimś clicku zatwierdzającym wybór z listy i będzie zwracać towar do kontrolera
 		throw new UnsupportedOperationException();
 	}
 

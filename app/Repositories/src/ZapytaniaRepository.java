@@ -1,7 +1,9 @@
 public class ZapytaniaRepository {
 
+	ZapytanieContext zapytanieContext;
+
 	/**
-	 * 
+	 *
 	 * @param zapytanie
 	 */
 	public void wyslijZapytanie(Zapytanie zapytanie) {
@@ -10,7 +12,7 @@ public class ZapytaniaRepository {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param idZapytania
 	 * @param status
 	 */
@@ -19,4 +21,7 @@ public class ZapytaniaRepository {
 		throw new UnsupportedOperationException();
 	}
 
+	public void przeslijZapytanie(Zapytanie zapytanie) {
+		zapytanieContext.przeslijZapytanie(zapytanie);
+	}
 }
