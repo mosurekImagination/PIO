@@ -23,4 +23,9 @@ public class Towar {
 	public int getId() {
 		return id;
 	}
+
+	public String getNazwa()
+	{
+		return nazwa;
+	}
 }

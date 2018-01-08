@@ -70,4 +70,8 @@ public class PozycjaZamowienia {
 	public float getCena() {
 		return cena;
 	}
+
+	public int getIlosc() {
+		return ilosc;
+	}
 }

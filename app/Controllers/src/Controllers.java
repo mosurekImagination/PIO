@@ -1,5 +1,12 @@
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
+
 
 public class Controllers {
 
@@ -8,6 +15,7 @@ public class Controllers {
 	TowaryRepository towar;
 	ZamowieniaRepository zamowienia;
 	ZapytaniaRepository zapytania;
+
 
 
 	public void dodajNowegoKlienta() {
@@ -110,14 +118,14 @@ public class Controllers {
 		throw new UnsupportedOperationException();
 	}
 
-	public String wybierzTowar() {
+/*	public String wybierzTowar() {
 		ListaTowarowView listaTowarowView = new ListaTowarowView();
 		listaTowarowView.wyswietlListeTowarow();
 		Towar towar = listaTowarowView.przekazTowar();
 		PozycjaZamowienia pozycja = zamowienia.utworzPozycjeZamowienia(towar);
 		pozycjaZamowienia.setPozycja(pozycja);
 		return towar.toString();
-	}
+	}*/
 
 	public void dodajPozycje(int ilosc, int rabat) {
 		zamowienia.aktualizujPozycje(getPozycjaId(),ilosc,rabat);

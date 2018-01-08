@@ -6,15 +6,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="341.0" prefWidth="555.0" styleClass="h2" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="341.0" prefWidth="555.0" styleClass="h2" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KomunikatController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="3.0" layoutX="6.0" layoutY="59.0" stroke="BLACK" strokeType="INSIDE" width="544.0" />
-      <Button id="btnX" layoutX="494.0" layoutY="25.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="32.0" text="X">
+      <Button id="btnX" fx:id="btnX" layoutX="494.0" layoutY="25.0" onAction="#zamknijOkno" mnemonicParsing="false" prefHeight="14.0" prefWidth="32.0" text="X">
          <font>
             <Font size="9.0" />
          </font>
       </Button>
-      <Label layoutX="77.0" layoutY="178.0" text="Zamówienie zostało złożone poprawnie">
+      <Label id="lbMessage" fx:id="lbKomunikat" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="171.0" prefHeight="34.0" prefWidth="535.0" text="Zamówienie zostało złożone poprawnie">
          <font>
             <Font size="23.0" />
          </font>
