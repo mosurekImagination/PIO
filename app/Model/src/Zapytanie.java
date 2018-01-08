@@ -9,6 +9,7 @@ public class Zapytanie {
 	private LocalDate terminReal;
 	private String notatka;
 	private PozycjaZamowienia pozycja;
+	private int ilosc;
 
 	public Zapytanie(LocalDate terminRealizacji) {
 		this.id = current_id;
@@ -20,10 +21,6 @@ public class Zapytanie {
 		this.pozycja = pozycja;
 	}
 
-	/**
-	 *
-	 * @param status
-	 */
 	public void zmienStatusZapytania(StatusZapytania status) {
 		// TODO - implement Zapytanie.zmienStatusZapytania
 		throw new UnsupportedOperationException();

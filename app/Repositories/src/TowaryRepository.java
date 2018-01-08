@@ -1,4 +1,7 @@
 import java.util.List;
+/**
+ * Klasa realizująca połączenie się z obiektami modelu towaru i przechowywaniem ich.
+ */
 
 public class TowaryRepository {
 

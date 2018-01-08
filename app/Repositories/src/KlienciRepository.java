@@ -1,4 +1,10 @@
+
+/**
+ * Klasa realizująca połączenie się z obiektami modelu klienta i przechowywaniem ich.
+ */
 public class KlienciRepository {
+
+	Klient klient;
 
 	/**
 	 * 

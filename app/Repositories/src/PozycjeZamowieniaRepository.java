@@ -1,33 +1,26 @@
 import java.util.Date;
 
+/**
+ * Klasa realizująca połączenie się z obiektami modelu pozycji zamówienia i przechowywaniem ich.
+ */
+
 public class PozycjeZamowieniaRepository {
 
 	private PozycjaZamowienia pozycja;
 
-	/**
-	 *
-	 * @param idPozycji
-	 */
+
 	public void usunPozycje(int idPozycji) {
 		// TODO - implement PozycjeZamowieniaRepository.usunPozycje
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 *
-	 * @param pozycja
-	 */
+
 	public void dodajPozycje(PozycjaZamowienia pozycja) {
 		// TODO - implement PozycjeZamowieniaRepository.dodajPozycje
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 *
-	 * @param idPozycji
-	 * @param ilosc
-	 * @param rabat
-	 */
+
 	public void modyfikujPozycje(int idPozycji, int ilosc, float rabat) {
 		// TODO - implement PozycjeZamowieniaRepository.modyfikujPozycje
 		throw new UnsupportedOperationException();
@@ -38,11 +31,6 @@ public class PozycjeZamowieniaRepository {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 *
-	 * @param idPozycji
-	 * @param data
-	 */
 	public void zmienDateRealizacji(int idPozycji, Date data) {
 		// TODO - implement PozycjeZamowieniaRepository.zmienDateRealizacji
 		throw new UnsupportedOperationException();

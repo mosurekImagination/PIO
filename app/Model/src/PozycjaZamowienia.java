@@ -34,7 +34,6 @@ public class PozycjaZamowienia {
 		this.zapytanie = zapytanie;
 	}
 
-
 	public void zmienDateRealizacji(LocalDate data) {
 		this.terminRealizacji = data;
 	}

@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.util.*;
-
+/**
+ * Klasa realizująca połączenie się z obiektami modelu zamówienia i przechowywaniem ich.
+ */
 public class ZamowieniaRepository extends Observable{
 
 	private List<Observer> observers = new ArrayList<>();
@@ -47,7 +49,7 @@ public class ZamowieniaRepository extends Observable{
 
 	public void dodajZapytanie(int indexPozycji, LocalDate terminRealizacji) {
 		Zapytanie zapytanie = new Zapytanie(terminRealizacji);
-		zapytanie = zamowienie.dodajZapytanieDoPozycji(indexPozycji,zapytanie);
+		zapytanie = zamowienie.dodajZapytanieDoPozycji(zamowienie.getIndexOstatniejPozycji(),zapytanie);
 		notifyObservers(this);
 	}
 

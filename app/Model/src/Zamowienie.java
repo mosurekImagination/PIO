@@ -11,9 +11,6 @@ public class Zamowienie{
 	private LocalDate terminRealizacji;
 	private float kwota;
 	private boolean czyZatwierdzone;
-
-
-
 	private List<PozycjaZamowienia> pozycjeZamowienia;
 	Klient klient;
 
@@ -34,6 +31,11 @@ public class Zamowienie{
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Dodaje pozycję do zamówienia i aktualizuje zamówienie o dodaną pozycję.
+	 *
+	 * @param pozycja pozycja do dodania
+	 */
 	public void dodajPozycje(PozycjaZamowienia pozycja) {
 		pozycjeZamowienia.add(pozycja);
 		aktualizuj(getSize()-1);
@@ -98,5 +100,9 @@ public class Zamowienie{
 
 	public LocalDate getTerminRealizacji(){
 		return terminRealizacji;
+	}
+
+	public int getIndexOstatniejPozycji() {
+		return getSize()-1;
 	}
 }
