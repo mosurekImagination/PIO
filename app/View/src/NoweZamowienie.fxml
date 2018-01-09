@@ -44,7 +44,7 @@
             <Label layoutX="468.0" layoutY="312.0" text="Rabat" />
             <Label layoutX="568.0" layoutY="312.0" text="Wartość" />
             <Label layoutX="658.0" layoutY="312.0" text="Data realizacji" />
-            <Button id="btnZlozZamowienie" fx:id="btnZlozZamowienie" layoutX="757.0" layoutY="492.0" mnemonicParsing="false" text="Złóż zamówienie" />
+            <Button id="btnZlozZamowienie" fx:id="btnZlozZamowienie" layoutX="757.0" layoutY="492.0" mnemonicParsing="false" onAction="#zlozZamowienie" text="Złóż zamówienie" />
             <Label layoutX="343.0" layoutY="478.0" styleClass="h2" text="Suma:" />
             <Label id="lbSuma" fx:id="lbSuma" layoutX="410.0" layoutY="478.0" styleClass="h2" text="[Suma]" />
             <Label layoutX="299.0" layoutY="505.0" styleClass="h2" text="Data Realizacji:" />
