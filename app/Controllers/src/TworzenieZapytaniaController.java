@@ -37,11 +37,13 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         closeButton = btnX; pozycje = new PozycjeZamowieniaRepository();
     }
 
-    public void setPozycjaZamowienia(ZamowieniaRepository zp)
+    public void setPozycjaZamowienia(PozycjeZamowieniaRepository zp)
     {
-        pozycje.setPozycja(zp.getOstatniaPozycja());
-        this.zamowieniaRepository = zp;
-        updateView();
+        pozycje=zp;
+    }
+    public void setZamowieniaRepository(ZamowieniaRepository zr)
+    {
+        zamowieniaRepository=zr;
     }
 
 
@@ -61,17 +63,16 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         {
             pozycje.dodajZapytanie(new Zapytanie(pozycje.getPozycja()));
         }
-        zamowieniaRepository.setCzyMoznaZamowic(true);
-        zamowieniaRepository.zamowienie.aktualizuj();
+
         pozycje.getPozycja().getZapytanie().zmienStatusZapytania(StatusZapytania.wyslane);
+        zamowieniaRepository.setCzyMoznaZamowic(true);
+        zamowieniaRepository.dodajPozycjeZamowienia(pozycje.getPozycja());
         zamknijOkno(e);
     }
 
     @FXML
     public void anuluj(ActionEvent e){
-        zamowieniaRepository.usunPozycje(zamowieniaRepository.zamowienie.getIndexOstatniejPozycji());
         zamowieniaRepository.setCzyMoznaZamowic(true);
-        zamowieniaRepository.zamowienie.aktualizuj();
         zamknijOkno(e);
     }
 

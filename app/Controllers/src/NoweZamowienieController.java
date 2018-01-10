@@ -83,6 +83,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         towaryRepository.addObserver(this);
         zamowieniaRepository = new ZamowieniaRepository();
         zamowieniaRepository.addObserver(this);
+        pozycjaZamowieniaRepository = new PozycjeZamowieniaRepository();
 
         fillGridView();
         setGridViewConstraints();
@@ -232,7 +233,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
     {
         pozycjaZamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar());
         TworzenieZapytaniaController twController = (TworzenieZapytaniaController) otworzOkno("TworzenieZapytania.fxml", MALE_OKNO);
-        twController.setPozycjaZamowienia(zamowieniaRepository);
+        twController.setPozycjaZamowienia(pozycjaZamowieniaRepository);
+        twController.setZamowieniaRepository(zamowieniaRepository);
+        twController.updateView();
     }
 
     public void czyNiedostepnaNotify(boolean czyNiedostepna)
@@ -262,13 +265,12 @@ public class NoweZamowienieController extends ViewController implements Initiali
             int iIlosc = Integer.parseInt(ilosc);
             int iRabat = Integer.parseInt(rabat);
             if(zamowieniaRepository.sprawdzDostepnoscTowaru(towaryRepository.getTowar(),iIlosc)) {
+                zamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar());
+                zamowieniaRepository.aktualizujPozycje(iIlosc, iRabat);
             }
             else {
                 zamowieniaRepository.setCzyMoznaZamowic(false);
             }
-            zamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar());
-            zamowieniaRepository.aktualizujPozycje(iIlosc, iRabat);
-
         }
     }
 

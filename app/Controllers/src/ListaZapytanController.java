@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -28,7 +29,7 @@ public class ListaZapytanController extends ViewController implements Initializa
     ArrayList<Button> buttons = new ArrayList<>();
     ArrayList<Zapytanie> zapytania= new ArrayList<>();
 
-
+    //private static Background ODRZUCONE = new Background();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnPowrot;
@@ -86,7 +87,10 @@ public class ListaZapytanController extends ViewController implements Initializa
             String terminRealizacji = String.valueOf(zapytanie.getTerminRealizacji());
             //String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient());
             String klient = "Nazwa klienta";
-            gpListaZapytan.addRow(i, new Label(id), new Label(status), new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
+
+           // Label status = new Label("status");
+            //status.setBackground();
+            //gpListaZapytan.addRow(i, new Label(id), new Label(status), new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }
