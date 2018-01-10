@@ -63,6 +63,7 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         }
         zamowieniaRepository.setCzyMoznaZamowic(true);
         zamowieniaRepository.zamowienie.aktualizuj();
+        pozycje.getPozycja().getZapytanie().zmienStatusZapytania(StatusZapytania.wyslane);
         zamknijOkno(e);
     }
 

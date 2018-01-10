@@ -10,4 +10,12 @@ public class Klient {
 	{
 		return imie +" "+ nazwisko;
 	}
+
+	public String getNazwaFirmy(){
+		return nazwaFirmy;
+	}
+
+	public int getNip() {
+		return nip;
+	}
 }

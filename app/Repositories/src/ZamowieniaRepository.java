@@ -27,6 +27,7 @@ public class ZamowieniaRepository extends Observable{
 	}
 
 	public void przeslijZamowienie() {
+		zamowienie.setStatusZamowienia(StatusZamowienia.przekazane);
 		zamowienie.przeslijDoBazy();
 	}
 
@@ -79,7 +80,7 @@ public class ZamowieniaRepository extends Observable{
 
 	public void dodajKlienta(Klient klient) {
 		zamowienie.dodajKlienta(klient);
-		notifyObservers();
+		notifyObservers(klient);
 	}
 
 	public PozycjaZamowienia getOstatniaPozycja() {
@@ -108,4 +109,21 @@ public class ZamowieniaRepository extends Observable{
         czyMoznaZamowic = b;
         notifyObservers();
     }
+
+	public Zamowienie wydzielPozycje(ArrayList<Integer> indeksy) {
+		Zamowienie noweZamowienie = new Zamowienie();
+		noweZamowienie.setKlient(zamowienie.getKlient());
+		for (Integer indeks:indeksy) {
+			PozycjaZamowienia pozycja = zamowienie.usunPozycje(indeks);
+			noweZamowienie.dodajPozycje(pozycja);
+			notifyObservers();
+		}
+		noweZamowienie.aktualizuj();
+		return  noweZamowienie;
+	}
+
+	public void setZamowienie(Zamowienie zamowienie) {
+		this.zamowienie = zamowienie;
+		notifyObservers();
+	}
 }

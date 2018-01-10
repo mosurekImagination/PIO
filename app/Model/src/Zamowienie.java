@@ -40,9 +40,10 @@ public class Zamowienie{
 		pozycjeZamowienia.add(pozycja);
 	}
 
-	public void usunPozycje(int indexPozycji) {
-		pozycjeZamowienia.remove(indexPozycji);
+	public PozycjaZamowienia usunPozycje(int indexPozycji) {
+		PozycjaZamowienia pozycja = pozycjeZamowienia.remove(indexPozycji);
 		aktualizuj();
+		return pozycja;
 	}
 
 	public int getNextId(){
@@ -131,5 +132,13 @@ public class Zamowienie{
 
 	public Klient getKlient() {
 		return klient;
+	}
+
+	public void setStatusZamowienia(StatusZamowienia status) {
+		this.status = status;
+	}
+
+	public void setKlient(Klient klient) {
+		this.klient = klient;
 	}
 }

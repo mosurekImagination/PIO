@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import static java.time.LocalDate.now;
+
 public class ZapytaniaRepository {
 
 	ZapytanieContext zapytanieContext;
@@ -7,6 +9,7 @@ public class ZapytaniaRepository {
 	
 	public ZapytaniaRepository(){
 		zapytania = new ArrayList<>();
+		zapytania.add(new Zapytanie(now(),new PozycjaZamowienia(new Towar(1,"zawleczka",50,0.56))));
 	}
 	
 	public void setZapytania(ArrayList<Zapytanie> zapytania){
@@ -37,10 +40,10 @@ public class ZapytaniaRepository {
 	}
 
 	public void pobierzZapytania() {
-		this.zapytania = zapytanieContext.getZapytania();
+		this.zapytania = getZapytania();
 	}
 
 	public ArrayList<Zapytanie> getZapytania() {
-		return new ArrayList<Zapytanie>();
+		return zapytania;
 	}
 }

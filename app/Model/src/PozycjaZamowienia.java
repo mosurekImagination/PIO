@@ -94,4 +94,8 @@ public class PozycjaZamowienia {
 	public double getCenaPoRabacie() {
 		return cenaPoRabacie;
 	}
+
+	public Zapytanie getZapytanie() {
+		return zapytanie;
+	}
 }

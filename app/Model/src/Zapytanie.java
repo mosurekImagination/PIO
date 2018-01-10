@@ -16,6 +16,7 @@ public class Zapytanie {
 		this.terminReal = terminRealizacji;
 		this.pozycja = pozycja;
 		this.ilosc = pozycja.getIlosc();
+		this.status = StatusZapytania.zopiniowane;
 		current_id++;
 	}
 

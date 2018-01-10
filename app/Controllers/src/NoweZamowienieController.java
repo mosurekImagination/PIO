@@ -22,6 +22,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     ZamowieniaRepository zamowieniaRepository;
     PozycjeZamowieniaRepository pozycjaZamowieniaRepository;
+    Boolean czyKolejneZamowienie;
 
     Towar towar = new Towar(1, "Sruba", 50,0.01);
     PozycjaZamowienia pozycjaZamowienia= new PozycjaZamowienia(1, towar, 100, 5);
@@ -53,6 +54,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
     Label lbSuma;
     @FXML
     Label lbDataRealizacji;
+    @FXML Label lbNazwaFirmy;
+    @FXML Label lbNip;
 
     @FXML
     TextField tfPodajNip;
@@ -69,15 +72,15 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        list.add(new Towar(1,"asdf",19,0.5));
-        list.add(new Towar(2,"asdfa",18,0.6));
-        list.add(new Towar(3,"asdfb",17,1));
-        list.add(new Towar(4,"asdfc",16,1.2));
-        list.add(new Towar(5,"asdfd",15,1.45));
-        list.add(new Towar(6,"asdfq",14,1.15));
-        list.add(new Towar(7,"asdfw",13,0.95));
-        list.add(new Towar(8,"asdfe",12,0.99));
-        list.add(new Towar(9,"asdfr",11,1.5));
+//        list.add(new Towar(1,"asdf",19,0.5));
+//        list.add(new Towar(2,"asdfa",18,0.6));
+//        list.add(new Towar(3,"asdfb",17,1));
+//        list.add(new Towar(4,"asdfc",16,1.2));
+//        list.add(new Towar(5,"asdfd",15,1.45));
+//        list.add(new Towar(6,"asdfq",14,1.15));
+//        list.add(new Towar(7,"asdfw",13,0.95));
+//        list.add(new Towar(8,"asdfe",12,0.99));
+//        list.add(new Towar(9,"asdfr",11,1.5));
 
         closeButton=btnPowrot;
 
@@ -86,6 +89,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
         fillGridView();
         setGridViewConstraints();
+
+        czyKolejneZamowienie = false;
 
     }
 
@@ -97,6 +102,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
         else if(arg != null && arg instanceof PozycjaZamowienia){
             lbNazwaTowaru.setText(((PozycjaZamowienia) arg).getTowar().getNazwa());
+        }
+        else if(arg != null && arg instanceof Klient){
+            lbNazwaFirmy.setText(((Klient)arg).getNazwaFirmy());
+            lbNip.setText(Integer.toString(((Klient) arg).getNip()));
         }
         else {
 
@@ -300,10 +309,34 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     @FXML void zlozZamowienie(ActionEvent event){
         zamowieniaRepository.przeslijZamowienie();
+        if(czyKolejneZamowienie){
+            zamknijOkno(event);
+        }else {
+            powrot(event);
+        }
+
     }
 
     @FXML void wybierzKlienta(ActionEvent event){
 
         // to gdzieś musi być ale jest obsłużone w zamówieniu --> zamowieniaRepository.dodajKlienta();
+    }
+
+    @FXML void podzielZamowienie(){
+        ArrayList<Integer> indeksy = new ArrayList<>();
+        indeksy.add(0);
+        indeksy.add(1);
+        NoweZamowienieController nZController = (NoweZamowienieController) otworzOkno("NoweZamowienie.fxml", DUZE_OKNO);
+        Zamowienie zamowienie = zamowieniaRepository.wydzielPozycje(indeksy);
+        nZController.setNoweZamowienie(zamowienie);
+    }
+
+    public void setNoweZamowienie(Zamowienie zamowienie) {
+        zamowieniaRepository = new ZamowieniaRepository();
+        zamowieniaRepository.addObserver(this);
+        zamowieniaRepository.setZamowienie(zamowienie);
+        zamowieniaRepository.setCzyMoznaZamowic(true);
+        czyKolejneZamowienie = true;
+        btnPowrot = closeButton;
     }
 }

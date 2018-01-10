@@ -22,6 +22,7 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
     Label lbTerminRealizacji;
 
     Zapytanie zapytanie;
+    ZapytanieContext zapytanieContext;
 
 
     @Override
@@ -37,8 +38,8 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
 
     public void updateView()
     {
-       // lbNazwaTowaru.setText(zapytanie.getTowar().getNazwa());
-        //lbIlosc.setText(zapytanie.getIlosc());
+        lbNazwaTowaru.setText(zapytanie.getTowar().getNazwa());
+        lbIlosc.setText(String.valueOf(zapytanie.getPozycja().getIlosc()));
         lbTerminRealizacji.setText(zapytanie.getTerminRealizacji().toString());
     }
 
@@ -50,13 +51,13 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
     @FXML
     private void zatwierdz()
     {
-    System.out.print("zatwierdz");
+    zapytanie = zapytanieContext.zatwierdzZapytanie(zapytanie);
     }
 
     @FXML
     private void odrzuc()
     {
-        System.out.print("odrzuc");
+        zapytanie = zapytanieContext.odrzucZapytanie(zapytanie);
 
     }
 

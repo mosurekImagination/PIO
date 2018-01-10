@@ -11,5 +11,6 @@
     <orderEntry type="module" module-name="View" />
     <orderEntry type="module" module-name="Repositories" />
     <orderEntry type="module" module-name="Utils" />
+    <orderEntry type="module" module-name="DB Contexts" />
   </component>
 </module>
