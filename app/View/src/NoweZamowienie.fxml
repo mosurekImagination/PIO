@@ -26,7 +26,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
             <Label layoutX="24.0" layoutY="145.0" styleClass="h2" stylesheets="@style.css" text="Dodaj pozycje zamówienia" />
             <Label id="lbNazwaTowaru" fx:id="lbNazwaTowaru" layoutX="27.0" layoutY="179.0" prefHeight="18.0" prefWidth="141.0" />
-            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="294.0" layoutY="171.0" mnemonicParsing="false" onAction="#utworzPozycjeZamowienia" text="Wybierz Towar" />
+            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="294.0" layoutY="171.0" mnemonicParsing="false" onAction="#wybierzTowar" text="Wybierz Towar" />
             <TextField id="tbIlosc" fx:id="tfIlosc" layoutX="443.0" layoutY="172.0" prefHeight="26.0" prefWidth="59.0" />
             <TextField id="tbRabat" fx:id="tfRabat" layoutX="527.0" layoutY="172.0" prefHeight="26.0" prefWidth="59.0" />
             <Label layoutX="446.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Ilość:" />

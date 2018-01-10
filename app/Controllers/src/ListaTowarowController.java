@@ -30,12 +30,14 @@ public class ListaTowarowController extends ViewController implements Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnX;
-        towaryRepository = new TowaryRepository();
-        towaryList = (ArrayList<Towar>) towaryRepository.getTowary();  //TO TEST
+    }
+
+    public void updateView()
+    {
+        //TO TEST
         fillGridView();
         setGridViewConstraints();
     }
-
     public void setZamowieniaRepository(ZamowieniaRepository pozycjaZamRepo) {
         this.pozycjaZamRepo = pozycjaZamRepo;
     }
@@ -90,7 +92,8 @@ public class ListaTowarowController extends ViewController implements Initializa
     }
 
     private void wybierzTowar(int i, ActionEvent e) {
-        pozycjaZamRepo.utworzPozycjeZamowienia(towaryList.get(i)); //zastąpić repo
+        towaryRepository.setTowar(towaryList.get(i));
+      //  pozycjaZamRepo.utworzPozycjeZamowienia(towaryList.get(i)); //zastąpić repo
         zamknijOkno(e);
     }
 
@@ -116,4 +119,8 @@ public class ListaTowarowController extends ViewController implements Initializa
     }
 
 
+    public void setTowaryRepository(TowaryRepository towaryRepository) {
+        this.towaryRepository = towaryRepository;
+        towaryList = (ArrayList<Towar>) towaryRepository.getTowary();
+    }
 }

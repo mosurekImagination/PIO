@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
 /**
  * Klasa realizująca połączenie się z obiektami modelu towaru i przechowywaniem ich.
  */
 
-public class TowaryRepository {
+public class TowaryRepository extends Observable {
 
 	TowaryContext towaryDB;
 	List<Towar> towary;
@@ -32,6 +34,8 @@ public class TowaryRepository {
 
 	public void setTowar(Towar towar){
 		this.towar = towar;
+		setChanged();
+		notifyObservers(towar);
 	}
 
 	public Towar getTowar() {

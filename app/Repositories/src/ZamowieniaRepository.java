@@ -63,7 +63,9 @@ public class ZamowieniaRepository extends Observable{
 		PozycjaZamowienia pozycja = zamowienie.getPozycjaOnIndex(indexPozycji);
 		return pozycja.getTowar().getIlosc() >= ilosc;
 	}
-
+	public boolean sprawdzDostepnoscTowaru(Towar towar, int ilosc) {
+		return towar.getIlosc() >= ilosc;
+	}
 
 	public void usunPozycje(int indexPozycji) {
 		zamowienie.usunPozycje(indexPozycji);

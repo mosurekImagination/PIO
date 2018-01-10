@@ -21,13 +21,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
     private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Musi się mieścić miedzy 0 a 99";
     private static final String ZLA_ILOSC_KOMUNIKAT = "Podano zla ilosc. Musi byc wieksza od 0";
 
-    ZamowieniaRepository zamowieniaRepository;
-    PozycjeZamowieniaRepository pozycjaZamowieniaRepository;
-    Boolean czyKolejneZamowienie;
-
-    Towar towar = new Towar(1, "Sruba", 50,0.01);
-    PozycjaZamowienia pozycjaZamowienia= new PozycjaZamowienia(1, towar, 100, 5);
-
     @FXML
     Button btnWybierz;
     @FXML
@@ -58,7 +51,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML Label lbNazwaFirmy;
     @FXML Label lbNip;
 
-
     @FXML
     TextField tfIlosc;
     @FXML
@@ -66,6 +58,15 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     @FXML
     GridPane gpPozycjeZamowienia;
+
+
+    ZamowieniaRepository zamowieniaRepository;
+    PozycjeZamowieniaRepository pozycjaZamowieniaRepository;
+    TowaryRepository towaryRepository;
+    Boolean czyKolejneZamowienie;
+
+    Towar towar = new Towar(1, "Sruba", 50,0.01);
+    PozycjaZamowienia pozycjaZamowienia= new PozycjaZamowienia(1, towar, 100, 5);
 
     ArrayList<Towar> list = new ArrayList<>();
     LinkedList<Button> buttons = new LinkedList<>();
@@ -78,6 +79,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
         closeButton=btnPowrot;
 
+        towaryRepository = new TowaryRepository();
+        towaryRepository.addObserver(this);
         zamowieniaRepository = new ZamowieniaRepository();
         zamowieniaRepository.addObserver(this);
 
@@ -94,8 +97,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
         if(arg != null && arg instanceof String){
             wyswietlKomunikat((String) arg);
         }
-        else if(arg != null && arg instanceof PozycjaZamowienia){
-            lbNazwaTowaru.setText(((PozycjaZamowienia) arg).getTowar().getNazwa());
+        else if(arg != null && arg instanceof Towar){
+            lbNazwaTowaru.setText(((Towar) arg).getNazwa());
         }
         else if(arg != null && arg instanceof Klient){
             lbNazwaFirmy.setText("Nazwa firmy: " + ((Klient)arg).getNazwaFirmy());
@@ -227,6 +230,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML
     private void wyslijZapytanie()
     {
+        pozycjaZamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar());
         TworzenieZapytaniaController twController = (TworzenieZapytaniaController) otworzOkno("TworzenieZapytania.fxml", MALE_OKNO);
         twController.setPozycjaZamowienia(zamowieniaRepository);
     }
@@ -257,20 +261,22 @@ public class NoweZamowienieController extends ViewController implements Initiali
         else {
             int iIlosc = Integer.parseInt(ilosc);
             int iRabat = Integer.parseInt(rabat);
-            if(zamowieniaRepository.sprawdzDostepnoscTowaru(zamowieniaRepository.zamowienie.getIndexOstatniejPozycji(),iIlosc)) {
+            if(zamowieniaRepository.sprawdzDostepnoscTowaru(towaryRepository.getTowar(),iIlosc)) {
             }
             else {
                 zamowieniaRepository.setCzyMoznaZamowic(false);
             }
+            zamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar());
             zamowieniaRepository.aktualizujPozycje(iIlosc, iRabat);
 
         }
-
     }
 
-    @FXML void utworzPozycjeZamowienia(ActionEvent event){
+    @FXML void wybierzTowar(ActionEvent event){
         ListaTowarowController twController = (ListaTowarowController) otworzOkno("ListaTowarow.fxml", MALE_OKNO);
-        twController.setZamowieniaRepository(zamowieniaRepository);
+        twController.setTowaryRepository(towaryRepository);
+        twController.updateView();
+      //  twController.setZamowieniaRepository(zamowieniaRepository);
     }
 
     @FXML void zlozZamowienie(ActionEvent event){
