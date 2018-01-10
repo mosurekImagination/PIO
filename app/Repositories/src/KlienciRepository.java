@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Klasa realizująca połączenie się z obiektami modelu klienta i przechowywaniem ich.
@@ -24,4 +25,7 @@ public class KlienciRepository {
 		throw new UnsupportedOperationException();
 	}
 
+    public ArrayList<Klient> getKlienci() {
+        return new ArrayList<Klient>();
+    }
 }
