@@ -1,6 +1,17 @@
+import java.util.ArrayList;
+
 public class ZapytaniaRepository {
 
 	ZapytanieContext zapytanieContext;
+	ArrayList<Zapytanie> zapytania;
+	
+	public ZapytaniaRepository(){
+		zapytania = new ArrayList<>();
+	}
+	
+	public void setZapytania(ArrayList<Zapytanie> zapytania){
+		this.zapytania = zapytania;
+	}
 
 	/**
 	 *
@@ -23,5 +34,13 @@ public class ZapytaniaRepository {
 
 	public void przeslijZapytanie(Zapytanie zapytanie) {
 		zapytanieContext.przeslijZapytanie(zapytanie);
+	}
+
+	public void pobierzZapytania() {
+		this.zapytania = zapytanieContext.getZapytania();
+	}
+
+	public ArrayList<Zapytanie> getZapytania() {
+		return new ArrayList<Zapytanie>();
 	}
 }

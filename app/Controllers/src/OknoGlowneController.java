@@ -33,4 +33,6 @@ public class OknoGlowneController extends ViewController implements Initializabl
         zamknijOkno(event);
     }
 
+
+
 }

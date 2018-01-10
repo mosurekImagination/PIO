@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -11,5 +12,9 @@ public class ZapytanieContext {
         StatusZapytania status = zapytanie.getStatus();
         LocalDate terminRealizacji = zapytanie.getTerminRealizacji();
         Towar towar = zapytanie.getTowar(); // Tu wysłałabym jednak na towar, bo zapytanie nie jest jeszcze w BD
+    }
+
+    public ArrayList<Zapytanie> getZapytania() {
+        return null;
     }
 }

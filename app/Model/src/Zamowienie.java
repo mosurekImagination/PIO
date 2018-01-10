@@ -38,11 +38,11 @@ public class Zamowienie{
 	 */
 	public void dodajPozycje(PozycjaZamowienia pozycja) {
 		pozycjeZamowienia.add(pozycja);
-		aktualizuj(getSize()-1);
 	}
 
 	public void usunPozycje(int indexPozycji) {
 		pozycjeZamowienia.remove(indexPozycji);
+		aktualizuj();
 	}
 
 	public int getNextId(){
@@ -70,24 +70,35 @@ public class Zamowienie{
 		this.klient = klient;
 	}
 
-	public void aktualizuj(int indexPozycji) {
-		aktualizujKwote(indexPozycji);
-		aktualizujTerminRealizacji(indexPozycji);
+	public void aktualizuj() {
+		aktualizujKwote();
+		aktualizujTerminRealizacji();
 	}
 
-	private void aktualizujTerminRealizacji(int indexPozycji) {
-		PozycjaZamowienia pozycja = getPozycjaOnIndex(indexPozycji);
-		if (pozycja.getTerminRealizacji() == null) {terminRealizacji = null;}
-		else {ustalTerminRealizacji(pozycja.getTerminRealizacji());}
+	private void aktualizujTerminRealizacji() {
+		for(PozycjaZamowienia pozycja:pozycjeZamowienia) {
+			LocalDate dataPozycji = pozycja.getTerminRealizacji();
+			if (dataPozycji == null) {
+				terminRealizacji = null;
+			} else if(terminRealizacji != null && isAfterTermin(dataPozycji)) {
+				terminRealizacji = pozycja.getTerminRealizacji();
+			}
+		}
+	}
+
+	public boolean isAfterTermin(LocalDate data){
+		return data.isAfter(terminRealizacji);
 	}
 
 	public void ustalTerminRealizacji(LocalDate data) {
-		if (data.isAfter(terminRealizacji)) terminRealizacji = data;
+		if (terminRealizacji == null || data.isAfter(terminRealizacji)) terminRealizacji = data;
 	}
 
-	private void aktualizujKwote(int indexPozycji) {
-		float wartosc = getPozycjaOnIndex(indexPozycji).getCena();
-		this.kwota += wartosc;
+	private void aktualizujKwote() {
+		kwota = 0;
+		for (PozycjaZamowienia pozycja:pozycjeZamowienia) {
+			kwota += pozycja.getCena();
+		}
 	}
 
 	public List<PozycjaZamowienia> getPozycjeZamowienia() {
@@ -104,5 +115,21 @@ public class Zamowienie{
 
 	public int getIndexOstatniejPozycji() {
 		return getSize()-1;
+	}
+
+	public List<PozycjaZamowienia> getPozycje() {
+		return pozycjeZamowienia;
+	}
+
+	public void przeslijDoBazy() {
+		//Tu wysyłamy stworzone zamówienie do bazy
+	}
+
+	public float getSuma() {
+		return kwota;
+	}
+
+	public Klient getKlient() {
+		return klient;
 	}
 }

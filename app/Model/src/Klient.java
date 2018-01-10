@@ -6,4 +6,8 @@ public class Klient {
 	private int nip;
 	private String nazwaFirmy;
 
+	public String toString()
+	{
+		return imie +" "+ nazwisko;
+	}
 }

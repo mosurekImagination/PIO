@@ -4,19 +4,20 @@ public class Towar {
 	private int id;
 	private String nazwa;
 	private int kod;
-	private int cenaJn;
+	private double cenaJn;
 
-	public Towar(int id, String nazwa, int iloscTowaru){
+	public Towar(int id, String nazwa, int iloscTowaru,double cenaJdn){
 		this.id = id;
 		this.nazwa = nazwa;
 		this.aktualnaIloscTowaru = iloscTowaru;
+		this.cenaJn = cenaJdn;
 	}
 
 	public int getIlosc(){
 		return aktualnaIloscTowaru;
 	}
 
-	public int getCenaJn() {
+	public double getCenaJn() {
 		return cenaJn;
 	}
 

@@ -7,6 +7,7 @@ public class TowaryRepository {
 
 	TowaryContext towaryDB;
 	List<Towar> towary;
+	Towar towar;
 
 	public void pobierzListeTowarow() {
 		towaryDB.getTowaryZBazy();
@@ -27,4 +28,10 @@ public class TowaryRepository {
 	public void dodajTowar(Towar towar) {
 		towary.add(towar);
 	}
+
+	public void setTowar(Towar towar){
+		this.towar = towar;
+	}
+
+	public Towar getTowar(){return towar;}
 }

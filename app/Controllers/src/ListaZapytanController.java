@@ -20,13 +20,18 @@ public class ListaZapytanController extends ViewController implements Initializa
 
     @FXML
     GridPane gpListaZapytan;
+    ZapytaniaRepository zapytaniaRepo;
 
-    ArrayList<Zapytanie> zapytania = new ArrayList<>();
     ArrayList<Button> buttons = new ArrayList<>();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnPowrot;
+
+        zapytaniaRepo = new ZapytaniaRepository();
+        zapytaniaRepo.pobierzZapytania();
+
         prepareTestData();
         fillGridView();
         setGridViewConstraints();
@@ -35,14 +40,17 @@ public class ListaZapytanController extends ViewController implements Initializa
 
     private void prepareTestData()
     {
-        zapytania.add(new Zapytanie(LocalDate.now()));
+        //zapytania.add(new Zapytanie(LocalDate.now()));
     }
 
     public void fillGridView()
     {
-        for(int i=0; i<2; i++)
+        ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
+
+        for(int i=0; i<zapytania.size();i++)
         {
             Button otworz = new Button("Otwórz");
+            Zapytanie zapytanie = zapytania.get(i);
 
             buttons.add(otworz);
             otworz.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,8 +68,11 @@ public class ListaZapytanController extends ViewController implements Initializa
                     return this;
                 }
             }.init(otworz));
-
-            gpListaZapytan.addRow(i, new Label("asdf"), new Label("asdaf"), new Label("asdsf"), new Label("asddf"), new Label("axsdf"), new Label("ascdf"), otworz);
+            String id = String.valueOf(zapytanie.getId());
+            String status = String.valueOf(zapytanie.getStatus());
+            String terminRealizacji = String.valueOf(zapytanie.getTerminRealizacji());
+            String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient());
+            gpListaZapytan.addRow(i, new Label(id), new Label(status), new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }

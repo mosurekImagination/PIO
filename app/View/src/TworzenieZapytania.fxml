@@ -25,7 +25,7 @@
       <Rectangle arcHeight="1.0" arcWidth="1.0" fill="#142434" height="1.0" layoutX="63.0" layoutY="159.0" stroke="BLACK" strokeType="INSIDE" width="482.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="3.0" layoutX="1.0" layoutY="259.0" stroke="BLACK" strokeType="INSIDE" width="544.0" />
       <Button id="btnWyslij" fx:id="btnWyslij" layoutX="443.0" layoutY="279.0" mnemonicParsing="false" onAction="#wyslijZapytanie" prefHeight="38.0" prefWidth="82.0" text="Wyslij" />
-      <Button id="btnAnuluj" fx:id="btnAnuluj" layoutX="22.0" layoutY="279.0" mnemonicParsing="false" onAction="#zamknijOkno" prefHeight="38.0" prefWidth="82.0" text="Anuluj" />
+      <Button id="btnAnuluj" fx:id="btnAnuluj" layoutX="22.0" layoutY="279.0" mnemonicParsing="false" onAction="#anuluj" prefHeight="38.0" prefWidth="82.0" text="Anuluj" />
       <DatePicker id="dateTermin" fx:id="dateTermin" layoutX="221.0" layoutY="197.0" />
    </children>
 </AnchorPane>

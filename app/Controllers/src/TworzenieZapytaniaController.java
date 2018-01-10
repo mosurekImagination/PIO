@@ -1,3 +1,4 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -5,6 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class TworzenieZapytaniaController extends ViewController implements Initializable{
@@ -27,33 +29,49 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     @FXML
     DatePicker dateTermin;
 
-    PozycjaZamowienia pozycjaZamowienia;
+    PozycjeZamowieniaRepository pozycje;
+    ZamowieniaRepository zamowieniaRepository;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        closeButton = btnX;
+        closeButton = btnX; pozycje = new PozycjeZamowieniaRepository();
     }
 
-    public void setPozycjaZamowienia(PozycjaZamowienia pz)
+    public void setPozycjaZamowienia(ZamowieniaRepository zp)
     {
-        pozycjaZamowienia = pz;
+        pozycje.setPozycja(zp.getOstatniaPozycja());
+        this.zamowieniaRepository = zp;
+        updateView();
     }
+
 
     public void updateView()
     {
-        lbNazwaTowaru.setText(pozycjaZamowienia.getTowar().getNazwa());
-        lbIlosc.setText(String.valueOf(pozycjaZamowienia.getIlosc()));
+        lbNazwaTowaru.setText(pozycje.getPozycja().getTowar().getNazwa());
+        lbIlosc.setText(String.valueOf(pozycje.getPozycja().getIlosc()));
     }
 
     @FXML
-    public void wyslijZapytanie()
+    public void wyslijZapytanie(ActionEvent e)
     {
-        if(dateTermin != null)
-           System.out.print(dateTermin.getValue());
+        if(dateTermin != null) {
+            pozycje.dodajZapytanie(new Zapytanie(dateTermin.getValue(),pozycje.getPozycja()));
+        }
         else
         {
-            ;
+            pozycje.dodajZapytanie(new Zapytanie(pozycje.getPozycja()));
         }
+        zamowieniaRepository.setCzyMoznaZamowic(true);
+        zamowieniaRepository.zamowienie.aktualizuj();
+        zamknijOkno(e);
+    }
+
+    @FXML
+    public void anuluj(ActionEvent e){
+        zamowieniaRepository.usunPozycje(zamowieniaRepository.zamowienie.getIndexOstatniejPozycji());
+        zamowieniaRepository.setCzyMoznaZamowic(true);
+        zamowieniaRepository.zamowienie.aktualizuj();
+        zamknijOkno(e);
     }
 
 

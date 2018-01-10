@@ -119,8 +119,8 @@ public class Controllers {
 	}
 
 /*	public String wybierzTowar() {
-		ListaTowarowView listaTowarowView = new ListaTowarowView();
-		listaTowarowView.wyswietlListeTowarow();
+		//ListaTowarow listaTowarowView = new ListaTowarow();
+		//listaTowarowView.wyswietlListeTowarow();
 		Towar towar = listaTowarowView.przekazTowar();
 		PozycjaZamowienia pozycja = zamowienia.utworzPozycjeZamowienia(towar);
 		pozycjaZamowienia.setPozycja(pozycja);
@@ -128,7 +128,7 @@ public class Controllers {
 	}*/
 
 	public void dodajPozycje(int ilosc, int rabat) {
-		zamowienia.aktualizujPozycje(getPozycjaId(),ilosc,rabat);
+		zamowienia.aktualizujPozycje(ilosc,rabat);
 	}
 
 	private int getPozycjaId(){

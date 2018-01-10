@@ -27,12 +27,12 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
             <Label layoutX="24.0" layoutY="145.0" styleClass="h2" stylesheets="@style.css" text="Dodaj pozycje zamówienia" />
             <Label id="lbNazwaTowaru" fx:id="lbNazwaTowaru" layoutX="27.0" layoutY="179.0" prefHeight="18.0" prefWidth="141.0" text="[Nazwa Towaru ]" />
-            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="294.0" layoutY="171.0" mnemonicParsing="false" text="Wybierz Towar" />
+            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="294.0" layoutY="171.0" mnemonicParsing="false" onAction="#utworzPozycjeZamowienia" text="Wybierz Towar" />
             <TextField id="tbIlosc" fx:id="tfIlosc" layoutX="443.0" layoutY="172.0" prefHeight="26.0" prefWidth="59.0" />
             <TextField id="tbRabat" fx:id="tfRabat" layoutX="527.0" layoutY="172.0" prefHeight="26.0" prefWidth="59.0" />
             <Label layoutX="446.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Ilość:" />
             <Label layoutX="530.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Rabat:" />
-            <Button id="btnDodajPozycje" fx:id="btnDodajPozycje" layoutX="741.0" layoutY="170.0" mnemonicParsing="false" onAction="#dodajPozycje" text="Dodaj pozycje" />
+            <Button id="btnDodajPozycje" fx:id="btnDodajPozycje" layoutX="741.0" layoutY="170.0" mnemonicParsing="false" onAction="#dodajPozycjeZamowienia" text="Dodaj pozycje" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="3.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
             <Label layoutX="366.0" layoutY="266.0" styleClass="h2" text="Zamówienie nr:" />
             <Label id="lbNrZamowienia" fx:id="lbNrZamowienia" layoutX="486.0" layoutY="266.0" styleClass="h2" text="[NrZamowienia]" />

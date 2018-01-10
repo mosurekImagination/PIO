@@ -19,12 +19,12 @@ public class ZamowienieTest extends TestCase {
     }
 
     public void testdodajPozycje() throws Exception {
-        zamowienie.dodajPozycje(new PozycjaZamowienia(0,new Towar(0,"Srubki",30),25,5));
+        zamowienie.dodajPozycje(new PozycjaZamowienia(0,new Towar(0,"Srubki",30,1.3),25,5));
         assertEquals(1,zamowienie.getSize());
     }
 
     public void testusunPozycje() throws Exception {
-        zamowienie.dodajPozycje(new PozycjaZamowienia(0,new Towar(0,"Srubki",30),25,5));
+        zamowienie.dodajPozycje(new PozycjaZamowienia(0,new Towar(0,"Srubki",30,0.5),25,5));
         zamowienie.usunPozycje(0);
         assertEquals(0,zamowienie.getSize());
     }

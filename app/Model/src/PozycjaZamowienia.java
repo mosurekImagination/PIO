@@ -7,24 +7,24 @@ public class PozycjaZamowienia {
 	private Towar towar;
 	private int id;
 	private int ilosc;
-	private float cena;
-	private float rabat;
-	private float cenaPoRabacie;
+	private double cena;
+	private int rabat;
+	private double cenaPoRabacie;
 	private LocalDate terminRealizacji;
+	private Zamowienie zamowienie;
 
-	PozycjaZamowienia(int id,Towar produktZamawiany){
-		this.id = id;
+	PozycjaZamowienia(Towar produktZamawiany){
 		this.towar = produktZamawiany;
 	}
 
-	PozycjaZamowienia(int id,Towar produktZamawiany,int ilosc, float rabat){
+	PozycjaZamowienia(int id,Towar produktZamawiany,int ilosc, int rabat){
 		this.id = id;
 		this.towar = produktZamawiany;
 		this.ilosc = ilosc;
 		this.rabat = rabat;
 	}
 
-	public void dodajDane(int ilosc, float rabat, Towar towar) {
+	public void dodajDane(int ilosc, int rabat, Towar towar) {
 		this.ilosc = ilosc;
 		this.rabat = rabat;
 		this.towar = towar;
@@ -64,13 +64,34 @@ public class PozycjaZamowienia {
 
 	public void setCena() {
 		this.cena = this.towar.getCenaJn() * this.ilosc;
+		this.cenaPoRabacie = cena - (cena * rabat / 100);
 	}
 
-	public float getCena() {
+	public double getCena() {
 		return cena;
 	}
 
 	public int getIlosc() {
 		return ilosc;
+	}
+
+	public Zamowienie getZamowienie() {
+		return zamowienie;
+	}
+
+	public void setZamowienie(Zamowienie zamowienie) {
+		this.zamowienie = zamowienie;
+	}
+
+	public String toString(){
+		return "Pozycja: " + ilosc + "," + "cena";
+	}
+
+	public int getRabat() {
+		return rabat;
+	}
+
+	public double getCenaPoRabacie() {
+		return cenaPoRabacie;
 	}
 }

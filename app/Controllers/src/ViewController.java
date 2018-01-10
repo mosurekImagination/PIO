@@ -59,5 +59,6 @@ public class ViewController {
     protected void wyswietlKomunikat(String komunikat)
     {
         KomunikatController controller = (KomunikatController)otworzOkno("komunikat.fxml", MALE_OKNO);
+        controller.setKomunikat(komunikat);
     }
 }
