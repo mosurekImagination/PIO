@@ -304,7 +304,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     @FXML void utworzPozycjeZamowienia(ActionEvent event){
         ListaTowarowController twController = (ListaTowarowController) otworzOkno("ListaTowarow.fxml", MALE_OKNO);
-        twController.setTowarRepository(zamowieniaRepository);
+        twController.setZamowieniaRepository(zamowieniaRepository);
     }
 
     @FXML void zlozZamowienie(ActionEvent event){
@@ -318,8 +318,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
     @FXML void wybierzKlienta(ActionEvent event){
-
-        // to gdzieś musi być ale jest obsłużone w zamówieniu --> zamowieniaRepository.dodajKlienta();
+        ListaKlientowController klienciController = (ListaKlientowController) otworzOkno("ListaKlientow.fxml", MALE_OKNO);
+        klienciController.setZamowienieRepository(zamowieniaRepository);
     }
 
     @FXML void podzielZamowienie(){

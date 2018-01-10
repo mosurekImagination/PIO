@@ -22,7 +22,7 @@
         </Label>
             <Label layoutX="29.0" layoutY="49.0" styleClass="h2" text="Podaj NIP klienta:" />
             <TextField id="tbPodajNip" fx:id="tfPodajNip" layoutX="24.0" layoutY="79.0" />
-            <Button id="btnWybierz" fx:id="btnWybierz" layoutX="306.0" layoutY="79.0" mnemonicParsing="false" text="Wybierz" />
+            <Button id="btnWybierz" fx:id="btnWybierz" onAction="#wybierzKlienta" layoutX="306.0" layoutY="79.0" mnemonicParsing="false" text="Wybierz" />
             <Button id="btnDodajKlienta" fx:id="btnDodajKlienta" disable="true" layoutX="426.0" layoutY="79.0" mnemonicParsing="false" text="Dodaj Klienta" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
             <Label layoutX="24.0" layoutY="145.0" styleClass="h2" stylesheets="@style.css" text="Dodaj pozycje zamówienia" />

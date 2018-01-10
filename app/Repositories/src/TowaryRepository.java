@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Klasa realizująca połączenie się z obiektami modelu towaru i przechowywaniem ich.
@@ -33,5 +34,11 @@ public class TowaryRepository {
 		this.towar = towar;
 	}
 
-	public Towar getTowar(){return towar;}
+	public Towar getTowar() {
+		return towar;
+	}
+
+	public List<Towar> getTowary() {
+		return new ArrayList<Towar>();
+	}
 }

@@ -6,6 +6,15 @@ public class Klient {
 	private int nip;
 	private String nazwaFirmy;
 
+	public Klient()
+	{
+
+	}
+	public Klient(String imie, String nazwisko)
+	{
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+	}
 	public String toString()
 	{
 		return imie +" "+ nazwisko;
