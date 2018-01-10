@@ -28,7 +28,7 @@ public class ViewController {
             int width;
             int height;
             if (typ == DUZE_OKNO) {
-                width = 908;
+                width = 940;
                 height = 580;
             } else {
                 width = 555;
