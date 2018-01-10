@@ -52,12 +52,12 @@ public class ListaKlientowController extends ViewController implements Initializ
         gpListaKlientow.addRow(0, new Label("Nazwa Firmy"), new Label("NIP"));
 
 
-        klienciList.add(new Klient("Adam", "Małysz"));
-        klienciList.add(new Klient("Adam1", "Małysz"));
-        klienciList.add(new Klient("Adam2", "Małysz"));
-        klienciList.add(new Klient("Adam3", "Małysz"));
-        klienciList.add(new Klient("Adam4", "Małysz"));
-        klienciList.add(new Klient("Adam5", "Małysz"));
+        klienciList.add(new Klient("Adam", 1238374839));
+        klienciList.add(new Klient("Adam1", 1238374839));
+        klienciList.add(new Klient("Adam2", 1238374839));
+        klienciList.add(new Klient("Adam3", 1238374839));
+        klienciList.add(new Klient("Adam4", 1238374839));
+        klienciList.add(new Klient("Adam5", 1238374839));
         for(int i =0; i < klienciList.size(); i++)
         {
 
@@ -82,8 +82,8 @@ public class ListaKlientowController extends ViewController implements Initializ
             }.init(wybierz));
 
             Klient klient = klienciList.get(i);
-            String nazwaFirmy = klient.getNazwaFirmy()+" Nazwa Firmy";
-            String nip = String.valueOf(klient.getNip());
+            String nazwaFirmy = klient.getNazwaFirmy();
+            String nip = Formater.getNipString(klient.getNip());
             gpListaKlientow.addRow(i+1, new Label(nazwaFirmy), new Label(nip), wybierz);
             gpListaKlientow.getRowConstraints().add(new RowConstraints(50));
         }

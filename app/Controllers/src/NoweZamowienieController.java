@@ -72,15 +72,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        list.add(new Towar(1,"asdf",19,0.5));
-//        list.add(new Towar(2,"asdfa",18,0.6));
-//        list.add(new Towar(3,"asdfb",17,1));
-//        list.add(new Towar(4,"asdfc",16,1.2));
-//        list.add(new Towar(5,"asdfd",15,1.45));
-//        list.add(new Towar(6,"asdfq",14,1.15));
-//        list.add(new Towar(7,"asdfw",13,0.95));
-//        list.add(new Towar(8,"asdfe",12,0.99));
-//        list.add(new Towar(9,"asdfr",11,1.5));
 
         closeButton=btnPowrot;
 
@@ -104,8 +95,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
             lbNazwaTowaru.setText(((PozycjaZamowienia) arg).getTowar().getNazwa());
         }
         else if(arg != null && arg instanceof Klient){
-            lbNazwaFirmy.setText(((Klient)arg).getNazwaFirmy());
-            lbNip.setText(Integer.toString(((Klient) arg).getNip()));
+            lbNazwaFirmy.setText("Nazwa firmy: " + ((Klient)arg).getNazwaFirmy());
+            lbNip.setText("NIP: " +Formater.getNipString(((Klient) arg).getNip()));
         }
         else {
 
@@ -121,9 +112,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
                 fillGridView();
             }
         }
-
-        System.out.println("===========================");
-
     }
 
     public void fillGridView()
@@ -141,8 +129,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
             String nazwa = pozycja.getTowar().getNazwa();
             String cena = String.valueOf(pozycja.getTowar().getCenaJn());
             String ilosc = String.valueOf(pozycja.getIlosc());
-            String rabat = String.valueOf(pozycja.getRabat());
-            String wartosc = String.valueOf(pozycja.getCenaPoRabacie());
+            String rabat = String.valueOf(pozycja.getRabat()) + " %";
+            String wartosc = String.format("%.2g%n zł", pozycja.getCenaPoRabacie());
             String dataRealizacji = pozycja.getTerminRealizacji() == null ? " " : pozycja.getTerminRealizacji().toString();
 
             Button usun = new Button("Usun");
@@ -163,49 +151,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
                     return this;
                 }
             }.init(usun));
-
-
-            gpPozycjeZamowienia.addRow(i, new Label(nazwa), new Label(cena), new Label(ilosc), new Label(rabat), new Label(wartosc), new Label(dataRealizacji), usun, edytuj);
-            gpPozycjeZamowienia.getRowConstraints().add(new RowConstraints(50));
-        }
-    }
-
-
-    public void fillGridView2()
-    {
-        gpPozycjeZamowienia.getChildren().clear();
-        buttons.clear();
-
-        for(int i =0; i < list.size(); i++)
-        {
-
-            //USTALANIE TESTOWYCH WARTOSCI
-            towar = list.get(i);
-            String nazwa = towar.getNazwa();
-            String cena = String.valueOf(towar.getCenaJn());
-            String ilosc = String.valueOf(i);
-            String rabat = String.valueOf(Math.random()*1).substring(0,4);
-            String wartosc = String.valueOf(i*towar.getCenaJn());
-            String dataRealizacji = LocalDate.now().toString();
-
-            Button usun = new Button("Usun");
-            Button edytuj = new Button("Edytuj");
-            edytuj.setDisable(true);
-
-                buttons.add(usun);
-                usun.setOnAction(new EventHandler<ActionEvent>() {
-                    private Button bRef;
-
-                    @Override
-                    public void handle(ActionEvent e) {
-                        usunPozycje(buttons.indexOf(bRef));
-                    }
-
-                    private EventHandler<ActionEvent> init(Button b) {
-                        bRef = b;
-                        return this;
-                    }
-                }.init(usun));
 
 
             gpPozycjeZamowienia.addRow(i, new Label(nazwa), new Label(cena), new Label(ilosc), new Label(rabat), new Label(wartosc), new Label(dataRealizacji), usun, edytuj);
@@ -308,13 +253,13 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
     @FXML void zlozZamowienie(ActionEvent event){
-        zamowieniaRepository.przeslijZamowienie();
+        if(zamowieniaRepository.przeslijZamowienie())
         if(czyKolejneZamowienie){
             zamknijOkno(event);
         }else {
             powrot(event);
         }
-
+        wyswietlKomunikat("Zamówienie zostało złożone");
     }
 
     @FXML void wybierzKlienta(ActionEvent event){

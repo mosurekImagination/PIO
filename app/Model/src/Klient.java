@@ -10,14 +10,15 @@ public class Klient {
 	{
 
 	}
-	public Klient(String imie, String nazwisko)
+	public Klient(String nazwaFirmy, int nip)
 	{
-		this.imie = imie;
-		this.nazwisko = nazwisko;
+		this.nazwaFirmy = nazwaFirmy;
+		this.nip = nip;
 	}
+
 	public String toString()
 	{
-		return imie +" "+ nazwisko;
+		return nazwaFirmy +" "+ nip;
 	}
 
 	public String getNazwaFirmy(){
@@ -27,4 +28,5 @@ public class Klient {
 	public int getNip() {
 		return nip;
 	}
+
 }

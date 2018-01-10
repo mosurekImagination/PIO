@@ -26,9 +26,11 @@ public class ZamowieniaRepository extends Observable{
 		throw new UnsupportedOperationException();
 	}
 
-	public void przeslijZamowienie() {
+	public boolean przeslijZamowienie() {
 		zamowienie.setStatusZamowienia(StatusZamowienia.przekazane);
 		zamowienie.przeslijDoBazy();
+
+		return true;
 	}
 
 	public PozycjaZamowienia utworzPozycjeZamowienia(Towar towar) {
@@ -80,6 +82,7 @@ public class ZamowieniaRepository extends Observable{
 
 	public void dodajKlienta(Klient klient) {
 		zamowienie.dodajKlienta(klient);
+		setChanged();
 		notifyObservers(klient);
 	}
 
