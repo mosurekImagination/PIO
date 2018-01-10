@@ -64,7 +64,7 @@ public class ListaTowarowController extends ViewController implements Initializa
             Towar towar = towaryList.get(i);
             String nazwa = towar.getNazwa();
             String ilosc = String.valueOf(towar.getIlosc());
-            String cena = String.valueOf(towar.getIlosc());
+            String cena = Formater.formatujCene(towar.getCenaJn());
 
             Button wybierz = new Button("Wybierz");
 
@@ -84,7 +84,7 @@ public class ListaTowarowController extends ViewController implements Initializa
             }.init(wybierz));
 
 
-            gpListaTowarow.addRow(i+1, new Label(nazwa), new Label(cena), new Label(ilosc), wybierz);
+            gpListaTowarow.addRow(i+1, new Label(nazwa), new Label(ilosc), new Label(cena), wybierz);
             gpListaTowarow.getRowConstraints().add(new RowConstraints(50));
         }
     }

@@ -8,4 +8,9 @@ public class Formater {
 
         return stringBuilder.toString();
     }
+
+    public static String formatujCene(double cena)
+    {
+       return String.format("%.2f zł", cena);
+    }
 }

@@ -122,11 +122,14 @@ public class ZamowieniaRepository extends Observable{
 			notifyObservers();
 		}
 		noweZamowienie.aktualizuj();
+		zamowienie = noweZamowienie;
 		return  noweZamowienie;
 	}
 
 	public void setZamowienie(Zamowienie zamowienie) {
 		this.zamowienie = zamowienie;
+		setChanged();
+		notifyObservers(this.zamowienie.getKlient());
 		notifyObservers();
 	}
 }

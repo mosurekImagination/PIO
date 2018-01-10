@@ -36,13 +36,7 @@
             <Label layoutX="366.0" layoutY="266.0" styleClass="h2" text="Zamówienie nr:" />
             <Label id="lbNrZamowienia" fx:id="lbNrZamowienia" layoutX="486.0" layoutY="266.0" styleClass="h2" />
             <Label layoutX="600.0" layoutY="175.0" prefHeight="18.0" prefWidth="53.0" text="\%" />
-            <Button id="btnPodzielZamowienie" fx:id="btnPodzielZamowienie" layoutX="753.0" layoutY="262.0" mnemonicParsing="false" text="Podziel zamówienie" />
-            <Label layoutX="48.0" layoutY="312.0" text="Nazwa" />
-            <Label layoutX="298.0" layoutY="312.0" text="Cena j." />
-            <Label layoutX="388.0" layoutY="312.0" text="Ilość" />
-            <Label layoutX="468.0" layoutY="312.0" text="Rabat" />
-            <Label layoutX="568.0" layoutY="312.0" text="Wartość" />
-            <Label layoutX="658.0" layoutY="312.0" text="Data realizacji" />
+            <Button id="btnPodzielZamowienie" fx:id="btnPodzielZamowienie" layoutX="749.0" layoutY="265.0" mnemonicParsing="false" onAction="#podzielZamowienie" text="Podziel zamówienie" />
             <Button id="btnZlozZamowienie" fx:id="btnZlozZamowienie" layoutX="757.0" layoutY="492.0" mnemonicParsing="false" onAction="#zlozZamowienie" text="Złóż zamówienie" />
             <Label layoutX="343.0" layoutY="478.0" styleClass="h2" text="Suma:" />
             <Label id="lbSuma" fx:id="lbSuma" layoutX="410.0" layoutY="478.0" styleClass="h2" text="[Suma]" />
@@ -51,10 +45,11 @@
             <Button id="btnPowrot" fx:id="btnPowrot" layoutX="35.0" layoutY="492.0" mnemonicParsing="false" onAction="#powrot" text="Powrót" />
             <Button id="btnWyslijZapytanie" fx:id="btnWyslijZapytanie" layoutX="741.0" layoutY="206.0" mnemonicParsing="false" onAction="#wyslijZapytanie" text="Wyślij zapytanie" visible="false" />
             <Label id="lbBrakDostepnosci" fx:id="lbBrakDostepnosci" layoutX="27.0" layoutY="213.0" prefHeight="18.0" prefWidth="702.0" text="Podany Towar jest dostępny w ilości mniejszej niż podana. Wyślij zapytanie aby uzyskać termin realizacji" textFill="#df0e0e" visible="false" />
-            <ScrollPane layoutX="23.0" layoutY="335.0" minViewportHeight="40.0" prefHeight="131.0" prefWidth="900.0">
+            <ScrollPane layoutX="23.0" layoutY="298.0" minViewportHeight="40.0" prefHeight="183.0" prefWidth="900.0">
                <content>
-                  <GridPane fx:id="gpPozycjeZamowienia" prefHeight="126.0" prefWidth="870.0">
+                  <GridPane fx:id="gpPozycjeZamowienia" prefHeight="186.0" prefWidth="870.0">
                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

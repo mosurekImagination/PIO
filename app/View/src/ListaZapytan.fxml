@@ -19,7 +19,7 @@
         </Label>
             <Button id="btnPowrot" fx:id="btnPowrot" layoutX="35.0" layoutY="492.0" mnemonicParsing="false" onAction="#powrot" text="Powrót" />
             <Label layoutX="42.0" layoutY="59.0" styleClass="h2" stylesheets="@style.css" text="Lista Zapytan" />
-            <GridPane fx:id="gpListaZapytan" gridLinesVisible="true" layoutX="36.0" layoutY="107.0" prefHeight="366.0" prefWidth="843.0">
+            <GridPane fx:id="gpListaZapytan" layoutX="36.0" layoutY="107.0" prefHeight="366.0" prefWidth="843.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="10.0" prefWidth="426.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />

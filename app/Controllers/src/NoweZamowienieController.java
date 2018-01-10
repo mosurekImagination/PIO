@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -57,8 +58,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML Label lbNazwaFirmy;
     @FXML Label lbNip;
 
-    @FXML
-    TextField tfPodajNip;
+
     @FXML
     TextField tfIlosc;
     @FXML
@@ -69,6 +69,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     ArrayList<Towar> list = new ArrayList<>();
     LinkedList<Button> buttons = new LinkedList<>();
+    ArrayList<CheckBox> checkBoxes = new ArrayList<>();
+
+    boolean wlaczonoPodzial = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,7 +102,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
             lbNip.setText("NIP: " +Formater.getNipString(((Klient) arg).getNip()));
         }
         else {
-
+            lbNazwaTowaru.setText("");
+            tfRabat.setText("");
+            tfIlosc.setText("");
             for (PozycjaZamowienia pozycjaZamowienia : zamowieniaRepository.getPozycje()) {
                 System.out.println(pozycjaZamowienia);
             }
@@ -107,7 +112,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
             czyNiedostepnaNotify(!zamowieniaRepository.czyMoznaZamowic);
             if(zamowieniaRepository.czyMoznaZamowic)
             {
-                lbSuma.setText(Float.toString(zamowieniaRepository.getSuma()));
+                lbSuma.setText(Formater.formatujCene(zamowieniaRepository.getSuma()));
                 lbDataRealizacji.setText(zamowieniaRepository.getTerminRealizacji());
                 fillGridView();
             }
@@ -118,8 +123,11 @@ public class NoweZamowienieController extends ViewController implements Initiali
     {
         gpPozycjeZamowienia.getChildren().clear();
         buttons.clear();
+        checkBoxes.clear();
 
         ArrayList<PozycjaZamowienia> pozycjeList = (ArrayList<PozycjaZamowienia>) zamowieniaRepository.getPozycje();
+
+        gpPozycjeZamowienia.addRow(0, new Label(""), new Label("Nazwa"), new Label("Cena:"), new Label("Ilosc"), new Label("Rabat"), new Label("Wartość:"), new Label("Data realizacji"));
 
         for(int i =0; i < pozycjeList.size(); i++)
         {
@@ -127,17 +135,24 @@ public class NoweZamowienieController extends ViewController implements Initiali
             //USTALANIE TESTOWYCH WARTOSCI
             PozycjaZamowienia pozycja = pozycjeList.get(i);
             String nazwa = pozycja.getTowar().getNazwa();
-            String cena = String.valueOf(pozycja.getTowar().getCenaJn());
+            String cena = Formater.formatujCene(pozycja.getTowar().getCenaJn());
             String ilosc = String.valueOf(pozycja.getIlosc());
             String rabat = String.valueOf(pozycja.getRabat()) + " %";
-            String wartosc = String.format("%.2g%n zł", pozycja.getCenaPoRabacie());
+
+            String wartosc = Formater.formatujCene(pozycja.getCenaPoRabacie());
             String dataRealizacji = pozycja.getTerminRealizacji() == null ? " " : pozycja.getTerminRealizacji().toString();
 
             Button usun = new Button("Usun");
             Button edytuj = new Button("Edytuj");
+
+
+            CheckBox doPodzialu = new CheckBox();
+            if(!wlaczonoPodzial) doPodzialu.setVisible(false);
+
             edytuj.setDisable(true);
 
             buttons.add(usun);
+            checkBoxes.add(doPodzialu);
             usun.setOnAction(new EventHandler<ActionEvent>() {
                 private Button bRef;
 
@@ -153,7 +168,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
             }.init(usun));
 
 
-            gpPozycjeZamowienia.addRow(i, new Label(nazwa), new Label(cena), new Label(ilosc), new Label(rabat), new Label(wartosc), new Label(dataRealizacji), usun, edytuj);
+            gpPozycjeZamowienia.addRow(i+1, doPodzialu, new Label(nazwa), new Label(cena), new Label(ilosc), new Label(rabat), new Label(wartosc), new Label(dataRealizacji), usun, edytuj);
             gpPozycjeZamowienia.getRowConstraints().add(new RowConstraints(50));
         }
     }
@@ -161,7 +176,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     public void setGridViewConstraints()
     {
-        gpPozycjeZamowienia.getColumnConstraints().get(0).setMinWidth(250);
+        gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(1);
 
         gpPozycjeZamowienia.getColumnConstraints().get(1).setMinWidth(100);
         gpPozycjeZamowienia.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
@@ -186,6 +201,12 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
+    public void showCheckBoxes()
+    {
+        if(checkBoxes!=null && !checkBoxes.isEmpty()) {
+            for (CheckBox c : checkBoxes) c.setVisible(true);
+        }
+    }
 
 
     private void usunPozycje(int index)
@@ -197,7 +218,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML
     private void powrot(ActionEvent e)
     {
-        otworzOkno("OknoGlowne.fxml", MALE_OKNO);
+        if(!czyKolejneZamowienie) otworzOkno("OknoGlowne.fxml", MALE_OKNO);
         zamknijOkno(e);
     }
 
@@ -268,12 +289,28 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
     @FXML void podzielZamowienie(){
-        ArrayList<Integer> indeksy = new ArrayList<>();
-        indeksy.add(0);
-        indeksy.add(1);
+
+        if(checkBoxes != null && !checkBoxes.isEmpty()) {
+            showCheckBoxes();
+
+            btnPodzielZamowienie.setText("Wygeneruj Zamówienie");
+            btnPodzielZamowienie.setOnAction(e -> wygenerujNoweZamowienie());
+            wlaczonoPodzial = true;
+        }
+
+    }
+
+    @FXML
+    private void wygenerujNoweZamowienie()
+    {
+        ArrayList<Integer> indeksyDoPodzialu = new ArrayList<>();
+        for (CheckBox c : checkBoxes) {
+            if (c.isSelected()) indeksyDoPodzialu.add(checkBoxes.indexOf(c));
+        }
         NoweZamowienieController nZController = (NoweZamowienieController) otworzOkno("NoweZamowienie.fxml", DUZE_OKNO);
-        Zamowienie zamowienie = zamowieniaRepository.wydzielPozycje(indeksy);
+        Zamowienie zamowienie = zamowieniaRepository.wydzielPozycje(indeksyDoPodzialu);
         nZController.setNoweZamowienie(zamowienie);
+
     }
 
     public void setNoweZamowienie(Zamowienie zamowienie) {
