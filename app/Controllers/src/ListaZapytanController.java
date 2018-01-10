@@ -3,11 +3,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -29,7 +29,10 @@ public class ListaZapytanController extends ViewController implements Initializa
     ArrayList<Button> buttons = new ArrayList<>();
     ArrayList<Zapytanie> zapytania= new ArrayList<>();
 
-    //private static Background ODRZUCONE = new Background();
+    private static Background ODRZUCONE = new Background( new BackgroundFill(Color.PALEVIOLETRED, new CornerRadii(1),
+            new Insets(0.0,0.0,0.0,0.0)));
+    private static Background ZATWIERDZONE = new Background( new BackgroundFill(Color.LIMEGREEN, new CornerRadii(1),
+            new Insets(0.0,0.0,0.0,0.0)));
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnPowrot;
@@ -59,7 +62,7 @@ public class ListaZapytanController extends ViewController implements Initializa
     public void fillGridView()
     {
         ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
-
+        gpListaZapytan.addRow(0, new Label("id"),new Label("Status"), new Label("Termin Realizacji:"), new Label("Klient"), new Label("NazwaTowaru"));
         for(int i=0; i<zapytania.size();i++)
         {
             Button otworz = new Button("Otwórz");
@@ -88,17 +91,20 @@ public class ListaZapytanController extends ViewController implements Initializa
             //String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient());
             String klient = "Nazwa klienta";
 
-           // Label status = new Label("status");
-            //status.setBackground();
-            //gpListaZapytan.addRow(i, new Label(id), new Label(status), new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
+            Label statusLabel = new Label("status");
+            if(zapytanie.getStatus()==StatusZapytania.zatwierdzone) statusLabel.setBackground(ZATWIERDZONE);
+            else if(zapytanie.getStatus()==StatusZapytania.odrzucone) statusLabel.setBackground(ODRZUCONE);
+
+            gpListaZapytan.addRow(i+1, new Label(id), statusLabel, new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }
     private void setGridViewConstraints()
     {
-        gpListaZapytan.getColumnConstraints().get(0).setMinWidth(70);
+        gpListaZapytan.getColumnConstraints().get(0).setMaxWidth(30);
+        gpListaZapytan.getColumnConstraints().get(0).setMinWidth(30);
 
-       gpListaZapytan.getColumnConstraints().get(1).setMinWidth(50);
+       gpListaZapytan.getColumnConstraints().get(1).setMinWidth(100);
         gpListaZapytan.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
 
         gpListaZapytan.getColumnConstraints().get(2).setMinWidth(120);
