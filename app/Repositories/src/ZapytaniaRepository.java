@@ -1,15 +1,19 @@
 import java.util.ArrayList;
+import java.util.Observable;
 
 import static java.time.LocalDate.now;
 
-public class ZapytaniaRepository {
+public class ZapytaniaRepository extends Observable {
 
 	ZapytanieContext zapytanieContext;
 	ArrayList<Zapytanie> zapytania;
+	Zapytanie zapytanie;
 	
 	public ZapytaniaRepository(){
 		zapytania = new ArrayList<>();
 		zapytania.add(new Zapytanie(now(),new PozycjaZamowienia(new Towar(1,"zawleczka",50,0.56))));
+		zapytania.get(0).getPozycja().setZamowienie(new Zamowienie());
+		zapytanieContext = new ZapytanieContext();
 	}
 	
 	public void setZapytania(ArrayList<Zapytanie> zapytania){
@@ -45,5 +49,25 @@ public class ZapytaniaRepository {
 
 	public ArrayList<Zapytanie> getZapytania() {
 		return zapytania;
+	}
+
+	public void setZapytanie(Zapytanie zapytanie) {
+		this.zapytanie = zapytanie;
+	}
+
+	public Zapytanie getZapytanie() {
+		return zapytanie;
+	}
+
+	public void zatwierdzZapytanie() {
+		zapytanieContext.zatwierdzZapytanie(zapytanie);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void odrzucZapytanie() {
+		zapytanieContext.odrzucZapytanie(zapytanie);
+		setChanged();
+		notifyObservers();
 	}
 }

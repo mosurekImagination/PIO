@@ -34,8 +34,7 @@ public class Zapytanie {
 	}
 
 	public void zmienStatusZapytania(StatusZapytania status) {
-		// TODO - implement Zapytanie.zmienStatusZapytania
-		throw new UnsupportedOperationException();
+		this.status = status;
 	}
 
 	public StatusZapytania getStatus() {
@@ -61,4 +60,5 @@ public class Zapytanie {
 	public PozycjaZamowienia getPozycja() {
 		return pozycja;
 	}
+
 }

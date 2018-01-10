@@ -11,9 +11,11 @@ import javafx.scene.layout.RowConstraints;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
-public class ListaZapytanController extends ViewController implements Initializable{
+public class ListaZapytanController extends ViewController implements Initializable,Observer {
 
     @FXML
     Button btnPowrot;
@@ -33,10 +35,18 @@ public class ListaZapytanController extends ViewController implements Initializa
 
         zapytaniaRepo = new ZapytaniaRepository();
         zapytaniaRepo.pobierzZapytania();
+        zapytaniaRepo.addObserver(this);
 
         prepareTestData();
         fillGridView();
         setGridViewConstraints();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        gpListaZapytan.getChildren().clear();
+        buttons.clear();
+        fillGridView();
     }
 
 
@@ -47,7 +57,7 @@ public class ListaZapytanController extends ViewController implements Initializa
 
     public void fillGridView()
     {
-     //   ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
+        ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
 
         for(int i=0; i<zapytania.size();i++)
         {
@@ -61,8 +71,9 @@ public class ListaZapytanController extends ViewController implements Initializa
                 @Override
                 public void handle(ActionEvent e) {
                     ObslugaZapytaniaController controller = (ObslugaZapytaniaController)otworzOkno("ObslugaZapytania.fxml",MALE_OKNO);
-                    controller.setZapytanie(zapytania.get(buttons.indexOf(bRef)));
-                    controller.updateView();
+                    zapytaniaRepo.setZapytanie(zapytania.get(buttons.indexOf(bRef)));
+                    controller.setZapytanie(zapytaniaRepo);
+                    System.out.println(zapytania.get(buttons.indexOf(bRef)));
                 }
 
                 private EventHandler<ActionEvent> init(Button b) {
@@ -110,4 +121,6 @@ public class ListaZapytanController extends ViewController implements Initializa
         otworzOkno("OknoGlowne.fxml", MALE_OKNO);
         zamknijOkno(e);
     }
+
+
 }

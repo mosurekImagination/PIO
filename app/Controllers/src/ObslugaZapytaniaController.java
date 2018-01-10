@@ -13,6 +13,10 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
     Button btnPowrot;
     @FXML
     Button btnX;
+    @FXML
+    Button btnZatwierdz;
+    @FXML
+    Button btnOdrzuc;
 
     @FXML
     Label lbNazwaTowaru;
@@ -21,13 +25,14 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
     @FXML
     Label lbTerminRealizacji;
 
-    Zapytanie zapytanie;
-    ZapytanieContext zapytanieContext;
+    ZapytaniaRepository zapRepo;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         closeButton = btnX;
+        zapRepo = new ZapytaniaRepository();
     }
 
     @FXML
@@ -38,27 +43,34 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
 
     public void updateView()
     {
-        lbNazwaTowaru.setText(zapytanie.getTowar().getNazwa());
-        lbIlosc.setText(String.valueOf(zapytanie.getPozycja().getIlosc()));
-        lbTerminRealizacji.setText(zapytanie.getTerminRealizacji().toString());
+        lbNazwaTowaru.setText(zapRepo.getZapytanie().getTowar().getNazwa());
+        lbIlosc.setText(String.valueOf(zapRepo.getZapytanie().getPozycja().getIlosc()));
+        lbTerminRealizacji.setText(zapRepo.getZapytanie().getTerminRealizacji().toString());
+        if(zapRepo.getZapytanie().getStatus() == StatusZapytania.zopiniowane){}
+        else {
+            btnOdrzuc.setVisible(false);
+            btnZatwierdz.setVisible(false);
+        }
     }
 
-    public void setZapytanie(Zapytanie z)
+    public void setZapytanie(ZapytaniaRepository z)
     {
-        zapytanie=z;
+        zapRepo = z;
+        updateView();
     }
 
     @FXML
-    private void zatwierdz()
+    public void zatwierdz(ActionEvent e)
     {
-    zapytanie = zapytanieContext.zatwierdzZapytanie(zapytanie);
+        zapRepo.zatwierdzZapytanie();
+        powrot(e);
     }
 
     @FXML
-    private void odrzuc()
+    public void odrzuc(ActionEvent e)
     {
-        zapytanie = zapytanieContext.odrzucZapytanie(zapytanie);
-
+        zapRepo.odrzucZapytanie();
+        powrot(e);
     }
 
 
