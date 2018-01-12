@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -23,6 +24,9 @@ public class ListaKlientowController extends ViewController implements Initializ
     @FXML
     GridPane gpListaKlientow;
 
+    @FXML
+    TextField tfKlientSzukany;
+
     LinkedList<Button> buttons = new LinkedList<>();
     ArrayList<Klient> klienciList;
     KlienciRepository klienciRepository;
@@ -32,6 +36,8 @@ public class ListaKlientowController extends ViewController implements Initializ
         closeButton = btnX;
         klienciRepository = new KlienciRepository();
         klienciList = (ArrayList<Klient>) klienciRepository.getKlienci();  //TO TEST
+
+        prepareData();
         fillGridView();
         setGridViewConstraints();
     }
@@ -43,50 +49,7 @@ public class ListaKlientowController extends ViewController implements Initializ
 
     public void fillGridView()
     {
-        gpListaKlientow.getChildren().clear();
-        buttons.clear();
-
-        //ArrayList<Towar> klienciList = (ArrayList<Towar>) klienciRepository.getTowary();
-
-
-        gpListaKlientow.addRow(0, new Label("Nazwa Firmy"), new Label("NIP"));
-
-
-        klienciList.add(new Klient("Adam", 1238374839));
-        klienciList.add(new Klient("Adam1", 1238374839));
-        klienciList.add(new Klient("Adam2", 1238374839));
-        klienciList.add(new Klient("Adam3", 1238374839));
-        klienciList.add(new Klient("Adam4", 1238374839));
-        klienciList.add(new Klient("Adam5", 1238374839));
-        for(int i =0; i < klienciList.size(); i++)
-        {
-
-            //USTALANIE TESTOWYCH WARTOSCI
-
-
-            Button wybierz = new Button("Wybierz");
-
-            buttons.add(wybierz);
-            wybierz.setOnAction(new EventHandler<ActionEvent>() {
-                private Button bRef;
-
-                @Override
-                public void handle(ActionEvent e) {
-                    wybierzKlienta(buttons.indexOf(bRef), e);
-                }
-
-                private EventHandler<ActionEvent> init(Button b) {
-                    bRef = b;
-                    return this;
-                }
-            }.init(wybierz));
-
-            Klient klient = klienciList.get(i);
-            String nazwaFirmy = klient.getNazwaFirmy();
-            String nip = Formater.getNipString(klient.getNip());
-            gpListaKlientow.addRow(i+1, new Label(nazwaFirmy), new Label(nip), wybierz);
-            gpListaKlientow.getRowConstraints().add(new RowConstraints(50));
-        }
+        fillGridView(null);
     }
 
     private void wybierzKlienta(int i, ActionEvent e) {
@@ -115,4 +78,61 @@ public class ListaKlientowController extends ViewController implements Initializ
     }
 
 
+    public void szukaj(ActionEvent event) {
+        fillGridView(tfKlientSzukany.getText().toString());
+    }
+    public void prepareData()
+    {
+        klienciList.add(new Klient("Adam", 1238374839));
+        klienciList.add(new Klient("Adam1", 1238374838));
+        klienciList.add(new Klient("Adam2", 1238374837));
+        klienciList.add(new Klient("Adam3", 1238374836));
+        klienciList.add(new Klient("Adam4", 1238374835));
+        klienciList.add(new Klient("Adam5", 1238374834));
+    }
+    public void fillGridView(String nazwaSzukana)
+    {
+        gpListaKlientow.getChildren().clear();
+        buttons.clear();
+
+        //ArrayList<Towar> klienciList = (ArrayList<Towar>) klienciRepository.getTowary();
+
+
+        gpListaKlientow.addRow(0, new Label("Nazwa Firmy"), new Label("NIP"));
+
+        int rowNumber = 1;
+
+        for(int i =0; i < klienciList.size(); i++)
+        {
+
+            //USTALANIE TESTOWYCH WARTOSCI
+            Klient klient = klienciList.get(i);
+            String nazwaFirmy = klient.getNazwaFirmy();
+            String nip = Formater.getNipString(klient.getNip());
+            if(nip.matches(".*"+nazwaSzukana+".*") || nazwaSzukana == null || nip.matches(".*"+klient.getNip()+".*")) {
+                Button wybierz = new Button("Wybierz");
+
+                buttons.add(wybierz);
+                wybierz.setOnAction(new EventHandler<ActionEvent>() {
+                    private Button bRef;
+
+                    @Override
+                    public void handle(ActionEvent e) {
+                        wybierzKlienta(buttons.indexOf(bRef), e);
+                    }
+
+                    private EventHandler<ActionEvent> init(Button b) {
+                        bRef = b;
+                        return this;
+                    }
+                }.init(wybierz));
+
+
+                gpListaKlientow.addRow(rowNumber, new Label(nazwaFirmy), new Label(nip), wybierz);
+                gpListaKlientow.getRowConstraints().add(new RowConstraints(50));
+
+                rowNumber++;
+            }
+        }
+    }
 }

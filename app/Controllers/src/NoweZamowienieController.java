@@ -277,6 +277,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML void wybierzTowar(ActionEvent event){
         ListaTowarowController twController = (ListaTowarowController) otworzOkno("ListaTowarow.fxml", MALE_OKNO);
         twController.setTowaryRepository(towaryRepository);
+        twController.prepareData();
         twController.updateView();
       //  twController.setZamowieniaRepository(zamowieniaRepository);
     }

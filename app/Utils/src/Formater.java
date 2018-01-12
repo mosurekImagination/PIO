@@ -5,6 +5,7 @@ public class Formater {
         StringBuilder stringBuilder = new StringBuilder(nip);
         stringBuilder.insert(3,'-');
         stringBuilder.insert(7,'-');
+        stringBuilder.insert(10,'-');
 
         return stringBuilder.toString();
     }

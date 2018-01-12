@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
@@ -19,6 +20,9 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     @FXML
     Button btnX;
+
+    @FXML
+    TextField tfNazwaSzukana;
 
     @FXML
     GridPane gpListaTowarow;
@@ -45,50 +49,7 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     public void fillGridView()
     {
-        gpListaTowarow.getChildren().clear();
-        buttons.clear();
-
-        //ArrayList<Towar> towaryList = (ArrayList<Towar>) towaryRepository.getTowary();
-        towaryList.add(new Towar(1,"srubka1", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka2", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka3", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka4", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka5", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
-
-        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Dostepna Ilość"), new Label("Cena j."));
-        for(int i =0; i < towaryList.size(); i++)
-        {
-
-            //USTALANIE TESTOWYCH WARTOSCI
-            Towar towar = towaryList.get(i);
-            String nazwa = towar.getNazwa();
-            String ilosc = String.valueOf(towar.getIlosc());
-            String cena = Formater.formatujCene(towar.getCenaJn());
-
-            Button wybierz = new Button("Wybierz");
-
-            buttons.add(wybierz);
-            wybierz.setOnAction(new EventHandler<ActionEvent>() {
-                private Button bRef;
-
-                @Override
-                public void handle(ActionEvent e) {
-                    wybierzTowar(buttons.indexOf(bRef), e);
-                }
-
-                private EventHandler<ActionEvent> init(Button b) {
-                    bRef = b;
-                    return this;
-                }
-            }.init(wybierz));
-
-
-            gpListaTowarow.addRow(i+1, new Label(nazwa), new Label(ilosc), new Label(cena), wybierz);
-            gpListaTowarow.getRowConstraints().add(new RowConstraints(50));
-        }
+        fillGridView(null);
     }
 
     private void wybierzTowar(int i, ActionEvent e) {
@@ -122,5 +83,64 @@ public class ListaTowarowController extends ViewController implements Initializa
     public void setTowaryRepository(TowaryRepository towaryRepository) {
         this.towaryRepository = towaryRepository;
         towaryList = (ArrayList<Towar>) towaryRepository.getTowary();
+    }
+
+    public void szukaj(ActionEvent event) {
+     fillGridView(tfNazwaSzukana.getText().toString());
+    }
+
+    public void prepareData()
+    {
+        towaryList.add(new Towar(1,"srubka1", 100, 1.5f));
+        towaryList.add(new Towar(2,"srubka2", 100, 1.5f));
+        towaryList.add(new Towar(1,"srubka3", 100, 1.5f));
+        towaryList.add(new Towar(2,"srubka4", 100, 1.5f));
+        towaryList.add(new Towar(1,"srubka5", 100, 1.5f));
+        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
+        towaryList.add(new Towar(1,"srubka", 100, 1.5f));
+        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
+    }
+
+    public void fillGridView(String nazwaSzukana)
+    {
+        gpListaTowarow.getChildren().clear();
+        buttons.clear();
+
+        int rowNumber = 1;
+        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Dostepna Ilość"), new Label("Cena j."));
+        for(int i =0; i < towaryList.size(); i++)
+        {
+
+            //USTALANIE TESTOWYCH WARTOSCI
+            Towar towar = towaryList.get(i);
+            String nazwa = towar.getNazwa();
+            if(nazwa.matches(".*"+nazwaSzukana+".*") || nazwaSzukana == null) {
+                String ilosc = String.valueOf(towar.getIlosc());
+                String cena = Formater.formatujCene(towar.getCenaJn());
+
+                Button wybierz = new Button("Wybierz");
+
+                buttons.add(wybierz);
+                wybierz.setOnAction(new EventHandler<ActionEvent>() {
+                    private Button bRef;
+
+                    @Override
+                    public void handle(ActionEvent e) {
+                        wybierzTowar(buttons.indexOf(bRef), e);
+                    }
+
+                    private EventHandler<ActionEvent> init(Button b) {
+                        bRef = b;
+                        return this;
+                    }
+                }.init(wybierz));
+
+
+                gpListaTowarow.addRow(rowNumber, new Label(nazwa), new Label(ilosc), new Label(cena), wybierz);
+                gpListaTowarow.getRowConstraints().add(new RowConstraints(50));
+
+                rowNumber++;
+            }
+        }
     }
 }
