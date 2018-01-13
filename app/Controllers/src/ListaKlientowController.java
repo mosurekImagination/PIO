@@ -35,9 +35,7 @@ public class ListaKlientowController extends ViewController implements Initializ
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnX;
         klienciRepository = new KlienciRepository();
-        klienciList = (ArrayList<Klient>) klienciRepository.getKlienci();  //TO TEST
-
-        prepareData();
+        klienciList = klienciRepository.getKlienci();
         fillGridView();
         setGridViewConstraints();
     }
@@ -81,21 +79,13 @@ public class ListaKlientowController extends ViewController implements Initializ
     public void szukaj(ActionEvent event) {
         fillGridView(tfKlientSzukany.getText().toString());
     }
-    public void prepareData()
-    {
-        klienciList.add(new Klient("Adam", 1238374839));
-        klienciList.add(new Klient("Adam1", 1238374838));
-        klienciList.add(new Klient("Adam2", 1238374837));
-        klienciList.add(new Klient("Adam3", 1238374836));
-        klienciList.add(new Klient("Adam4", 1238374835));
-        klienciList.add(new Klient("Adam5", 1238374834));
-    }
+    
     public void fillGridView(String nazwaSzukana)
     {
         gpListaKlientow.getChildren().clear();
         buttons.clear();
 
-        //ArrayList<Towar> klienciList = (ArrayList<Towar>) klienciRepository.getTowary();
+        ArrayList<Klient> klienciList = (ArrayList<Klient>) klienciRepository.getKlienci();
 
 
         gpListaKlientow.addRow(0, new Label("Nazwa Firmy"), new Label("NIP"));

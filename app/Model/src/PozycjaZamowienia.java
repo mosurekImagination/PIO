@@ -23,6 +23,16 @@ public class PozycjaZamowienia {
 		this.ilosc = ilosc;
 		this.rabat = rabat;
 	}
+	PozycjaZamowienia(int id,int ilosc,double cena, int rabat, double cenaPoRabacie, LocalDate terminRealizacji,Towar towar){
+		this.id=id;
+		this.ilosc=ilosc;
+		this.cena=cena;
+		this.rabat=rabat;
+		this.cenaPoRabacie=cenaPoRabacie;
+		this.terminRealizacji=terminRealizacji;
+		this.towar=towar;
+		
+	}
 
 	public void dodajDane(int ilosc, int rabat, Towar towar) {
 		this.ilosc = ilosc;
@@ -97,5 +107,10 @@ public class PozycjaZamowienia {
 
 	public Zapytanie getZapytanie() {
 		return zapytanie;
+	}
+
+	public void setZapytanie(Zapytanie zapytanie) {
+		this.zapytanie=zapytanie;
+		
 	}
 }

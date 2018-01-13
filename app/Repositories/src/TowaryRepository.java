@@ -43,6 +43,11 @@ public class TowaryRepository extends Observable {
 	}
 
 	public List<Towar> getTowary() {
-		return new ArrayList<Towar>();
+		Context context = new Context();
+		context.openDB();
+		TowaryContext tc = new TowaryContext(context);
+		ArrayList<Towar> listaTowarow = (ArrayList<Towar>) tc.getTowaryZBazy();
+		context.closeDB();
+		return listaTowarow;
 	}
 }

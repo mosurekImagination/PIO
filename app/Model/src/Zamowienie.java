@@ -9,7 +9,7 @@ public class Zamowienie{
 	private StatusZamowienia status;
 	private LocalDate dataZlozZam;
 	private LocalDate terminRealizacji;
-	private float kwota;
+	private double kwota;
 	private boolean czyZatwierdzone;
 	private List<PozycjaZamowienia> pozycjeZamowienia;
 	Klient klient;
@@ -21,14 +21,23 @@ public class Zamowienie{
 		this.status = StatusZamowienia.otwarte;
 		this.pozycjeZamowienia = new ArrayList<>();
 	}
+	
+	Zamowienie(int id, StatusZamowienia status, LocalDate dataZlozZam, LocalDate terminRealizacji, double kwota, boolean czyZatwierdzone){
+		this.id=id;
+		this.status=status;
+		this.dataZlozZam=dataZlozZam;
+		this.terminRealizacji=terminRealizacji;
+		this.kwota=kwota;
+		this.czyZatwierdzone=czyZatwierdzone;
+		this.pozycjeZamowienia = new ArrayList<>();
+	}
 
 	/**
 	 *
 	 * @param status
 	 */
 	public void zmienStatus(StatusZamowienia status) {
-		// TODO - implement Zamowienie.zmienStatus
-		throw new UnsupportedOperationException();
+	this.status = status;
 	}
 
 	/**
@@ -123,10 +132,14 @@ public class Zamowienie{
 	}
 
 	public void przeslijDoBazy() {
-		//Tu wysyłamy stworzone zamówienie do bazy
+		Context context = new Context();
+		context.openDB();
+		ZamowienieContext zc = new ZamowienieContext(context);
+		zc.przeslijZamowienie(this);
+		
 	}
 
-	public float getSuma() {
+	public double getSuma() {
 		return kwota;
 	}
 
@@ -140,5 +153,22 @@ public class Zamowienie{
 
 	public void setKlient(Klient klient) {
 		this.klient = klient;
+	}
+
+	public StatusZamowienia getStatus() {
+		return status;
+	}
+
+	public LocalDate getDataZlozZam() {
+		return dataZlozZam;
+	}
+
+	public boolean getCzyZatwierdzone() {
+		return czyZatwierdzone;
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return id;
 	}
 }

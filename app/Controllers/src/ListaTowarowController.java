@@ -38,7 +38,6 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     public void updateView()
     {
-        //TO TEST
         fillGridView();
         setGridViewConstraints();
     }
@@ -54,7 +53,7 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     private void wybierzTowar(int i, ActionEvent e) {
         towaryRepository.setTowar(towaryList.get(i));
-      //  pozycjaZamRepo.utworzPozycjeZamowienia(towaryList.get(i)); //zastąpić repo
+       pozycjaZamRepo.utworzPozycjeZamowienia(towaryList.get(i)); 
         zamknijOkno(e);
     }
 
@@ -89,25 +88,16 @@ public class ListaTowarowController extends ViewController implements Initializa
      fillGridView(tfNazwaSzukana.getText().toString());
     }
 
-    public void prepareData()
-    {
-        towaryList.add(new Towar(1,"srubka1", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka2", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka3", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka4", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka5", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
-        towaryList.add(new Towar(1,"srubka", 100, 1.5f));
-        towaryList.add(new Towar(2,"srubka", 100, 1.5f));
-    }
-
+   
     public void fillGridView(String nazwaSzukana)
     {
         gpListaTowarow.getChildren().clear();
         buttons.clear();
+        
+        ArrayList<Towar> towaryList = (ArrayList<Towar>) towaryRepository.getTowary();
 
         int rowNumber = 1;
-        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Dostepna Ilość"), new Label("Cena j."));
+        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Dostepna Ilo��"), new Label("Cena j."));
         for(int i =0; i < towaryList.size(); i++)
         {
 

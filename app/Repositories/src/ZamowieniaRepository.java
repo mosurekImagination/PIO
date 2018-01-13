@@ -29,7 +29,6 @@ public class ZamowieniaRepository extends Observable{
 	public boolean przeslijZamowienie() {
 		zamowienie.setStatusZamowienia(StatusZamowienia.przekazane);
 		zamowienie.przeslijDoBazy();
-
 		return true;
 	}
 
@@ -96,7 +95,7 @@ public class ZamowieniaRepository extends Observable{
 		return zamowienie.getPozycje();
 	}
 
-	public float getSuma() {
+	public double getSuma() {
 		return zamowienie.getSuma();
 	}
 

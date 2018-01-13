@@ -62,12 +62,12 @@ public class ListaZapytanController extends ViewController implements Initializa
     public void fillGridView()
     {
         ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
+
         gpListaZapytan.addRow(0, new Label("id"),new Label("Status"), new Label("Termin Realizacji:"), new Label("Klient"), new Label("NazwaTowaru"));
         for(int i=0; i<zapytania.size();i++)
         {
-            Button otworz = new Button("OtwÃ³rz");
+            Button otworz = new Button("Otwórz");
             Zapytanie zapytanie = zapytania.get(i);
-
             buttons.add(otworz);
             otworz.setOnAction(new EventHandler<ActionEvent>() {
                 private Button bRef;
@@ -88,14 +88,14 @@ public class ListaZapytanController extends ViewController implements Initializa
             String id = String.valueOf(zapytanie.getId());
             String status = String.valueOf(zapytanie.getStatus());
             String terminRealizacji = String.valueOf(zapytanie.getTerminRealizacji());
-            //String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient());
-            String klient = "Nazwa klienta";
+            String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient().getNazwaFirmy());
+            String towar = String.valueOf(zapytanie.getPozycja().getTowar().getNazwa());
 
-            Label statusLabel = new Label("status");
+            Label statusLabel = new Label(status);
             if(zapytanie.getStatus()==StatusZapytania.zatwierdzone) statusLabel.setBackground(ZATWIERDZONE);
             else if(zapytanie.getStatus()==StatusZapytania.odrzucone) statusLabel.setBackground(ODRZUCONE);
 
-            gpListaZapytan.addRow(i+1, new Label(id), statusLabel, new Label(terminRealizacji), new Label(klient), new Label("axsdf"), new Label("ascdf"), otworz);
+            gpListaZapytan.addRow(i+1, new Label(id), statusLabel, new Label(terminRealizacji), new Label(klient), new Label(towar), new Label("ascdf"), otworz);
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }

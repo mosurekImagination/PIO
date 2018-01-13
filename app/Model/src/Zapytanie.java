@@ -20,6 +20,15 @@ public class Zapytanie {
 		current_id++;
 	}
 
+	public Zapytanie(int id, StatusZapytania status, LocalDate terminReal, String notatka, PozycjaZamowienia pozycja) {
+		this.id=id;
+		this.status=status;
+		this.terminReal=terminReal;
+		this.notatka=notatka;
+		this.id=id;
+		this.pozycja=pozycja;
+	}
+	
 	public Zapytanie(PozycjaZamowienia pozycja){
 		this.pozycja = pozycja;
 		this.ilosc = pozycja.getIlosc();
@@ -28,6 +37,8 @@ public class Zapytanie {
 	public Zapytanie(LocalDate terminRealizacji){
 		this.terminReal = terminRealizacji;
 	}
+
+
 
 	public void setPozycja(PozycjaZamowienia pozycja){
 		this.pozycja = pozycja;
@@ -59,6 +70,10 @@ public class Zapytanie {
 
 	public PozycjaZamowienia getPozycja() {
 		return pozycja;
+	}
+
+	public String getNotatka() {
+		return notatka;
 	}
 
 }

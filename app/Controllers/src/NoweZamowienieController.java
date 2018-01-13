@@ -1,4 +1,3 @@
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ import java.util.*;
 
 public class NoweZamowienieController extends ViewController implements Initializable, Observer{
 
-    private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Musi siÄ™ mieÅ›ciÄ‡ miedzy 0 a 99";
+    private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Musi siê mieœciæ miedzy 0 a 99";
     private static final String ZLA_ILOSC_KOMUNIKAT = "Podano zla ilosc. Musi byc wieksza od 0";
 
     @FXML
@@ -131,7 +130,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
         ArrayList<PozycjaZamowienia> pozycjeList = (ArrayList<PozycjaZamowienia>) zamowieniaRepository.getPozycje();
 
-        gpPozycjeZamowienia.addRow(0, new Label(""), new Label("Nazwa"), new Label("Cena:"), new Label("Ilosc"), new Label("Rabat"), new Label("WartoÅ›Ä‡:"), new Label("Data realizacji"));
+        gpPozycjeZamowienia.addRow(0, new Label(""), new Label("Nazwa"), new Label("Cena:"), new Label("Ilosc"), new Label("Rabat"), new Label("Wartoœæ:"), new Label("Data realizacji"));
 
         for(int i =0; i < pozycjeList.size(); i++)
         {
@@ -277,9 +276,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
     @FXML void wybierzTowar(ActionEvent event){
         ListaTowarowController twController = (ListaTowarowController) otworzOkno("ListaTowarow.fxml", MALE_OKNO);
         twController.setTowaryRepository(towaryRepository);
-        twController.prepareData();
         twController.updateView();
-      //  twController.setZamowieniaRepository(zamowieniaRepository);
+        twController.setZamowieniaRepository(zamowieniaRepository);
     }
 
     @FXML void zlozZamowienie(ActionEvent event){
@@ -289,7 +287,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }else {
             powrot(event);
         }
-        wyswietlKomunikat("ZamÃ³wienie zostaÅ‚o zÅ‚oÅ¼one");
+        wyswietlKomunikat("Zamówienie zosta³o z³o¿one");
     }
 
     @FXML void wybierzKlienta(ActionEvent event){
@@ -302,7 +300,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         if(checkBoxes != null && !checkBoxes.isEmpty()) {
             showCheckBoxes();
 
-            btnPodzielZamowienie.setText("Wygeneruj ZamÃ³wienie");
+            btnPodzielZamowienie.setText("Wygeneruj Zamówienie");
             btnPodzielZamowienie.setOnAction(e -> wygenerujNoweZamowienie());
             wlaczonoPodzial = true;
         }

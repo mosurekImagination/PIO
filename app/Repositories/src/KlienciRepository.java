@@ -5,8 +5,9 @@ import java.util.ArrayList;
  */
 public class KlienciRepository {
 
-	Klient klient;
-
+	public 	KlienciRepository() {
+		
+	}
 	/**
 	 * 
 	 * @param nip
@@ -26,6 +27,11 @@ public class KlienciRepository {
 	}
 
     public ArrayList<Klient> getKlienci() {
-        return new ArrayList<Klient>();
+    	Context context = new Context();
+    	context.openDB();
+    	KlienciContext kc = new KlienciContext(context);
+    	ArrayList<Klient> listaKlientow= kc.getKlientZBazy();
+    	context.closeDB();
+        return listaKlientow;
     }
 }

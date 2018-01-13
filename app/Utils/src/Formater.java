@@ -12,6 +12,6 @@ public class Formater {
 
     public static String formatujCene(double cena)
     {
-       return String.format("%.2f z≈Ç", cena);
+       return String.format("%.2f z≥", cena);
     }
 }

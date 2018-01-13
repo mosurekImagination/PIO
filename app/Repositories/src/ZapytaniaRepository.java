@@ -5,7 +5,6 @@ import static java.time.LocalDate.now;
 
 public class ZapytaniaRepository extends Observable {
 
-	ZapytanieContext zapytanieContext;
 	ArrayList<Zapytanie> zapytania;
 	Zapytanie zapytanie;
 	
@@ -13,7 +12,6 @@ public class ZapytaniaRepository extends Observable {
 		zapytania = new ArrayList<>();
 		zapytania.add(new Zapytanie(now(),new PozycjaZamowienia(new Towar(1,"zawleczka",50,0.56))));
 		zapytania.get(0).getPozycja().setZamowienie(new Zamowienie());
-		zapytanieContext = new ZapytanieContext();
 	}
 	
 	public void setZapytania(ArrayList<Zapytanie> zapytania){
@@ -40,7 +38,6 @@ public class ZapytaniaRepository extends Observable {
 	}
 
 	public void przeslijZapytanie(Zapytanie zapytanie) {
-		zapytanieContext.przeslijZapytanie(zapytanie);
 	}
 
 	public void pobierzZapytania() {
@@ -48,7 +45,12 @@ public class ZapytaniaRepository extends Observable {
 	}
 
 	public ArrayList<Zapytanie> getZapytania() {
-		return zapytania;
+		Context context = new Context();
+		context.openDB();
+		ZapytanieContext zc = new ZapytanieContext(context);
+		ArrayList<Zapytanie> listaZapytan = (ArrayList<Zapytanie>) zc.getZapytaniaZBazy();
+		context.closeDB();
+		return listaZapytan;
 	}
 
 	public void setZapytanie(Zapytanie zapytanie) {
@@ -60,13 +62,21 @@ public class ZapytaniaRepository extends Observable {
 	}
 
 	public void zatwierdzZapytanie() {
-		zapytanieContext.zatwierdzZapytanie(zapytanie);
+		Context context = new Context();
+		context.openDB();
+		ZapytanieContext zc = new ZapytanieContext(context);
+		zc.zatwierdzZapytanie(zapytanie);
+		context.closeDB();
 		setChanged();
 		notifyObservers();
 	}
 
 	public void odrzucZapytanie() {
-		zapytanieContext.odrzucZapytanie(zapytanie);
+		Context context = new Context();
+		context.openDB();
+		ZapytanieContext zc = new ZapytanieContext(context);
+		zc.odrzucZapytanie(zapytanie);
+		context.closeDB();
 		setChanged();
 		notifyObservers();
 	}
