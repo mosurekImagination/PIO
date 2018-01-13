@@ -60,6 +60,9 @@ public class PozycjaZamowieniaContext {
 			if (pozycjaZamowienia.getZapytanie() != null) {
 				ZapytanieContext zc = new ZapytanieContext(context);
 				zc.przeslijZapytanie(zapytanie);
+			} else {
+				TowaryContext tc = new TowaryContext(context);
+				tc.aktualizujStan(pozycjaZamowienia);
 			}
 		}
 
