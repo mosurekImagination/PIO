@@ -53,7 +53,6 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     private void wybierzTowar(int i, ActionEvent e) {
         towaryRepository.setTowar(towaryList.get(i));
-       pozycjaZamRepo.utworzPozycjeZamowienia(towaryList.get(i)); 
         zamknijOkno(e);
     }
 
