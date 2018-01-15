@@ -143,7 +143,6 @@ public class ZamowieniaRepository extends Observable{
 	 */
 	public void dodajPozycjeZamowienia(PozycjaZamowienia pozycjaZamowienia) {
 		zamowienie.dodajPozycje(pozycjaZamowienia);
-		zamowienie.aktualizuj();
 		setChanged();
 		notifyObservers();
 	}

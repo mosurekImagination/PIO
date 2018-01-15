@@ -82,7 +82,6 @@ public class AppTest extends ApplicationTest {
         GridPane gp = find("#gpPozycjeZamowienia");
         clickOn(gp.getChildren().get(14));
         sleep(1000);
-        clickOn("#btnZlozZamowienie");
     }
 
     @Test
@@ -177,6 +176,20 @@ public class AppTest extends ApplicationTest {
         sleep(500);
     }
 
+    @Test
+    public void testDodajRabatJakoLitere(){
+        clickOn("#btnWybierz");
+        GridPane gp_klienci = find("#gpListaKlientow");
+        clickOn(gp_klienci.getChildren().get(4));
+        sleep(500);
+        clickOn("#btnDodajTowar");
+        GridPane gp_towary = find("#gpListaTowarow");
+        sleep(500);
+        clickOn(gp_towary.getChildren().get(6));
+        dodajPozycje("5", "s");
+        sleep(500);
+    }
+
     private void dodajPozycje(String ilosc, String rabat) {
         moveTo("#tbIlosc");
         TextField tfIlosc = find("#tbIlosc");
@@ -185,6 +198,7 @@ public class AppTest extends ApplicationTest {
         moveTo("#tbRabat");
         TextField tfRabat = find("#tbRabat");
         tfRabat.setText(rabat);
+        find("#btnDodajPozycje").setDisable(false);
         sleep(1000);
         clickOn("#btnDodajPozycje");
         sleep(1000);

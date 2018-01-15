@@ -4,7 +4,7 @@ import java.util.Observable;
 import static java.time.LocalDate.now;
 
 /**
- * Klasa, która odpowiada za połączenie z obiektem modelu i przechowywaniem Zapytań
+ * Klasa, która odpowiada za połączenie z obiektem modelu i przechowywaniem i obsługą Zapytań
  */
 public class ZapytaniaRepository extends Observable {
 
