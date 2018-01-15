@@ -71,11 +71,15 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     @FXML
     public void wyslijZapytanie(ActionEvent e)
     {
+        boolean poprawnyInput=true;
         if(dateTermin != null) {
-            if(dateTermin.getValue().isAfter(LocalDate.now().minusDays(1)))
-            pozycje.dodajZapytanie(new Zapytanie(dateTermin.getValue(),pozycje.getPozycja()));
+            if(dateTermin.getValue().isAfter(LocalDate.now().minusDays(1))) {
+                pozycje.dodajZapytanie(new Zapytanie(dateTermin.getValue(), pozycje.getPozycja()));
+                poprawnyInput = true;
+            }
             else
             {
+                poprawnyInput = false;
                 wyswietlKomunikat("Nieprawodłowa data. Wybierz prawidłową datę.");
             }
         }
@@ -84,10 +88,12 @@ public class TworzenieZapytaniaController extends ViewController implements Init
             pozycje.dodajZapytanie(new Zapytanie(pozycje.getPozycja()));
         }
 
-        pozycje.getPozycja().getZapytanie().zmienStatusZapytania(StatusZapytania.wyslane);
-        zamowieniaRepository.setCzyMoznaZamowic(true);
-        zamowieniaRepository.dodajPozycjeZamowienia(pozycje.getPozycja());
-        zamknijOkno(e);
+        if(poprawnyInput) {
+            pozycje.getPozycja().getZapytanie().zmienStatusZapytania(StatusZapytania.wyslane);
+            zamowieniaRepository.setCzyMoznaZamowic(true);
+            zamowieniaRepository.dodajPozycjeZamowienia(pozycje.getPozycja());
+            zamknijOkno(e);
+        }
     }
 
     /**
