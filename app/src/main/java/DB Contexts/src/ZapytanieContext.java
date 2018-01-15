@@ -94,7 +94,7 @@ public class ZapytanieContext {
 						int idZap = rs.getInt("IdZap");
 						StatusZapytania status = StatusZapytania.valueOf(rs.getString("zapytania.Status"));
 						LocalDate terminReal=null;
-						if(!rs.getDate("TerminReal").toString().equals("0000-00-00")) {
+						if(rs.getDate("TerminReal")!=null) {
 							terminReal=rs.getDate("TerminReal").toLocalDate();
 						}
 						String notatka = rs.getString("Notatka");

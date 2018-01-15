@@ -21,9 +21,8 @@ public class ZamowieniaRepository extends Observable{
 		super.notifyObservers();
 	}
 
-
 	/**
-	 * Przesłanie zamówienia do bazy.
+	 * Przekazanie złożonego zamówienia do przesłania do klasy, obsługującej zamówienie.
 	 */
 	public boolean przeslijZamowienie() {
 		zamowienie.setStatusZamowienia(StatusZamowienia.przekazane);
