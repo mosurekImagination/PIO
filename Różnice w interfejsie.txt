@@ -1,0 +1,11 @@
+Informacja nawigacyjna zosta³a przeniesiona na górn¹ belkê okienka ze wzglêdów stylistycznych.
+
+Lista rozwijana klienta oraz TextField wyszukiwania klienta zosta³y zast¹pione otworzeniem nowego okienka, w którym znajduje siê lista z odpowiednimi informacjami o wszystkich obiektach mo¿liwych do wybrania i wyszukiwarka. 
+	Lista z wiêksz¹ iloœci¹ informacji pozwoli na unikniêcie pomy³ek w razie podobieñstwa kryteriów wyszukiwania (podobne nazwy towaru lub nip) oraz umo¿liwa przegl¹dniêcie wszystkich opcji mo¿liwych do wybrania. Otwierana lista rozszerza mo¿liwoœci systemu a poprzez zaimplementowanie wyszukiwarki w oknie zachowaliœmy zaprezentowane wczeœniej funkcjonalnoœci.
+
+Pozycja zamówienia z wys³anym zapytaniem nie podœwietla siê na czerwono, poniewa¿ zaciemnia³o to czytelnoœæ informacji. Pracownicy nadal mog¹ rozpoznaæ pozycjê zamówienia z wys³anym zapytaniem poprzez brak ustalonej daty realizacji. 
+
+Po podzieleniu zamówienia zamiast utworzenia zak³adki otwiera siê drugie nowe okienko z podzielonym zamówieniem, pozwoli to na wyœwietlenie dwóch zamówieñ jednoczeœnie i ³atwiejsz¹ ich analizê razem z klientem.
+
+Kolor przycisku zosta³ ustawiony na szary, dziêki czemu interfejs jest bardziej czytelny. Ogólna kolorystyka szaro-niebieska nie zosta³a zaburzona.
+
