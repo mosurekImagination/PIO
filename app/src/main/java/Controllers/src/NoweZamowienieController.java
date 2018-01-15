@@ -19,8 +19,8 @@ import java.util.*;
  */
 public class NoweZamowienieController extends ViewController implements Initializable, Observer{
 
-    private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Musi sie miescic miedzy 0 a 99";
-    private static final String ZLA_ILOSC_KOMUNIKAT = "Podano zla ilosc. Musi byc wieksza od 0";
+    private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Rabat musi być liczbą całkowitą od 0 a 99";
+    private static final String ZLA_ILOSC_KOMUNIKAT = "Podano zla ilosc. Ilość musi być liczbą całkowitą wiekszą od 0";
 
     @FXML
     Button btnWybierz;

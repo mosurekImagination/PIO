@@ -126,7 +126,7 @@ public class ListaKlientowController extends ViewController implements Initializ
             Klient klient = klienciList.get(i);
             String nazwaFirmy = klient.getNazwaFirmy();
             String nip = Formater.getNipString(klient.getNip());
-            if(nip.matches(".*"+nazwaSzukana+".*") || nazwaSzukana == null || nip.matches(".*"+klient.getNip()+".*")) {
+            if(nip.matches(".*"+nazwaSzukana+".*") || nazwaSzukana == null || nazwaSzukana.matches(".*"+klient.getNip()+".*")) {
                 Button wybierz = new Button("Wybierz");
 
                 buttons.add(wybierz);

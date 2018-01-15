@@ -6,6 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -71,7 +72,12 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     public void wyslijZapytanie(ActionEvent e)
     {
         if(dateTermin != null) {
+            if(dateTermin.getValue().isAfter(LocalDate.now().minusDays(1)))
             pozycje.dodajZapytanie(new Zapytanie(dateTermin.getValue(),pozycje.getPozycja()));
+            else
+            {
+                wyswietlKomunikat("Nieprawodłowa data. Wybierz prawidłową datę.");
+            }
         }
         else
         {

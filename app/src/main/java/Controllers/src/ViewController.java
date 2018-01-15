@@ -26,6 +26,7 @@ public class ViewController {
      * @param typ - rozmiar okienka
      * @return
      */
+
     public Object otworzOkno(String resource, int typ)
     {
         FXMLLoader loader = new FXMLLoader();
