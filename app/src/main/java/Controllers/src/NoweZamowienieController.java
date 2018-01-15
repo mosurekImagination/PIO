@@ -1,3 +1,5 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -35,6 +38,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
     Button btnZlozZamowienie;
     @FXML
     Button btnPowrot;
+
+    @FXML
+    Label lbDataZlozeniaZamowienia;
 
     @FXML
     Label lbNazwaTowaru;
@@ -83,7 +89,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         zamowieniaRepository = new ZamowieniaRepository();
         zamowieniaRepository.addObserver(this);
         pozycjaZamowieniaRepository = new PozycjeZamowieniaRepository();
-
+        lbDataZlozeniaZamowienia.setText("Data złożenia zamówienia:   " + LocalDate.now().toString());
         fillGridView();
         setGridViewConstraints();
 
@@ -91,6 +97,8 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
         btnZlozZamowienie.setDisable(true);
 
+
+        tfIlosc.textProperty().addListener((obs, oldValue, newValue) -> czyMoznaDodacPozycjeNotify());
 
     }
 
@@ -189,27 +197,28 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     public void setGridViewConstraints()
     {
-        gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(1);
+        gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(30);
+        gpPozycjeZamowienia.getColumnConstraints().get(0).setMinWidth(30);
+        gpPozycjeZamowienia.getColumnConstraints().get(0).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(1).setMinWidth(100);
-        gpPozycjeZamowienia.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
+        gpPozycjeZamowienia.getColumnConstraints().get(1).setMinWidth(290);
 
         gpPozycjeZamowienia.getColumnConstraints().get(2).setMinWidth(70);
         gpPozycjeZamowienia.getColumnConstraints().get(2).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(3).setMinWidth(100);
+        gpPozycjeZamowienia.getColumnConstraints().get(3).setMinWidth(70);
         gpPozycjeZamowienia.getColumnConstraints().get(3).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(4).setMinWidth(100);
+        gpPozycjeZamowienia.getColumnConstraints().get(4).setMinWidth(70);
         gpPozycjeZamowienia.getColumnConstraints().get(4).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(5).setMinWidth(120);
+        gpPozycjeZamowienia.getColumnConstraints().get(5).setMinWidth(100);
         gpPozycjeZamowienia.getColumnConstraints().get(5).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(6).setMinWidth(70);
+        gpPozycjeZamowienia.getColumnConstraints().get(6).setMinWidth(40);
         gpPozycjeZamowienia.getColumnConstraints().get(6).setHalignment(HPos.CENTER);
 
-        gpPozycjeZamowienia.getColumnConstraints().get(7).setMinWidth(70);
+        gpPozycjeZamowienia.getColumnConstraints().get(7).setMinWidth(40);
         gpPozycjeZamowienia.getColumnConstraints().get(7).setHalignment(HPos.CENTER);
 
     }
@@ -218,6 +227,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     {
         if(checkBoxes!=null && !checkBoxes.isEmpty()) {
             for (CheckBox c : checkBoxes) c.setVisible(true);
+            gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(20);
         }
     }
 
@@ -299,6 +309,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
                 pozycjaZamowieniaRepository.utworzPozycjeZamowienia(towaryRepository.getTowar(),iIlosc,iRabat);
                 zamowieniaRepository.setCzyMoznaZamowic(false);
             }
+            tfRabat.setText("0");
         }
     }
 
@@ -330,7 +341,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         if(checkBoxes != null && !checkBoxes.isEmpty()) {
             showCheckBoxes();
 
-            btnPodzielZamowienie.setText("Wygeneruj Zam�wienie");
+            btnPodzielZamowienie.setText("Wygeneruj Zamówienie");
             btnPodzielZamowienie.setOnAction(e -> wygenerujNoweZamowienie());
             wlaczonoPodzial = true;
         }

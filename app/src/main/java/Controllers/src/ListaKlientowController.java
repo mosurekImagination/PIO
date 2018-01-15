@@ -58,7 +58,7 @@ public class ListaKlientowController extends ViewController implements Initializ
 
     public void setGridViewConstraints()
     {
-        gpListaKlientow.getColumnConstraints().get(0).setMinWidth(175);
+        gpListaKlientow.getColumnConstraints().get(0).setMinWidth(320);
 
         gpListaKlientow.getColumnConstraints().get(1).setMinWidth(100);
         gpListaKlientow.getColumnConstraints().get(1).setHalignment(HPos.CENTER);

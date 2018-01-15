@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,26 +11,29 @@
 
 <VBox prefHeight="555.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ListaZapytanController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="580.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="555.0" prefWidth="953.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" prefHeight="27.0" prefWidth="908.0" style="-fx-background-color: #337ab7;" styleClass="Title" text="Hurtownia" textFill="WHITE" wrapText="false">
+            <ScrollPane hbarPolicy="NEVER" layoutX="6.0" layoutY="40.0" prefHeight="438.0" prefWidth="994.0" vbarPolicy="ALWAYS">
+               <content>
+                  <GridPane fx:id="gpListaZapytan" prefHeight="434.0" prefWidth="927.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="10.0" prefWidth="426.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
+                    </columnConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+        <Label alignment="CENTER" prefHeight="27.0" prefWidth="1000.0" style="-fx-background-color: #337ab7;" styleClass="Title" text="Hurtownia : Lista Zapytań" textFill="WHITE" wrapText="false">
           <font>
             <Font size="18.0" />
           </font>
         </Label>
             <Button id="btnPowrot" fx:id="btnPowrot" layoutX="35.0" layoutY="492.0" mnemonicParsing="false" onAction="#powrot" text="Powrót" />
-            <Label layoutX="42.0" layoutY="59.0" styleClass="h2" stylesheets="@style.css" text="Lista Zapytan" />
-            <GridPane fx:id="gpListaZapytan" layoutX="36.0" layoutY="107.0" prefHeight="366.0" prefWidth="843.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="10.0" prefWidth="426.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="422.0" minWidth="10.0" prefWidth="418.0" />
-              </columnConstraints>
-            </GridPane>
       </children>
     </AnchorPane>
   </children>

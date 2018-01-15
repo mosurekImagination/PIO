@@ -58,12 +58,12 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     public void setGridViewConstraints()
     {
-        gpListaTowarow.getColumnConstraints().get(0).setMinWidth(175);
+        gpListaTowarow.getColumnConstraints().get(0).setMinWidth(270);
 
-        gpListaTowarow.getColumnConstraints().get(1).setMinWidth(100);
+        gpListaTowarow.getColumnConstraints().get(1).setMinWidth(80);
         gpListaTowarow.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
 
-        gpListaTowarow.getColumnConstraints().get(2).setMinWidth(100);
+        gpListaTowarow.getColumnConstraints().get(2).setMinWidth(80);
         gpListaTowarow.getColumnConstraints().get(2).setHalignment(HPos.CENTER);
 
         gpListaTowarow.getColumnConstraints().get(3).setMinWidth(70);
@@ -94,7 +94,7 @@ public class ListaTowarowController extends ViewController implements Initializa
 
 
         int rowNumber = 1;
-        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Dostepna Ilosc"), new Label("Cena j."));
+        gpListaTowarow.addRow(0, new Label("Nazwa"), new Label("Ilość:"), new Label("Cena j."));
         for(int i =0; i < towaryList.size(); i++)
         {
 

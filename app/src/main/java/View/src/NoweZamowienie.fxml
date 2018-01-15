@@ -11,43 +11,42 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="555.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NoweZamowienieController">
+<VBox prefHeight="555.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NoweZamowienieController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="555.0" prefWidth="922.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" prefHeight="27.0" prefWidth="930.0" style="-fx-background-color: #337ab7;" styleClass="Title" text="Hurtownia : Składanie zamowienia" textFill="WHITE" wrapText="false">
+        <Label alignment="CENTER" prefHeight="27.0" prefWidth="1000.0" style="-fx-background-color: #337ab7;" styleClass="Title" text="Hurtownia : Składanie zamowienia" textFill="WHITE" wrapText="false">
           <font>
             <Font size="18.0" />
           </font>
         </Label>
             <Label layoutX="29.0" layoutY="37.0" styleClass="h2" text="Wybierz Klienta" />
-            <Button id="btnWybierz" fx:id="btnWybierz" layoutX="306.0" layoutY="79.0" mnemonicParsing="false" onAction="#wybierzKlienta" text="Wybierz" />
-            <Button id="btnDodajKlienta" fx:id="btnDodajKlienta" disable="true" layoutX="426.0" layoutY="79.0" mnemonicParsing="false" text="Dodaj Klienta" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
+            <Button id="btnWybierz" fx:id="btnWybierz" layoutX="357.0" layoutY="79.0" mnemonicParsing="false" onAction="#wybierzKlienta" text="Wybierz" />
+            <Button id="btnDodajKlienta" fx:id="btnDodajKlienta" disable="true" layoutX="426.0" layoutY="79.0" mnemonicParsing="false" text="Dodaj Klienta" visible="false" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="4.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="985.0" />
             <Label layoutX="24.0" layoutY="145.0" styleClass="h2" stylesheets="@style.css" text="Dodaj pozycje zamówienia" />
-            <Label id="lbNazwaTowaru" fx:id="lbNazwaTowaru" layoutX="27.0" layoutY="179.0" prefHeight="18.0" prefWidth="250.0" />
-            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="294.0" layoutY="171.0" mnemonicParsing="false" onAction="#wybierzTowar" text="Wybierz Towar" />
-            <TextField id="tbIlosc" fx:id="tfIlosc" layoutX="443.0" layoutY="172.0" onKeyReleased="#czyMoznaDodacPozycjeNotify" prefHeight="26.0" prefWidth="59.0" />
-            <TextField id="tbRabat" fx:id="tfRabat" layoutX="527.0" layoutY="172.0" onKeyReleased="#czyMoznaDodacPozycjeNotify" prefHeight="26.0" prefWidth="59.0" text="0" />
-            <Label layoutX="446.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Ilość:" />
-            <Label layoutX="530.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Rabat:" />
-            <Button id="btnDodajPozycje" fx:id="btnDodajPozycje" disable="true" layoutX="741.0" layoutY="170.0" mnemonicParsing="false" onAction="#dodajPozycjeZamowienia" text="Dodaj pozycje" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="3.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="922.0" />
-            <Label layoutX="366.0" layoutY="266.0" styleClass="h2" text="Zamówienie nr:" />
+            <Label id="lbNazwaTowaru" fx:id="lbNazwaTowaru" layoutX="27.0" layoutY="174.0" prefHeight="18.0" prefWidth="306.0" />
+            <Button id="btnDodajTowar" fx:id="btnDodajTowar" layoutX="339.0" layoutY="171.0" mnemonicParsing="false" onAction="#wybierzTowar" text="Wybierz Towar" />
+            <TextField id="tbIlosc" fx:id="tfIlosc" layoutX="488.0" layoutY="172.0" prefHeight="26.0" prefWidth="59.0" />
+            <TextField id="tbRabat" fx:id="tfRabat" layoutX="572.0" layoutY="172.0" onKeyReleased="#czyMoznaDodacPozycjeNotify" prefHeight="26.0" prefWidth="59.0" text="0" />
+            <Label layoutX="491.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Ilość:" />
+            <Label layoutX="575.0" layoutY="143.0" prefHeight="18.0" prefWidth="53.0" text="Rabat:" />
+            <Button id="btnDodajPozycje" fx:id="btnDodajPozycje" disable="true" layoutX="827.0" layoutY="172.0" mnemonicParsing="false" onAction="#dodajPozycjeZamowienia" text="Dodaj pozycje" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="5.0" layoutX="3.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="985.0" />
             <Label id="lbNrZamowienia" fx:id="lbNrZamowienia" layoutX="486.0" layoutY="266.0" styleClass="h2" />
-            <Label layoutX="600.0" layoutY="175.0" prefHeight="18.0" prefWidth="53.0" text="\%" />
-            <Button id="btnPodzielZamowienie" fx:id="btnPodzielZamowienie" disable="true" layoutX="749.0" layoutY="265.0" mnemonicParsing="false" onAction="#podzielZamowienie" text="Podziel zamówienie" />
-            <Button id="btnZlozZamowienie" fx:id="btnZlozZamowienie" layoutX="757.0" layoutY="492.0" mnemonicParsing="false" onAction="#zlozZamowienie" text="Złóż zamówienie" />
-            <Label layoutX="343.0" layoutY="478.0" styleClass="h2" text="Suma:" />
-            <Label id="lbSuma" fx:id="lbSuma" layoutX="410.0" layoutY="478.0" styleClass="h2" text="[Suma]" />
-            <Label layoutX="299.0" layoutY="505.0" styleClass="h2" text="Data Realizacji:" />
-            <Label id="lbDataRealizacji" fx:id="lbDataRealizacji" layoutX="408.0" layoutY="505.0" styleClass="h2" text="[Data Realizacji ]" />
+            <Label layoutX="645.0" layoutY="175.0" prefHeight="18.0" prefWidth="53.0" text="\%" />
+            <Button id="btnPodzielZamowienie" fx:id="btnPodzielZamowienie" disable="true" layoutX="813.0" layoutY="265.0" mnemonicParsing="false" onAction="#podzielZamowienie" text="Podziel zamówienie" />
+            <Button id="btnZlozZamowienie" fx:id="btnZlozZamowienie" layoutX="821.0" layoutY="505.0" mnemonicParsing="false" onAction="#zlozZamowienie" text="Złóż zamówienie" />
+            <Label layoutX="463.0" layoutY="491.0" styleClass="h2" text="Suma:" />
+            <Label id="lbSuma" fx:id="lbSuma" layoutX="530.0" layoutY="491.0" styleClass="h2" text="[Suma]" />
+            <Label layoutX="419.0" layoutY="518.0" styleClass="h2" text="Data Realizacji:" />
+            <Label id="lbDataRealizacji" fx:id="lbDataRealizacji" layoutX="528.0" layoutY="518.0" styleClass="h2" text="[Data Realizacji ]" />
             <Button id="btnPowrot" fx:id="btnPowrot" layoutX="35.0" layoutY="492.0" mnemonicParsing="false" onAction="#powrot" text="Powrót" />
-            <Button id="btnWyslijZapytanie" fx:id="btnWyslijZapytanie" layoutX="741.0" layoutY="206.0" mnemonicParsing="false" onAction="#wyslijZapytanie" text="Wyślij zapytanie" visible="false" />
+            <Button id="btnWyslijZapytanie" fx:id="btnWyslijZapytanie" layoutX="851.0" layoutY="209.0" mnemonicParsing="false" onAction="#wyslijZapytanie" text="Wyślij zapytanie" visible="false" />
             <Label id="lbBrakDostepnosci" fx:id="lbBrakDostepnosci" layoutX="27.0" layoutY="213.0" prefHeight="18.0" prefWidth="702.0" text="Podany Towar jest dostępny w ilości mniejszej niż podana. Wyślij zapytanie aby uzyskać termin realizacji" textFill="#df0e0e" visible="false" />
-            <ScrollPane layoutX="23.0" layoutY="298.0" minViewportHeight="40.0" prefHeight="183.0" prefWidth="900.0">
+            <ScrollPane layoutX="23.0" layoutY="298.0" minViewportHeight="40.0" prefHeight="183.0" prefWidth="962.0">
                <content>
-                  <GridPane fx:id="gpPozycjeZamowienia" prefHeight="186.0" prefWidth="870.0">
+                  <GridPane fx:id="gpPozycjeZamowienia" prefHeight="186.0" prefWidth="933.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

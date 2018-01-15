@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -28,7 +29,7 @@ public class ViewController {
             int width;
             int height;
             if (typ == DUZE_OKNO) {
-                width = 940;
+                width = 1000;
                 height = 580;
             } else {
                 width = 555;
@@ -39,6 +40,7 @@ public class ViewController {
 
             primaryStage.setTitle("FXML Welcome");
             primaryStage.setScene(scene);
+         //   primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.show();
 
         }

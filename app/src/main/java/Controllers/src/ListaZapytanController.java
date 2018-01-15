@@ -64,7 +64,7 @@ public class ListaZapytanController extends ViewController implements Initializa
     {
         ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
 
-        gpListaZapytan.addRow(0, new Label("id"),new Label("Status"), new Label("Termin Realizacji:"), new Label("Klient"), new Label("NazwaTowaru"));
+        gpListaZapytan.addRow(0, new Label("id"),new Label("Status"), new Label("Data złożenia:"), new Label("Termin Realizacji:"), new Label("Klient"), new Label("NazwaTowaru"));
         for(int i=0; i<zapytania.size();i++)
         {
             Button otworz = new Button("Otworz");
@@ -88,22 +88,24 @@ public class ListaZapytanController extends ViewController implements Initializa
             }.init(otworz));
             String id = String.valueOf(zapytanie.getId());
             String status = String.valueOf(zapytanie.getStatus());
-            String terminRealizacji = String.valueOf(zapytanie.getTerminRealizacji());
+            String terminRealizacji = zapytanie.getTerminRealizacji() == null ? "" : String.valueOf(zapytanie.getTerminRealizacji());
             String klient = String.valueOf(zapytanie.getPozycja().getZamowienie().getKlient().getNazwaFirmy());
+            String dataZlozenia = String.valueOf(zapytanie.getPozycja().getZamowienie().getDataZlozZam());
             String towar = String.valueOf(zapytanie.getPozycja().getTowar().getNazwa());
 
             Label statusLabel = new Label(status);
             if(zapytanie.getStatus()==StatusZapytania.zatwierdzone) statusLabel.setBackground(ZATWIERDZONE);
             else if(zapytanie.getStatus()==StatusZapytania.odrzucone) statusLabel.setBackground(ODRZUCONE);
 
-            gpListaZapytan.addRow(i+1, new Label(id), statusLabel, new Label(terminRealizacji), new Label(klient), new Label(towar), new Label("ascdf"), otworz);
+            gpListaZapytan.addRow(i+1, new Label(id), statusLabel, new Label(dataZlozenia), new Label(terminRealizacji), new Label(klient), new Label(towar),otworz);
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }
     private void setGridViewConstraints()
     {
-        gpListaZapytan.getColumnConstraints().get(0).setMaxWidth(30);
-        gpListaZapytan.getColumnConstraints().get(0).setMinWidth(30);
+        gpListaZapytan.getColumnConstraints().get(0).setMaxWidth(40);
+        gpListaZapytan.getColumnConstraints().get(0).setMinWidth(40);
+        gpListaZapytan.getColumnConstraints().get(0).setHalignment(HPos.CENTER);
 
        gpListaZapytan.getColumnConstraints().get(1).setMinWidth(100);
         gpListaZapytan.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
@@ -111,14 +113,13 @@ public class ListaZapytanController extends ViewController implements Initializa
         gpListaZapytan.getColumnConstraints().get(2).setMinWidth(120);
         gpListaZapytan.getColumnConstraints().get(2).setHalignment(HPos.CENTER);
 
-        gpListaZapytan.getColumnConstraints().get(3).setMinWidth(250);
+        gpListaZapytan.getColumnConstraints().get(3).setMinWidth(120);
         gpListaZapytan.getColumnConstraints().get(3).setHalignment(HPos.CENTER);
 
-         gpListaZapytan.getColumnConstraints().get(4).setMinWidth(100);
+         gpListaZapytan.getColumnConstraints().get(4).setMinWidth(230);
         gpListaZapytan.getColumnConstraints().get(4).setHalignment(HPos.CENTER);
 
-        gpListaZapytan.getColumnConstraints().get(5).setMinWidth(70);
-        gpListaZapytan.getColumnConstraints().get(5).setHalignment(HPos.CENTER);
+        gpListaZapytan.getColumnConstraints().get(5).setMinWidth(290);
 
        gpListaZapytan.getColumnConstraints().get(6).setMinWidth(70);
        gpListaZapytan.getColumnConstraints().get(6).setHalignment(HPos.CENTER);

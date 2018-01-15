@@ -1,15 +1,15 @@
 Okno g³ówne:
-Z³ó¿ zamówienie (napis labelka)
+DONE: Z³ó¿ zamówienie (napis labelka)
 nip poprawiæ
-nr zamówienia + data z³o¿enia zamówienia 
-rabat domyœlnie 0
+DONE: nr zamówienia + data z³o¿enia zamówienia 
+DONE: rabat domyœlnie 0
 zapytania pobieraj¹ siê z dat¹ 00
-label asdf z zapytania --usun¹æ
-powiêkszyæ pole z nazw¹ towaru 
+DONE: label asdf z zapytania --usun¹æ
+DONE: powiêkszyæ pole z nazw¹ towaru 
 co z wygenerowanym kodem?
-jeœli data = null to wyœwietliæ puste pole
-podzia³ zamówienia -> od dwóch pozycji w zamówieniu
-dodanie pozycji -> nie mo¿e byæ kiedy nie mamy towaru
+DONE: jeœli data = null to wyœwietliæ puste pole
+DONE: podzia³ zamówienia -> od dwóch pozycji w zamówieniu
+DONE: dodanie pozycji -> nie mo¿e byæ kiedy nie mamy towaru
 
 ---testy
 przy kliencie --> jak brak klienta czy mo¿na z³o¿yæ zamówienie
