@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Kontroler okienka
+ */
 public class ViewController {
 
     @FXML
@@ -17,6 +20,12 @@ public class ViewController {
     public final int DUZE_OKNO = 1;
     public final int MALE_OKNO = 2;
 
+    /**
+     * Otwiera okienko odpowiedniej wielkości z podanej ścieżki
+     * @param resource - ścieżka do okienka
+     * @param typ - rozmiar okienka
+     * @return
+     */
     public Object otworzOkno(String resource, int typ)
     {
         FXMLLoader loader = new FXMLLoader();
@@ -48,6 +57,11 @@ public class ViewController {
         }
         return loader.getController();
     }
+
+    /**
+     * Obsługuje zamknięcie okienka
+     * @param event - ActionEvent przycisku zamknięcia okienka
+     */
     @FXML
     protected void zamknijOkno(ActionEvent event)
     {
@@ -57,6 +71,10 @@ public class ViewController {
         }
     }
 
+    /**
+     * Wyświetla nowe okienko z ustalonym komunikatem
+     * @param komunikat - komunikat do wyświetlenia
+     */
     protected void wyswietlKomunikat(String komunikat)
     {
         KomunikatController controller = (KomunikatController)otworzOkno("komunikat.fxml", MALE_OKNO);

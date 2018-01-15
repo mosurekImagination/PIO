@@ -31,31 +31,49 @@ public class ListaTowarowController extends ViewController implements Initializa
     private ArrayList<Towar> towaryList;
     private TowaryRepository towaryRepository;
 
+    /**
+     *Metoda wywowyłana przy tworzeniu okienka, inicjalizuje początkowe Wartości
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnX;
+        setGridViewConstraints();
     }
 
+    /**
+     * Wypełnia GridView aktualnymi wartościami
+     */
     public void updateView()
     {
         fillGridView();
-        setGridViewConstraints();
     }
     public void setZamowieniaRepository(ZamowieniaRepository pozycjaZamRepo) {
         this.pozycjaZamRepo = pozycjaZamRepo;
     }
 
 
+    /**
+     * Przesłonięta metoda aktualizacji GridView Towarów, wywoływana gdy nie mamy żadnych kryteriów wyszukiwania
+     */
     private void fillGridView()
     {
         fillGridView(null);
     }
 
+    /**
+     * Wywoływana w momencie naciśnięciu przycisku wybierz przy odpowiednim towarze.
+     * Ustawia wybrany towar i zamyka okno
+     * @param i - index wybranego parametru
+     * @param e - ActionEvent naciśnięcia przycisku przy danym towarze
+     */
     private void wybierzTowar(int i, ActionEvent e) {
         towaryRepository.setTowar(towaryRepository.towary.remove(i));
         zamknijOkno(e);
     }
 
+    /**
+     * Ustala szerokość kolumn oraz wyrównanie tekstu
+     */
     private void setGridViewConstraints()
     {
         gpListaTowarow.getColumnConstraints().get(0).setMinWidth(270);
@@ -71,6 +89,11 @@ public class ListaTowarowController extends ViewController implements Initializa
 
 
     }
+
+    /**
+     * Wywoływana przy zamknięciu okienka przyciskiem X lub powrót
+     * @param e
+     */
     @FXML
     private void powrot(javafx.event.ActionEvent e)
     {
@@ -82,11 +105,18 @@ public class ListaTowarowController extends ViewController implements Initializa
         towaryList = (ArrayList<Towar>) this.towaryRepository.towary;
     }
 
+    /**
+     * Wywołanie akcji szukaj na Liście towarów z ustalonym kryterium (nazwa)
+     * @param event - ActionEvent naciśnięcia przycisku szukaj
+     */
     public void szukaj(ActionEvent event) {
      fillGridView(tfNazwaSzukana.getText());
     }
 
-   
+    /**
+     * Wypełnia GridView Towarów danymi
+     * @param nazwaSzukana - kryteria wyszukiwania, szukana nazwa towaru
+     */
     private void fillGridView(String nazwaSzukana)
     {
         gpListaTowarow.getChildren().clear();

@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler obsługujący okienko tworzenia zapytania
+ */
 public class TworzenieZapytaniaController extends ViewController implements Initializable{
 
     @FXML
@@ -31,6 +34,10 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     private PozycjeZamowieniaRepository pozycje;
     private ZamowieniaRepository zamowieniaRepository;
 
+
+    /**
+     * Funkcja wywoływana przy tworzeniu okienka, inicjalizuje początkowe zmienne
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnX; pozycje = new PozycjeZamowieniaRepository();
@@ -45,13 +52,21 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         zamowieniaRepository=zr;
     }
 
-
+    /**
+     * Aktualizuje okno ustawiając tekst na odpowiednij labelkach:
+     * nazwa towaru i ilość towaru
+     */
     public void updateView()
     {
         lbNazwaTowaru.setText(pozycje.getPozycja().getTowar().getNazwa());
         lbIlosc.setText(String.valueOf(pozycje.getPozycja().getIlosc()));
     }
 
+    /**
+     * Metoda obsługijąca akcję wciśnięcia przycisku wysłania zapytania.
+     * Dodaje zapytanie z odpowiednimi wartościami, dodaje do aktualnego zamówienia i zamyka okno
+     * @param e - ActionEvent naciśnięcia przycisku Wysłania zapytania
+     */
     @FXML
     public void wyslijZapytanie(ActionEvent e)
     {
@@ -69,6 +84,10 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         zamknijOkno(e);
     }
 
+    /**
+     * Metoda wywoływana po naciśnięciu przycisku Anuluj. Anuluje wysyłanie zapytania i zamyka okno
+     * @param e - Action Event naciśnięcia przycisku Anuluj
+     */
     @FXML
     public void anuluj(ActionEvent e){
         zamowieniaRepository.setCzyMoznaZamowic(true);

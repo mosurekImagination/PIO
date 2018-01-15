@@ -14,7 +14,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 
-
+/**
+ * Kontroler obsługujący okienko tworzenia nowego zamówienia
+ */
 public class NoweZamowienieController extends ViewController implements Initializable, Observer{
 
     private static final String ZLY_RABAT_KOMUNIKAT = "Podano zly rabat. Musi sie miescic miedzy 0 a 99";
@@ -76,6 +78,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     private boolean wlaczonoPodzial = false;
 
+    /**
+     *Metoda wywowyłana przy tworzeniu okienka, inicjalizuje początkowe Wartości
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -92,14 +97,15 @@ public class NoweZamowienieController extends ViewController implements Initiali
         setGridViewConstraints();
 
         czyKolejneZamowienie = false;
-
         btnZlozZamowienie.setDisable(true);
 
-
         tfIlosc.textProperty().addListener((obs, oldValue, newValue) -> czyMoznaDodacPozycjeNotify());
-
     }
 
+    /**
+     * Metoda wywoływana po każdej aktualizacji obiektu (Zamówienia)
+     * Wywołuje aktualizację odpowiednich danych znajdujących się w okienku
+     */
     @Override
     public void update(Observable o, Object arg) {
 
@@ -121,7 +127,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
                 System.out.println(pozycjaZamowienia);
             }
 
-            czyNiedostepnaNotify(!zamowieniaRepository.czyMoznaZamowic);
+            mozliwoscZapytaniaNotify(!zamowieniaRepository.czyMoznaZamowic);
             if(zamowieniaRepository.czyMoznaZamowic)
             {
                 lbSuma.setText(Formater.formatujCene(zamowieniaRepository.getSuma()));
@@ -138,6 +144,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
     }
 
+    /**
+     * Wypełnia GridView Pozycji Zamówienia danymi
+     */
     private void fillGridView()
     {
         gpPozycjeZamowienia.getChildren().clear();
@@ -150,8 +159,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
         for(int i =0; i < pozycjeList.size(); i++)
         {
-
-            //USTALANIE TESTOWYCH WARTOSCI
             PozycjaZamowienia pozycja = pozycjeList.get(i);
             String nazwa = pozycja.getTowar().getNazwa();
             String cena = Formater.formatujCene(pozycja.getTowar().getCenaJn());
@@ -163,7 +170,6 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
             Button usun = new Button("Usun");
             Button edytuj = new Button("Edytuj");
-
 
             CheckBox doPodzialu = new CheckBox();
             if(!wlaczonoPodzial) doPodzialu.setVisible(false);
@@ -193,6 +199,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
 
+    /**
+     * Ustala szerokość kolumn oraz wyrównanie tekstu
+     */
     private void setGridViewConstraints()
     {
         gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(30);
@@ -221,11 +230,13 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
+    /**
+     * Wyświetla CheckBoxy służące do zaznaczenia przenoszonych pozycji zamówienia do nowego Zamówienia
+     */
     private void showCheckBoxes()
     {
         if(checkBoxes!=null && !checkBoxes.isEmpty()) {
             for (CheckBox c : checkBoxes) c.setVisible(true);
-            gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(20);
         }
     }
 
@@ -240,6 +251,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
         zamowieniaRepository.usunPozycje(index);
     }
 
+    /**
+     * Wywoływana przy zamknięciu okienka przyciskiem X lub powrót
+     * @param e
+     */
     @FXML
     private void powrot(ActionEvent e)
     {
@@ -247,7 +262,9 @@ public class NoweZamowienieController extends ViewController implements Initiali
         zamknijOkno(e);
     }
 
-
+    /**
+     * Metoda obsługująca wyświetlanie przycisku podziału zamówienia w zależności od aktualnej liczby ilości pozycji
+     */
     private void czyMoznaPodzielicNotify()
     {
         ArrayList<PozycjaZamowienia> pozycjeList = (ArrayList<PozycjaZamowienia>) zamowieniaRepository.getPozycje();
@@ -257,6 +274,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
+    /**
+     * Metoda kontrolująca przycisk dodania pozycji w zależności od poprawności wprowadzonych danych w
+     * okienku wyboru towaru, ilości, rabatu
+     */
     @FXML
     private void czyMoznaDodacPozycjeNotify()
     {
@@ -264,6 +285,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
         else { btnDodajPozycje.setDisable(true); }
     }
 
+    /**
+     * Metoda wywoływana w momencie naciśnięcia przycisku wyślij zapytanie
+     * otwiera okienko tworzenia zapytania 
+     */
     @FXML
     private void wyslijZapytanie()
     {
@@ -273,9 +298,13 @@ public class NoweZamowienieController extends ViewController implements Initiali
         twController.updateView();
     }
 
-    private void czyNiedostepnaNotify(boolean czyNiedostepna)
+    /**
+     * metoda odkrywająca pola obsługujące sytuację gdy potrzebujemy wysłać zapytanie
+     * @param mozliwoscZapytania - określa czy pola mają być widoczne lub ukryte
+     */
+    private void mozliwoscZapytaniaNotify(boolean mozliwoscZapytania)
     {
-        if(czyNiedostepna) {
+        if(mozliwoscZapytania) {
             lbBrakDostepnosci.setVisible(true);
             btnWyslijZapytanie.setVisible(true);
         }
@@ -286,6 +315,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
     }
 
+    /**
+     *  metoda wywoływana w momencie naciśnięcia przycisku dodaj zapytanie
+     *  sprawdza poprawność wprowadzonych danych i dodaje pozycje do zamówienia
+     */
     @FXML
     private void dodajPozycjeZamowienia()
     {
@@ -311,14 +344,21 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
     }
 
+    /**
+     *Otwiera okienko wyboru towaru
+     * @param event - ActionEvent naciśnięcia przycisku wyboru Towaru
+     */
     @FXML void wybierzTowar(ActionEvent event){
         ListaTowarowController twController = (ListaTowarowController) otworzOkno("ListaTowarow.fxml", MALE_OKNO);
         twController.setTowaryRepository(towaryRepository);
-        System.out.println(towaryRepository);
         twController.updateView();
         twController.setZamowieniaRepository(zamowieniaRepository);
     }
 
+    /**
+     *Przesyła utworzone zamówienie do wysłania i w zależności czy jest to dzielone zamówienie wraca do odpowiedniego okna
+     * @param event - ActionEvent naciśnięcia przycisku Złóż Zamówienie
+     */
     @FXML void zlozZamowienie(ActionEvent event){
         if(zamowieniaRepository.przeslijZamowienie())
         if(czyKolejneZamowienie){
@@ -329,11 +369,19 @@ public class NoweZamowienieController extends ViewController implements Initiali
         wyswietlKomunikat("Zamowienie zostalo zlozone");
     }
 
+    /**
+     * Otwiera okno wyboru klienta
+     * @param event - ActionEvent naciśnięcia przycisku wyboru klienta
+     */
     @FXML void wybierzKlienta(ActionEvent event){
         ListaKlientowController klienciController = (ListaKlientowController) otworzOkno("ListaKlientow.fxml", MALE_OKNO);
         klienciController.setZamowienieRepository(zamowieniaRepository);
     }
 
+    /**
+     * Metoda wywoływana w momencie naciśnięcia przycisku podziel Zamówienie,
+     * wyświetlająca informacje w oknie wymagane to podziału zamówienia.
+     */
     @FXML void podzielZamowienie(){
 
         if(checkBoxes != null && !checkBoxes.isEmpty()) {
@@ -346,6 +394,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
+    /**
+     * Metoda tworząca nowe, podzielone zamówienie z zaznaczonych wczeniej pozycji zamówienia
+     * Wyświetla okno z podzielonym zamówieniem
+     */
     @FXML
     private void wygenerujNoweZamowienie()
     {
@@ -359,6 +411,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
+    /**
+     * Metoda ustawiające okno na obsługę przekazanego zamówienia
+     * @param zamowienie - zamówienie, które będzie obsługiwane przez okno
+     */
     private void setNoweZamowienie(Zamowienie zamowienie) {
         zamowieniaRepository = new ZamowieniaRepository();
         zamowieniaRepository.addObserver(this);

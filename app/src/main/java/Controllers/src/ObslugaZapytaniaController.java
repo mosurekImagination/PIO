@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Kontroler okienka do obsługi zapytania
+ */
 public class ObslugaZapytaniaController extends ViewController implements Initializable{
 
     @FXML
@@ -27,7 +30,9 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
 
     private ZapytaniaRepository zapRepo;
 
-
+    /**
+     *Metoda wywowyłana przy tworzeniu okienka, inicjalizuje początkowe Wartości
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -35,12 +40,19 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
         zapRepo = new ZapytaniaRepository();
     }
 
+    /**
+     * Wywoływana przy zamknięciu okienka przyciskiem X lub powrót
+     * @param e
+     */
     @FXML
     private void powrot(ActionEvent e)
     {
         zamknijOkno(e);
     }
 
+    /**
+     * Metoda ustawiająca elementy okna danymi.
+     */
     public void updateView()
     {
         lbNazwaTowaru.setText(zapRepo.getZapytanie().getTowar().getNazwa());
@@ -59,6 +71,10 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
         updateView();
     }
 
+    /**
+     * Zatwierdza obsługiwane zapytanie
+     * @param e - ActionEvent naciśnięcia przycisku Zatwierdź
+     */
     @FXML
     public void zatwierdz(ActionEvent e)
     {
@@ -66,6 +82,10 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
         powrot(e);
     }
 
+    /**
+     * Odrzuca obsługiwane zapytanie
+     * @param e - ActionEvent naciśnięcia przycisku Odrzuć
+     */
     @FXML
     public void odrzuc(ActionEvent e)
     {

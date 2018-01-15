@@ -16,7 +16,9 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-
+/**
+ * Kontroler obsługujący okienko listy zapytań
+ */
 public class ListaZapytanController extends ViewController implements Initializable,Observer {
 
     @FXML
@@ -34,6 +36,11 @@ public class ListaZapytanController extends ViewController implements Initializa
             new Insets(0.0,0.0,0.0,0.0)));
     private static Background ZATWIERDZONE = new Background( new BackgroundFill(Color.LIMEGREEN, new CornerRadii(1),
             new Insets(0.0,0.0,0.0,0.0)));
+
+
+     /**
+     *Metoda wywowyłana przy tworzeniu okienka, inicjalizuje początkowe Wartości
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnPowrot;
@@ -42,11 +49,14 @@ public class ListaZapytanController extends ViewController implements Initializa
         zapytaniaRepo.pobierzZapytania();
         zapytaniaRepo.addObserver(this);
 
-        prepareTestData();
         fillGridView();
         setGridViewConstraints();
     }
 
+    /**
+     * Metoda wywoływana po każdej aktualizacji obiektu (Zapytania)
+     * Wywołuje aktualizację GridView
+     */
     @Override
     public void update(Observable o, Object arg) {
         gpListaZapytan.getChildren().clear();
@@ -54,12 +64,9 @@ public class ListaZapytanController extends ViewController implements Initializa
         fillGridView();
     }
 
-
-    private void prepareTestData()
-    {
-        zapytania.add(new Zapytanie(LocalDate.now()));
-    }
-
+    /**
+     * Wypełnia GridView Zapytań danymi
+     */
     private void fillGridView()
     {
         ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
@@ -101,13 +108,17 @@ public class ListaZapytanController extends ViewController implements Initializa
             gpListaZapytan.getRowConstraints().add(new RowConstraints(50));
         }
     }
+
+    /**
+     * Ustala szerokość kolumn oraz wyrównanie tekstu
+     */
     private void setGridViewConstraints()
     {
         gpListaZapytan.getColumnConstraints().get(0).setMaxWidth(40);
         gpListaZapytan.getColumnConstraints().get(0).setMinWidth(40);
         gpListaZapytan.getColumnConstraints().get(0).setHalignment(HPos.CENTER);
 
-       gpListaZapytan.getColumnConstraints().get(1).setMinWidth(100);
+        gpListaZapytan.getColumnConstraints().get(1).setMinWidth(100);
         gpListaZapytan.getColumnConstraints().get(1).setHalignment(HPos.CENTER);
 
         gpListaZapytan.getColumnConstraints().get(2).setMinWidth(120);
@@ -116,7 +127,7 @@ public class ListaZapytanController extends ViewController implements Initializa
         gpListaZapytan.getColumnConstraints().get(3).setMinWidth(120);
         gpListaZapytan.getColumnConstraints().get(3).setHalignment(HPos.CENTER);
 
-         gpListaZapytan.getColumnConstraints().get(4).setMinWidth(230);
+        gpListaZapytan.getColumnConstraints().get(4).setMinWidth(230);
         gpListaZapytan.getColumnConstraints().get(4).setHalignment(HPos.CENTER);
 
         gpListaZapytan.getColumnConstraints().get(5).setMinWidth(290);
@@ -127,6 +138,11 @@ public class ListaZapytanController extends ViewController implements Initializa
 
 
     }
+
+    /**
+     * Wywoływana przy zamknięciu okienka przyciskiem X lub powrót
+     * @param e - ActionEvent ww przycisków
+     */
     @FXML
     private void powrot(javafx.event.ActionEvent e)
     {

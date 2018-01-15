@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa obsługująca okienko wyboru klienta
+ */
 public class ListaKlientowController extends ViewController implements Initializable {
 
     private ZamowieniaRepository pozycjaZamRepo;
@@ -31,6 +34,9 @@ public class ListaKlientowController extends ViewController implements Initializ
     private ArrayList<Klient> klienciList;
     private KlienciRepository klienciRepository;
 
+    /**
+     *Metoda wywowyłana przy tworzeniu okienka, inicjalizuje początkowe wartości i wyświetla listę klientów
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         closeButton = btnX;
@@ -44,18 +50,27 @@ public class ListaKlientowController extends ViewController implements Initializ
         this.pozycjaZamRepo = pozycjaZamRepo;
     }
 
-
+    /**
+     * Wypełnia GridView aktualnymi wartościami
+     */
     private void fillGridView()
     {
         fillGridView(null);
     }
-
+    /**
+     * Wywoływana w momencie naciśnięciu przycisku wybierz przy odpowiednim kliencie.
+     * Ustawia wybranego klienta i zamyka okno
+     * @param i - index wybranego parametru
+     * @param e - ActionEvent naciśnięcia przycisku przy danym kliencie
+     */
     private void wybierzKlienta(int i, ActionEvent e) {
         pozycjaZamRepo.dodajKlienta(klienciList.get(i));
         zamknijOkno(e);
     }
 
-
+    /**
+     * Ustala szerokość kolumn oraz wyrównanie tekstu
+     */
     private void setGridViewConstraints()
     {
         gpListaKlientow.getColumnConstraints().get(0).setMinWidth(320);
@@ -69,17 +84,29 @@ public class ListaKlientowController extends ViewController implements Initializ
 
 
     }
+
+    /**
+     * Wywoływana przy zamknięciu okienka przyciskiem X lub powrót
+     * @param e
+     */
     @FXML
     private void powrot(javafx.event.ActionEvent e)
     {
         zamknijOkno(e);
     }
 
-
+    /**
+     * Wywołanie akcji szukaj na Liście klientów w z ustalonym kryterium (NIP)
+     * @param event - ActionEvent naciśnięcia przycisku szukaj
+     */
     public void szukaj(ActionEvent event) {
         fillGridView(tfKlientSzukany.getText());
     }
-    
+
+    /**
+     * Wypełnia GridView informacjiami Klientów zgodnie z ustalonymi kryteriami.
+     * @param nazwaSzukana - kryteria wyszukiwania, nip klienta
+     */
     private void fillGridView(String nazwaSzukana)
     {
         gpListaKlientow.getChildren().clear();
