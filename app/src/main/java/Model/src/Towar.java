@@ -6,8 +6,8 @@ public class Towar {
 	private int aktualnaIloscTowaru;
 	private int id;
 	private String nazwa;
-	int kat;
-	int maxRab;
+	private int kat;
+	private int maxRab;
 	private int kod;
 	private double cenaJn;
 

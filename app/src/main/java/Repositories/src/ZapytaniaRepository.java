@@ -8,8 +8,8 @@ import static java.time.LocalDate.now;
  */
 public class ZapytaniaRepository extends Observable {
 
-	ArrayList<Zapytanie> zapytania;
-	Zapytanie zapytanie;
+	private ArrayList<Zapytanie> zapytania;
+	private Zapytanie zapytanie;
 	
 	public ZapytaniaRepository(){
 		zapytania = new ArrayList<>();

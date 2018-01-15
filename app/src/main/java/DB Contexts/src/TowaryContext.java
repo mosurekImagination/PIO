@@ -7,8 +7,8 @@ import java.util.List;
  */
 public class TowaryContext {
 
-	Context context;
-	Connection connection;
+	private Context context;
+	private Connection connection;
 
 	public TowaryContext(Context context) {
 		this.context = context;

@@ -1,11 +1,6 @@
 import junit.framework.TestCase;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Asus on 2018-01-06.

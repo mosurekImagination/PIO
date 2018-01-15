@@ -28,8 +28,8 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     @FXML
     DatePicker dateTermin;
 
-    PozycjeZamowieniaRepository pozycje;
-    ZamowieniaRepository zamowieniaRepository;
+    private PozycjeZamowieniaRepository pozycje;
+    private ZamowieniaRepository zamowieniaRepository;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

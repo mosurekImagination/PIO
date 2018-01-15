@@ -3,15 +3,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Asus on 2018-01-04.
  */
 public class KlienciContext {
 	
-	Context context;
-	Connection connection;
+	private Context context;
+	private Connection connection;
 	public KlienciContext() {
 		
 	}

@@ -4,17 +4,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by Asus on 2018-01-04.
  */
-public class ZapytanieContext {
+class ZapytanieContext {
 
-	Context context;
-	Connection connection;
+	private Context context;
+	private Connection connection;
 
 	public ZapytanieContext(Context context) {
 		this.context = context;
@@ -113,7 +111,7 @@ public class ZapytanieContext {
 							terminRealizacji =rs.getDate("zamowienia.TerminRealizacji").toLocalDate();
 						}
 						double kwotaZ = (double)rs.getFloat("zamowienia.KwotaZ");
-						boolean czyZatwierdzone = (rs.getInt("zamowienia.czyZatwierdzone")>0)?true:false;
+						boolean czyZatwierdzone = rs.getInt("zamowienia.czyZatwierdzone") > 0;
 						
 						int klientId = rs.getInt("klienci.IdK");
 						String nazwaFirmy = rs.getString("klienci.NazwaFirmy");

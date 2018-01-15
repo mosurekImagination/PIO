@@ -9,7 +9,7 @@ import java.util.Observable;
 public class TowaryRepository extends Observable {
 
 	List<Towar> towary;
-	Towar towar;
+	private Towar towar;
 
 	public void setTowar(Towar towar){
 		this.towar = towar;

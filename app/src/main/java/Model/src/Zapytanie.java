@@ -1,9 +1,8 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Zapytanie {
 
-	static int current_id = 0;
+	private static int current_id = 0;
 	private int id;
 	private StatusZapytania status;
 	private LocalDate terminReal;

@@ -8,7 +8,7 @@ public class Main extends Application  {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         ViewController vc = new ViewController();
         vc.otworzOkno("OknoGlowne.fxml", vc.MALE_OKNO);
     }

@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class ListaKlientowController extends ViewController implements Initializable {
 
-    ZamowieniaRepository pozycjaZamRepo;
+    private ZamowieniaRepository pozycjaZamRepo;
 
     @FXML
     Button btnX;
@@ -27,9 +27,9 @@ public class ListaKlientowController extends ViewController implements Initializ
     @FXML
     TextField tfKlientSzukany;
 
-    LinkedList<Button> buttons = new LinkedList<>();
-    ArrayList<Klient> klienciList;
-    KlienciRepository klienciRepository;
+    private LinkedList<Button> buttons = new LinkedList<>();
+    private ArrayList<Klient> klienciList;
+    private KlienciRepository klienciRepository;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,7 +45,7 @@ public class ListaKlientowController extends ViewController implements Initializ
     }
 
 
-    public void fillGridView()
+    private void fillGridView()
     {
         fillGridView(null);
     }
@@ -56,7 +56,7 @@ public class ListaKlientowController extends ViewController implements Initializ
     }
 
 
-    public void setGridViewConstraints()
+    private void setGridViewConstraints()
     {
         gpListaKlientow.getColumnConstraints().get(0).setMinWidth(320);
 
@@ -77,15 +77,15 @@ public class ListaKlientowController extends ViewController implements Initializ
 
 
     public void szukaj(ActionEvent event) {
-        fillGridView(tfKlientSzukany.getText().toString());
+        fillGridView(tfKlientSzukany.getText());
     }
     
-    public void fillGridView(String nazwaSzukana)
+    private void fillGridView(String nazwaSzukana)
     {
         gpListaKlientow.getChildren().clear();
         buttons.clear();
 
-        ArrayList<Klient> klienciList = (ArrayList<Klient>) klienciRepository.getKlienci();
+        ArrayList<Klient> klienciList = klienciRepository.getKlienci();
 
 
         gpListaKlientow.addRow(0, new Label("Nazwa Firmy"), new Label("NIP"));

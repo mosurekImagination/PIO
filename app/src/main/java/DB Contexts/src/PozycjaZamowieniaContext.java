@@ -8,8 +8,8 @@ import java.util.List;
 
 public class PozycjaZamowieniaContext {
 
-	Context context;
-	Connection connection;
+	private Context context;
+	private Connection connection;
 
 	public PozycjaZamowieniaContext(Context context) {
 		this.context = context;

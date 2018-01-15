@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Observable;
 
 /**
@@ -31,8 +29,7 @@ public class PozycjeZamowieniaRepository extends Observable {
 	 * Tworzy pozycję zamówienia z podanym towarem, ilością i rabatem.
 	 */
 	public void utworzPozycjeZamowienia(Towar towar,int ilosc,int rabat) {
-		PozycjaZamowienia pozycja = new PozycjaZamowienia(towar);
-		this.pozycja = pozycja;
+		this.pozycja = new PozycjaZamowienia(towar);
 		this.pozycja.setIlosc(ilosc);
 		this.pozycja.setRabat(rabat);
 		this.pozycja.setCena();

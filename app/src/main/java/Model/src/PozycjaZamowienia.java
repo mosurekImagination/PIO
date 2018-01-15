@@ -1,9 +1,8 @@
 import java.time.LocalDate;
-import java.util.Date;
 
 public class PozycjaZamowienia {
 
-	Zapytanie zapytanie;
+	private Zapytanie zapytanie;
 	private Towar towar;
 	private int id;
 	private int ilosc;

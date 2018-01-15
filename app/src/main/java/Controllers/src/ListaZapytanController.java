@@ -25,10 +25,10 @@ public class ListaZapytanController extends ViewController implements Initializa
     @FXML
     GridPane gpListaZapytan;
 
-    ZapytaniaRepository zapytaniaRepo;
+    private ZapytaniaRepository zapytaniaRepo;
 
-    ArrayList<Button> buttons = new ArrayList<>();
-    ArrayList<Zapytanie> zapytania= new ArrayList<>();
+    private ArrayList<Button> buttons = new ArrayList<>();
+    private ArrayList<Zapytanie> zapytania= new ArrayList<>();
 
     private static Background ODRZUCONE = new Background( new BackgroundFill(Color.PALEVIOLETRED, new CornerRadii(1),
             new Insets(0.0,0.0,0.0,0.0)));
@@ -60,7 +60,7 @@ public class ListaZapytanController extends ViewController implements Initializa
         zapytania.add(new Zapytanie(LocalDate.now()));
     }
 
-    public void fillGridView()
+    private void fillGridView()
     {
         ArrayList<Zapytanie> zapytania = zapytaniaRepo.getZapytania();
 

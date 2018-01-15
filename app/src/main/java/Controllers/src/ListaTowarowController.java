@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class ListaTowarowController extends ViewController implements Initializable {
 
-    ZamowieniaRepository pozycjaZamRepo;
+    private ZamowieniaRepository pozycjaZamRepo;
 
     @FXML
     Button btnX;
@@ -27,9 +27,9 @@ public class ListaTowarowController extends ViewController implements Initializa
     @FXML
     GridPane gpListaTowarow;
 
-    LinkedList<Button> buttons = new LinkedList<>();
-    ArrayList<Towar> towaryList;
-    TowaryRepository towaryRepository;
+    private LinkedList<Button> buttons = new LinkedList<>();
+    private ArrayList<Towar> towaryList;
+    private TowaryRepository towaryRepository;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +46,7 @@ public class ListaTowarowController extends ViewController implements Initializa
     }
 
 
-    public void fillGridView()
+    private void fillGridView()
     {
         fillGridView(null);
     }
@@ -56,7 +56,7 @@ public class ListaTowarowController extends ViewController implements Initializa
         zamknijOkno(e);
     }
 
-    public void setGridViewConstraints()
+    private void setGridViewConstraints()
     {
         gpListaTowarow.getColumnConstraints().get(0).setMinWidth(270);
 
@@ -83,11 +83,11 @@ public class ListaTowarowController extends ViewController implements Initializa
     }
 
     public void szukaj(ActionEvent event) {
-     fillGridView(tfNazwaSzukana.getText().toString());
+     fillGridView(tfNazwaSzukana.getText());
     }
 
    
-    public void fillGridView(String nazwaSzukana)
+    private void fillGridView(String nazwaSzukana)
     {
         gpListaTowarow.getChildren().clear();
         buttons.clear();

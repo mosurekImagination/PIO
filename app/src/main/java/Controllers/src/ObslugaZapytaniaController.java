@@ -25,7 +25,7 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
     @FXML
     Label lbTerminRealizacji;
 
-    ZapytaniaRepository zapRepo;
+    private ZapytaniaRepository zapRepo;
 
 
     @Override

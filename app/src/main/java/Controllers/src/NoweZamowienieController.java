@@ -1,5 +1,3 @@
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -64,19 +62,19 @@ public class NoweZamowienieController extends ViewController implements Initiali
     GridPane gpPozycjeZamowienia;
 
 
-    ZamowieniaRepository zamowieniaRepository;
-    PozycjeZamowieniaRepository pozycjaZamowieniaRepository;
-    TowaryRepository towaryRepository;
-    Boolean czyKolejneZamowienie;
+    private ZamowieniaRepository zamowieniaRepository;
+    private PozycjeZamowieniaRepository pozycjaZamowieniaRepository;
+    private TowaryRepository towaryRepository;
+    private Boolean czyKolejneZamowienie;
 
-    Towar towar = new Towar(1, "Sruba", 50,0.01);
+    private Towar towar = new Towar(1, "Sruba", 50,0.01);
     PozycjaZamowienia pozycjaZamowienia= new PozycjaZamowienia(1, towar, 100, 5);
 
     ArrayList<Towar> list = new ArrayList<>();
-    LinkedList<Button> buttons = new LinkedList<>();
-    ArrayList<CheckBox> checkBoxes = new ArrayList<>();
+    private LinkedList<Button> buttons = new LinkedList<>();
+    private ArrayList<CheckBox> checkBoxes = new ArrayList<>();
 
-    boolean wlaczonoPodzial = false;
+    private boolean wlaczonoPodzial = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -140,7 +138,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
     }
 
-    public void fillGridView()
+    private void fillGridView()
     {
         gpPozycjeZamowienia.getChildren().clear();
         buttons.clear();
@@ -195,7 +193,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
 
-    public void setGridViewConstraints()
+    private void setGridViewConstraints()
     {
         gpPozycjeZamowienia.getColumnConstraints().get(0).setMaxWidth(30);
         gpPozycjeZamowienia.getColumnConstraints().get(0).setMinWidth(30);
@@ -223,7 +221,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
-    public void showCheckBoxes()
+    private void showCheckBoxes()
     {
         if(checkBoxes!=null && !checkBoxes.isEmpty()) {
             for (CheckBox c : checkBoxes) c.setVisible(true);
@@ -231,7 +229,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         }
     }
 
-    public void setTowaryRepository() {
+    private void setTowaryRepository() {
         towaryRepository.getTowary();
     }
 
@@ -275,7 +273,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         twController.updateView();
     }
 
-    public void czyNiedostepnaNotify(boolean czyNiedostepna)
+    private void czyNiedostepnaNotify(boolean czyNiedostepna)
     {
         if(czyNiedostepna) {
             lbBrakDostepnosci.setVisible(true);
@@ -361,7 +359,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     }
 
-    public void setNoweZamowienie(Zamowienie zamowienie) {
+    private void setNoweZamowienie(Zamowienie zamowienie) {
         zamowieniaRepository = new ZamowieniaRepository();
         zamowieniaRepository.addObserver(this);
         zamowieniaRepository.setZamowienie(zamowienie);
