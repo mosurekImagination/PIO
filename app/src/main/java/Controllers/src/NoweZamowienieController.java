@@ -121,8 +121,10 @@ public class NoweZamowienieController extends ViewController implements Initiali
                 lbSuma.setText(Formater.formatujCene(zamowieniaRepository.getSuma()));
                 lbDataRealizacji.setText(zamowieniaRepository.getTerminRealizacji());
                 fillGridView();
+                czyMoznaPodzielicNotify();
             }
         }
+        czyMoznaDodacPozycjeNotify();
         if(zamowieniaRepository.czyMoznaZlozycZamowienie()){
             btnZlozZamowienie.setDisable(false);
         } else {
@@ -238,6 +240,21 @@ public class NoweZamowienieController extends ViewController implements Initiali
     }
 
 
+    private void czyMoznaPodzielicNotify()
+    {
+        ArrayList<PozycjaZamowienia> pozycjeList = (ArrayList<PozycjaZamowienia>) zamowieniaRepository.getPozycje();
+        if(pozycjeList.size() > 1)
+            btnPodzielZamowienie.setDisable(false);
+        else {btnPodzielZamowienie.setDisable(true);}
+
+    }
+
+    @FXML
+    private void czyMoznaDodacPozycjeNotify()
+    {
+        if(towaryRepository.getTowar()!= null && !tfRabat.getText().isEmpty() && !tfIlosc.getText().isEmpty()) btnDodajPozycje.setDisable(false);
+        else { btnDodajPozycje.setDisable(true); }
+    }
 
     @FXML
     private void wyslijZapytanie()
