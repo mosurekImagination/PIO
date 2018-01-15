@@ -22,6 +22,15 @@ public class PozycjaZamowienia {
 		this.towar = produktZamawiany;
 		this.ilosc = ilosc;
 		this.rabat = rabat;
+		setCena();
+	}
+	PozycjaZamowienia(int id,Towar produktZamawiany,int ilosc, int rabat,LocalDate terminRealizacji){
+		this.id = id;
+		this.towar = produktZamawiany;
+		this.ilosc = ilosc;
+		this.rabat = rabat;
+		this.terminRealizacji = terminRealizacji;
+		setCena();
 	}
 	PozycjaZamowienia(int id,int ilosc,double cena, int rabat, double cenaPoRabacie, LocalDate terminRealizacji,Towar towar){
 		this.id=id;

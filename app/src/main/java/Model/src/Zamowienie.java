@@ -42,6 +42,7 @@ public class Zamowienie{
 	 */
 	public void dodajPozycje(PozycjaZamowienia pozycja) {
 		pozycjeZamowienia.add(pozycja);
+		aktualizuj();
 	}
 
 	public PozycjaZamowienia usunPozycje(int indexPozycji) {
@@ -81,6 +82,7 @@ public class Zamowienie{
 	}
 
 	private void aktualizujTerminRealizacji() {
+		terminRealizacji = now();
 		for(PozycjaZamowienia pozycja:pozycjeZamowienia) {
 			LocalDate dataPozycji = pozycja.getTerminRealizacji();
 			if (dataPozycji == null) {
@@ -102,7 +104,7 @@ public class Zamowienie{
 	private void aktualizujKwote() {
 		kwota = 0;
 		for (PozycjaZamowienia pozycja:pozycjeZamowienia) {
-			kwota += pozycja.getCena();
+			kwota += pozycja.getCenaPoRabacie();
 		}
 	}
 
@@ -163,7 +165,6 @@ public class Zamowienie{
 	}
 
 	public int getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 }
