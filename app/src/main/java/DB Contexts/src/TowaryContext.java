@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "towary" w bazie danych "hurtownia".
+ * 	Klasa umoÅ¼liwiajÄ…ca wymianÄ™ danych z relacjÄ… "towary" w bazie danych "hurtownia".
  */
 public class TowaryContext {
 
@@ -15,7 +15,7 @@ public class TowaryContext {
 	}
 
 	/**
-	 * Metoda pobieraj¹ca z bazy dane towarów.
+	 * Metoda pobierajÄ…ca z bazy dane towarÃ³w.
 	 */
 	public List<Towar> getTowaryZBazy() {
 		List<Towar> listaTowarow = new ArrayList<Towar>();
@@ -46,7 +46,9 @@ public class TowaryContext {
 	}
 	
 
-
+	/**
+	 * Metoda aktualizujÄ…ca w bazie danych iloÅ›Ä‡ towarÃ³w.
+	 */
 	public void aktualizujStan(PozycjaZamowienia pozycjaZamowienia) {
 		int idT=pozycjaZamowienia.getTowar().getId();
 		int iloscWPoz = pozycjaZamowienia.getIlosc();

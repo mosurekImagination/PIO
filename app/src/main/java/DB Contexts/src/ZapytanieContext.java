@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "zapytanie" w bazie danych "hurtownia".
+ * 	Klasa umoÅ¼liwiajÄ…ca wymianÄ™ danych z relacjÄ… "zapytanie" w bazie danych "hurtownia".
  */
 class ZapytanieContext {
 
@@ -18,7 +18,7 @@ class ZapytanieContext {
 		this.context = context;
 	}
 	/**
-	 * 	Metoda przesy³aj¹ca do bazy dane zapytania.
+	 * 	Metoda przesyÅ‚ajÄ…ca do bazy dane zapytania.
 	 */
 	public void przeslijZapytanie(Zapytanie zapytanie) {
 		StatusZapytania status = zapytanie.getStatus();
@@ -57,7 +57,7 @@ class ZapytanieContext {
 
 		}
 	/**
-	 * Metoda pobieraj¹ca z bazy dane zapytañ.
+	 * Metoda pobierajÄ…ca z bazy dane zapytaÅ„.
 	 */
 	public List<Zapytanie> getZapytaniaZBazy() {
 		List<Zapytanie> listaZapytan = new ArrayList<Zapytanie>();
@@ -140,7 +140,7 @@ class ZapytanieContext {
 		return listaZapytan;
 	}
 	/**
-	 * Metoda zatwierdzaj¹ca zapytanie w bazie danych.
+	 * Metoda zatwierdzajÄ…ca zapytanie w bazie danych.
 	 */
 	 public Zapytanie zatwierdzZapytanie(Zapytanie zapytanie) {
 	        //zapytanie.zmienStatusZapytania(StatusZapytania.zatwierdzone);
@@ -184,7 +184,7 @@ class ZapytanieContext {
 	        return zapytanie;
 	    }
 	 	/**
-		 * Metoda odrzucaj¹ca zapytanie w bazie danych.
+		 * Metoda odrzucajÄ…ca zapytanie w bazie danych.
 		 */
 	    public Zapytanie odrzucZapytanie(Zapytanie zapytanie) {
 	        //zapytanie.zmienStatusZapytania(StatusZapytania.odrzucone);

@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 /**
- * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "zamowienia" w bazie danych "hurtownia".
+ * 	Klasa umoÅ¼liwiajÄ…ca wymianÄ™ danych z relacjÄ… "zamowienia" w bazie danych "hurtownia".
  */
 public class ZamowienieContext {
 	private Context context;
@@ -13,7 +13,7 @@ public class ZamowienieContext {
 		this.context = context;
 	}
 	/**
-	 * 	Metoda przesy³aj¹ca do bazy dane zamówienia.
+	 * 	Metoda przesyÅ‚ajÄ…ca do bazy dane zamÃ³wienia.
 	 */
 	public void przeslijZamowienie(Zamowienie zamowienie) {
 		String status = zamowienie.getStatus().toString();

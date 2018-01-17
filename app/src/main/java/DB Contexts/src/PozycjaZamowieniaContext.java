@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "pozycjezamowienia" w bazie danych "hurtownia".
+ * 	Klasa umoÅ¼liwiajÄ…ca wymianÄ™ danych z relacjÄ… "pozycjezamowienia" w bazie danych "hurtownia".
  */
 public class PozycjaZamowieniaContext {
 
@@ -17,7 +17,7 @@ public class PozycjaZamowieniaContext {
 		this.context = context;
 	}
 	/**
-	 * 	Metoda przesy³aj¹ca do bazy dane pozycji zamówienia.
+	 * 	Metoda przesyÅ‚ajÄ…ca do bazy dane pozycji zamÃ³wienia.
 	 */
 	public void przeslijPozycjeZamowienia(Zamowienie zamowienie) {
 		List<PozycjaZamowienia> pozycjeZamowienia = zamowienie.getPozycje();
@@ -72,7 +72,7 @@ public class PozycjaZamowieniaContext {
 
 	}
 	/**
-	 * Metoda pobieraj¹ca z bazy dane pozycji zamówienia.
+	 * Metoda pobierajÄ…ca z bazy dane pozycji zamÃ³wienia.
 	 */
 	public List<PozycjaZamowienia> getPozycjeZamowieniaZBazy(Zamowienie zamowienie) {
 		List<PozycjaZamowienia> pozycjeZamowienia = new ArrayList<PozycjaZamowienia>();

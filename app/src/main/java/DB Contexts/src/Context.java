@@ -1,7 +1,7 @@
 import java.sql.*;
 
 /**
- * Klasa ³¹cz¹ca aplikacjê z baz¹ danych "hurtownia" znajduj¹c¹ siê na serwerze typu MariaDB.
+ * Klasa Å‚Ä…czÄ…ca aplikacjÄ™ z bazÄ… danych "hurtownia" znajdujÄ…cÄ… siÄ™ na serwerze typu MariaDB.
  */
 public class Context { 
 
@@ -12,7 +12,7 @@ public class Context {
 	}
 
 	/**
-	 * Metoda otwieraj¹ca po³¹czenie z baz¹ danych.
+	 * Metoda otwierajÄ…ca poÅ‚Ä…czenie z bazÄ… danych.
 	 */
 	public void openDB() {
 		try {
@@ -25,7 +25,7 @@ public class Context {
 		}
 	}
 	/**
-	 * Metoda zamykaj¹ca po³¹czenie z baz¹ danych.
+	 * Metoda zamykajÄ…ca poÅ‚Ä…czenie z bazÄ… danych.
 	 */
 	public void closeDB() {
 		try {

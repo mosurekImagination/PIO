@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "klienci" w bazie danych "hurtownia".
+ * 	Klasa umoÅ¼liwiajÄ…ca wymianÄ™ danych z relacjÄ… "klienci" w bazie danych "hurtownia".
  */
 public class KlienciContext {
 	
@@ -20,7 +20,7 @@ public class KlienciContext {
 	}
 
 	/**
-	 * Metoda pobieraj¹ca z bazy dane klientów hurtowni.
+	 * Metoda pobierajÄ…ca z bazy dane klientÃ³w hurtowni.
 	 */
     public ArrayList<Klient> getKlientZBazy(){
     	ArrayList<Klient> klienci = new ArrayList<>();
