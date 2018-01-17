@@ -72,7 +72,7 @@ public class TworzenieZapytaniaController extends ViewController implements Init
     public void wyslijZapytanie(ActionEvent e)
     {
         boolean poprawnyInput=true;
-        if(dateTermin != null) {
+        if(dateTermin.getValue() != null) {
             if(dateTermin.getValue().isAfter(LocalDate.now().minusDays(1))) {
                 pozycje.dodajZapytanie(new Zapytanie(dateTermin.getValue(), pozycje.getPozycja()));
                 poprawnyInput = true;
