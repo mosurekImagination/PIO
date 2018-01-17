@@ -387,7 +387,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
         if(checkBoxes != null && !checkBoxes.isEmpty()) {
             showCheckBoxes();
 
-            btnPodzielZamowienie.setText("Wygeneruj Zamówienie");
+            btnPodzielZamowienie.setText("Wygeneruj Zamowienie");
             btnPodzielZamowienie.setOnAction(e -> wygenerujNoweZamowienie());
             wlaczonoPodzial = true;
         }
