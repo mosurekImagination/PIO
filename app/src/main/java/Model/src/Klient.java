@@ -1,5 +1,5 @@
 /**
- * Klasa, która odnosi się do obiektu Klienta z modelu.
+ * Klasa, która reprezentuje obiekt Klienta z modelu.
  */
 public class Klient {
 
@@ -33,13 +33,23 @@ public class Klient {
 		return nazwaFirmy +" "+ nip;
 	}
 
+	/**
+	 * @return zwraca nazwę firmy danego Klienta
+	 */
 	public String getNazwaFirmy(){
 		return nazwaFirmy;
 	}
 
+	/**
+	 * @return zwraca nip klienta
+	 */
 	public int getNip() {
 		return nip;
 	}
+
+	/**
+	 * @return zwraca id klienta
+	 */
 	public int getId() {
 		return id;
 	}

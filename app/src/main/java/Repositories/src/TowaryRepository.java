@@ -11,12 +11,18 @@ public class TowaryRepository extends Observable {
 	List<Towar> towary;
 	private Towar towar;
 
+	/**
+	 * @param towar - towar, ktory ma byc przechowywany w obiekcie
+	 */
 	public void setTowar(Towar towar){
 		this.towar = towar;
 		setChanged();
 		notifyObservers(towar);
 	}
 
+	/**
+	 * @return zwraca towar, ktory jest przechowywany w obiekcie
+	 */
 	public Towar getTowar() {
 		return towar;
 	}

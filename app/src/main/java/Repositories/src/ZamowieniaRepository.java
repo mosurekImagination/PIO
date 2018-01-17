@@ -15,6 +15,9 @@ public class ZamowieniaRepository extends Observable{
 		czyMoznaZamowic = true;
 	}
 
+	/**
+	 * Metoda, ktora ma powiadomic obserwatorow obiektu o zmienionym stanie
+	 */
 	@Override
 	public void notifyObservers(){
 		setChanged();
@@ -32,6 +35,7 @@ public class ZamowieniaRepository extends Observable{
 
 	/**
 	 * Funkcja, tworząca nową pozycję zamówienia w zamówieniu z wybranego towaru.
+	 * @param towar - towar, na jaki ma byc utowrzona nowa pozycja
 	 */
 	public PozycjaZamowienia utworzPozycjeZamowienia(Towar towar) {
 		PozycjaZamowienia pozycja = new PozycjaZamowienia(towar);
@@ -43,6 +47,8 @@ public class ZamowieniaRepository extends Observable{
 
 	/**
 	 * Funkcja, aktualizująca utworzoną pozycję o zadaną ilość i rabat.
+	 * @param rabat - rabat, ktory zostal udzielony na dana pozycje
+	 * @param ilosc - ilosc sztuk towaru zamawianego w danej pozycji
 	 */
 	public void aktualizujPozycje(int ilosc, int rabat) {
 			int indexPozycji = zamowienie.getIndexOstatniejPozycji();
@@ -56,35 +62,38 @@ public class ZamowieniaRepository extends Observable{
 
 	/**
 	 * Funckja sprawdzająca czy dostępna jest wybrana ilość towaru dla pozycji.
+	 * @param indexPozycji - indeks pozycji, dla ktorej ilosc towaru ma byc sprawdzona
+	 * @param ilosc - ilosc sztuk towaru, jaka ma byc dodana do pozycji
+	 * @return zwraca czy jest wystarczajaca ilosc sztuk towaru
 	 */
 	public boolean sprawdzDostepnoscTowaru(int indexPozycji, int ilosc) {
 		PozycjaZamowienia pozycja = zamowienie.getPozycjaOnIndex(indexPozycji);
-		return pozycja.getTowar().getIlosc() >= ilosc;
+		return sprawdzDostepnoscTowaru(pozycja.getTowar(),ilosc);
 	}
 
 	/**
 	 * Funckja, sprawdzająca dostępność towaru w zadanej ilości.
+	 * @param towar - towar, dla ktorego sprawdzamy ilosc towaru
+	 * @param ilosc - ilosc sztuk towaru, ktora sprawdzamy
+	 * @return zwraca czy jest wystarczajaca ilosc podanego towaru
 	 */
 	public boolean sprawdzDostepnoscTowaru(Towar towar, int ilosc) {
 		return towar.getIlosc() >= ilosc;
 	}
 
+	/**
+	 * Metoda sluzaca do usuwania zadanej pozycji z zamowienia
+	 * @param indexPozycji - indeks pozycji, ktora ma zostac usunieta
+	 */
 	public void usunPozycje(int indexPozycji) {
 		zamowienie.usunPozycje(indexPozycji);
 		notifyObservers();
 	}
 
-	/**
-	 * Funkcja, dodająca zapytanie do pozycji zamówienia z zadanym terminem realizacji.
-	 */
-	public void dodajZapytanie(int indexPozycji, LocalDate terminRealizacji) {
-		Zapytanie zapytanie = new Zapytanie(terminRealizacji);
-		zapytanie = zamowienie.dodajZapytanieDoPozycji(zamowienie.getIndexOstatniejPozycji(),zapytanie);
-		notifyObservers();
-	}
 
 	/**
 	 * Funkcja, dodająca klienta do zamówienia.
+	 * @param klient - klient, który ma zostać dodany do zamowienia
 	 */
 	public void dodajKlienta(Klient klient) {
 		zamowienie.dodajKlienta(klient);
@@ -92,14 +101,23 @@ public class ZamowieniaRepository extends Observable{
 		notifyObservers(klient);
 	}
 
+	/**
+	 * @return zwraca pozycje zamowienia przechowywanego w obiekcie
+	 */
 	public List<PozycjaZamowienia> getPozycje() {
 		return zamowienie.getPozycje();
 	}
 
+	/**
+	 * @return zwraca kwote zamowienia
+	 */
 	public double getSuma() {
 		return zamowienie.getSuma();
 	}
 
+	/**
+	 * @return zwraca termin realizacji zamowienia w postaci stringa
+	 */
 	public String getTerminRealizacji() {
 		String formattedDate;
 		if(zamowienie.getTerminRealizacji() != null) {
@@ -110,13 +128,17 @@ public class ZamowieniaRepository extends Observable{
 		return formattedDate;
 	}
 
-    public void setCzyMoznaZamowic(boolean b) {
+	/**
+	 * Ustawia flage czyMoznaZamowic na zadana wartosc
+	 */
+	public void setCzyMoznaZamowic(boolean b) {
         czyMoznaZamowic = b;
         notifyObservers();
     }
 
 	/**
 	 * Funkcja odpowiadająca za utworzenie nowego zamówienia z wybranymi pozycjami.
+	 * @param indeksy - indeksy z aktualnego zamowienia, ktore maja zostac przeniesione do nwoego
 	 */
 	public Zamowienie wydzielPozycje(ArrayList<Integer> indeksy) {
 		Zamowienie noweZamowienie = new Zamowienie();
@@ -131,6 +153,9 @@ public class ZamowieniaRepository extends Observable{
 		return  noweZamowienie;
 	}
 
+	/**
+	 * @param zamowienie - zamowienie, przechowywane w obiekcie klasy
+	 */
 	public void setZamowienie(Zamowienie zamowienie) {
 		this.zamowienie = zamowienie;
 		setChanged();
@@ -140,6 +165,7 @@ public class ZamowieniaRepository extends Observable{
 
 	/**
 	 * Funckja, która dodaje daną pozycję zamówienia do zamówienia.
+	 * @param pozycjaZamowienia  - pozycja zamowienia, ktora ma zostac dodana do zamowienia
 	 */
 	public void dodajPozycjeZamowienia(PozycjaZamowienia pozycjaZamowienia) {
 		zamowienie.dodajPozycje(pozycjaZamowienia);
@@ -147,14 +173,24 @@ public class ZamowieniaRepository extends Observable{
 		notifyObservers();
 	}
 
+	/**
+	 * Metoda sprawdzajaca czy mozna zlozyc zamowienie
+	 * @return zwraca wartosc true albo false
+	 */
 	public boolean czyMoznaZlozycZamowienie() {
 		return czyIstniejePozycja() && czyIstniejeKlient();
 	}
 
+	/**
+	 * @return zwraca informacje czy do zamowieniu dodano klienta
+	 */
 	private boolean czyIstniejeKlient() {
 		return zamowienie.klient != null;
 	}
 
+	/**
+	 * @return zwraca informacje czy zamowienie nie jest puste
+	 */
 	private boolean czyIstniejePozycja() {
 		return getPozycje().size() != 0;
 	}

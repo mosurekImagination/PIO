@@ -4,7 +4,7 @@ import java.util.Observable;
 import static java.time.LocalDate.now;
 
 /**
- * Klasa, która odpowiada za połączenie z obiektem modelu i przechowywaniem i obsługą Zapytań
+ * Klasa, która odpowiada za połączenie z obiektem modelu,przechowywaniem i obsługą Zapytań
  */
 public class ZapytaniaRepository extends Observable {
 
@@ -18,6 +18,9 @@ public class ZapytaniaRepository extends Observable {
 	}
 
 
+	/**
+	 * Metoda pobierajaca zapytania do listy zapytan, przechowywanych w obiekcie
+	 */
 	public void pobierzZapytania() {
 		this.zapytania = getZapytania();
 	}
@@ -34,10 +37,16 @@ public class ZapytaniaRepository extends Observable {
 		return listaZapytan;
 	}
 
+	/**
+	 * @param zapytanie - zapytanie, ktore ma byc przechowywane w obiekcie
+	 */
 	public void setZapytanie(Zapytanie zapytanie) {
 		this.zapytanie = zapytanie;
 	}
 
+	/**
+	 * @return zwraca zapytanie, przechowywane w obiekcie klasy
+	 */
 	public Zapytanie getZapytanie() {
 		return zapytanie;
 	}

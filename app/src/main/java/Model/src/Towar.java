@@ -1,5 +1,5 @@
 /**
- * Klasa, która odnosi się do obiektu towaru z modelu.
+ * Klasa, która reprezentuje obiekt towaru z modelu.
  */
 public class Towar {
 
@@ -27,18 +27,30 @@ public class Towar {
 		this.aktualnaIloscTowaru = aktualnaIloscTowaru;
 	}
 
+	/**
+	 * @return zwraca aktualna ilosc towaru w magazynie
+	 */
 	public int getIlosc(){
 		return aktualnaIloscTowaru;
 	}
 
+	/**
+	 * @return zwraca cene jednej sztuki towaru
+	 */
 	public double getCenaJn() {
 		return cenaJn;
 	}
 
+	/**
+	 * @return zwraca id towaru
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * @return zwraca nazwe towaru
+	 */
 	public String getNazwa()
 	{
 		return nazwa;

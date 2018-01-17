@@ -1,5 +1,8 @@
 import java.time.LocalDate;
 
+/**
+ *  Klasa, reprezentująca obiekt pozycji zamówienia z modelu.
+ */
 public class PozycjaZamowienia {
 
 	private Zapytanie zapytanie;
@@ -42,61 +45,91 @@ public class PozycjaZamowienia {
 		
 	}
 
-	public void dodajDane(int ilosc, int rabat, Towar towar) {
-		this.ilosc = ilosc;
-		this.rabat = rabat;
-		this.towar = towar;
-	}
-
+	/**
+	 * Metoda dodająca powstałe zapytanie do pozycji zamówienia
+	 * @param zapytanie - zapytanie do dodania
+	 */
 	public void dodajZapytanie(Zapytanie zapytanie) {
 		this.zapytanie = zapytanie;
 	}
 
-	public void zmienDateRealizacji(LocalDate data) {
-		this.terminRealizacji = data;
-	}
-
+	/**
+	 * @return zwraca id pozycji zamówienia
+	 */
 	public int getId(){
 		return id;
 	}
 
+	/**
+	 * Metoda, ustawiająca ilość pozycji zamówienia
+	 * @param ilosc - liczba sztuk towaru w danej pozycji
+	 */
 	public void setIlosc(int ilosc) {
 		this.ilosc = ilosc;
 	}
 
+	/**
+	 * Metoda, ustawiająca rabat danej pozycji
+	 * @param rabat - procentowy rabat na towar w pozycji
+	 */
 	public void setRabat(int rabat) {
 		this.rabat = rabat;
 	}
 
+	/**
+	 * @return zwraca towar pozycji
+	 */
 	public Towar getTowar() {
 		return towar;
 	}
 
+	/**
+	 * Metoda, ustawiająca termin realizacji pozycji
+	 * @param terminRealizacji - ustalony termin realizacji dla danej pozycji
+	 */
 	public void setTerminRealizacji(LocalDate terminRealizacji){
 		this.terminRealizacji = terminRealizacji;
 	}
 
+	/**
+	 * @return zwraca termin realizacji pozycji
+	 */
 	public LocalDate getTerminRealizacji(){
 		return terminRealizacji;
 	}
 
+	/**
+	 * Metoda, wyliczająca kwotę pozycji zamówienia na podstawie rabatu i ilości towaru
+	 */
 	public void setCena() {
 		this.cena = this.towar.getCenaJn() * this.ilosc;
 		this.cenaPoRabacie = cena - (cena * rabat / 100);
 	}
 
+	/**
+	 * @return zwraca cenę towaru bez uwzględnienia rabatu
+	 */
 	public double getCena() {
 		return cena;
 	}
 
+	/**
+	 * @return zwraca ilosc towaru w pozycji
+	 */
 	public int getIlosc() {
 		return ilosc;
 	}
 
+	/**
+	 * @return zwraca zamowienie, do ktorego odnosi sie pozycja
+	 */
 	public Zamowienie getZamowienie() {
 		return zamowienie;
 	}
 
+	/**
+	 * @param zamowienie - zamowienie, do ktorego przypisujemy dana pozycje
+	 */
 	public void setZamowienie(Zamowienie zamowienie) {
 		this.zamowienie = zamowienie;
 	}
@@ -105,14 +138,23 @@ public class PozycjaZamowienia {
 		return "Pozycja: " + ilosc + "," + "cena";
 	}
 
+	/**
+	 * @return zwraca rabat na dana pozycje
+	 */
 	public int getRabat() {
 		return rabat;
 	}
 
+	/**
+	 * @return zwraca wartosc pozycji z uwzglednieniem rabatu
+	 */
 	public double getCenaPoRabacie() {
 		return cenaPoRabacie;
 	}
 
+	/**
+	 * @return zwraca zapytanie, ktore dotyczny danej pozycji
+	 */
 	public Zapytanie getZapytanie() {
 		return zapytanie;
 	}
