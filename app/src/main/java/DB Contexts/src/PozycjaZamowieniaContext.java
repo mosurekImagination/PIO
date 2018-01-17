@@ -5,7 +5,9 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "pozycjezamowienia" w bazie danych "hurtownia".
+ */
 public class PozycjaZamowieniaContext {
 
 	private Context context;
@@ -14,7 +16,9 @@ public class PozycjaZamowieniaContext {
 	public PozycjaZamowieniaContext(Context context) {
 		this.context = context;
 	}
-
+	/**
+	 * 	Metoda przesy³aj¹ca do bazy dane pozycji zamówienia.
+	 */
 	public void przeslijPozycjeZamowienia(Zamowienie zamowienie) {
 		List<PozycjaZamowienia> pozycjeZamowienia = zamowienie.getPozycje();
 		for (PozycjaZamowienia pozycjaZamowienia : pozycjeZamowienia) {
@@ -67,7 +71,9 @@ public class PozycjaZamowieniaContext {
 		}
 
 	}
-
+	/**
+	 * Metoda pobieraj¹ca z bazy dane pozycji zamówienia.
+	 */
 	public List<PozycjaZamowienia> getPozycjeZamowieniaZBazy(Zamowienie zamowienie) {
 		List<PozycjaZamowienia> pozycjeZamowienia = new ArrayList<PozycjaZamowienia>();
 		int idZam = zamowienie.getId();
@@ -126,7 +132,6 @@ public class PozycjaZamowieniaContext {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// System.out.println(listaZapytan.get(0).getPozycja().getZamowienie().getPozycje().size());
 		return pozycjeZamowienia;
 	}
 }

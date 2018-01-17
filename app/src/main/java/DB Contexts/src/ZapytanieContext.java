@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Asus on 2018-01-04.
+ * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "zapytanie" w bazie danych "hurtownia".
  */
 class ZapytanieContext {
 
@@ -17,7 +17,9 @@ class ZapytanieContext {
 	public ZapytanieContext(Context context) {
 		this.context = context;
 	}
-
+	/**
+	 * 	Metoda przesy³aj¹ca do bazy dane zapytania.
+	 */
 	public void przeslijZapytanie(Zapytanie zapytanie) {
 		StatusZapytania status = zapytanie.getStatus();
 		String terminReal ="0000-00-00";
@@ -54,7 +56,9 @@ class ZapytanieContext {
 		}
 
 		}
-
+	/**
+	 * Metoda pobieraj¹ca z bazy dane zapytañ.
+	 */
 	public List<Zapytanie> getZapytaniaZBazy() {
 		List<Zapytanie> listaZapytan = new ArrayList<Zapytanie>();
 		try {
@@ -135,7 +139,9 @@ class ZapytanieContext {
 			e.printStackTrace();}
 		return listaZapytan;
 	}
-	
+	/**
+	 * Metoda zatwierdzaj¹ca zapytanie w bazie danych.
+	 */
 	 public Zapytanie zatwierdzZapytanie(Zapytanie zapytanie) {
 	        //zapytanie.zmienStatusZapytania(StatusZapytania.zatwierdzone);
 	        zapytanie.getPozycja().setTerminRealizacji(zapytanie.getTerminRealizacji());
@@ -177,17 +183,15 @@ class ZapytanieContext {
 	        
 	        return zapytanie;
 	    }
-
+	 	/**
+		 * Metoda odrzucaj¹ca zapytanie w bazie danych.
+		 */
 	    public Zapytanie odrzucZapytanie(Zapytanie zapytanie) {
 	        //zapytanie.zmienStatusZapytania(StatusZapytania.odrzucone);
 	        zapytanie.getPozycja().setTerminRealizacji(null);
 	        zapytanie.getPozycja().getZamowienie().aktualizuj();
-	        System.out.println("kwota1 " + zapytanie.getPozycja().getZamowienie().getSuma());
-	        System.out.println(zapytanie.getPozycja().getZamowienie().getPozycje());
 	        zapytanie.getPozycja().getZamowienie().getPozycje().removeIf(e -> (e.getId()==zapytanie.getPozycja().getId()));
-	        System.out.println(zapytanie.getPozycja().getZamowienie().getPozycje());
 	        zapytanie.getPozycja().getZamowienie().aktualizuj();
-	        System.out.println("kwota2 " + zapytanie.getPozycja().getZamowienie().getSuma());
 	        int idZ = zapytanie.getPozycja().getZamowienie().getId();
 	        double kwota = zapytanie.getPozycja().getZamowienie().getSuma();
 	        String termin = "0000-00-00";
@@ -199,11 +203,11 @@ class ZapytanieContext {
 				connection = context.getConnection();
 				if (connection != null) {
 					Statement stmt = connection.createStatement();
-					String query = "UPDATE zapytania SET status= \"odrzucone\" WHERE IdZap=" + zapytanie.getId();
+					String query = "DELETE FROM pozycjezamowienia WHERE ZapytanieIdZap=" + zapytanie.getId();
 					ResultSet rs = stmt.executeQuery(query);
 					stmt.close();
 					Statement stmt2 = connection.createStatement();
-					String query2 = "UPDATE pozycjezamowienia SET terminRealPoz=" + "\"" + termin + "\", ZamowienieIdZ=NULL WHERE ZapytanieIdZap IN (SELECT IdZap FROM zapytania WHERE IdZap=" + zapytanie.getId()+")";
+					String query2 = "DELETE FROM zapytania WHERE IdZap=" + zapytanie.getId();
 					ResultSet rs2 = stmt2.executeQuery(query2);
 					stmt2.close();
 					Statement stmt3 = connection.createStatement();

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Asus on 2018-01-04.
+ * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "towary" w bazie danych "hurtownia".
  */
 public class TowaryContext {
 
@@ -14,7 +14,9 @@ public class TowaryContext {
 		this.context = context;
 	}
 
-
+	/**
+	 * Metoda pobieraj¹ca z bazy dane towarów.
+	 */
 	public List<Towar> getTowaryZBazy() {
 		List<Towar> listaTowarow = new ArrayList<Towar>();
 		try {

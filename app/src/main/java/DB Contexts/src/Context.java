@@ -1,12 +1,9 @@
 import java.sql.*;
 
 /**
- * Created by Asus on 2018-01-04.
+ * Klasa ³¹cz¹ca aplikacjê z baz¹ danych "hurtownia" znajduj¹c¹ siê na serwerze typu MariaDB.
  */
-public class Context {
-	// Bazowa klasa do poÅ‚Ä…czenia siÄ™ z bazÄ… danych. View, Å¼eby pobraÄ‡ np.
-	// listÄ™ TowarÃ³w albo sprawdziÄ‡ klientÃ³w poÅ‚Ä…czy siÄ™ z Contextem
-	// i sprawdzi w bazie danych i wyÅ›wietli klienta/towary
+public class Context { 
 
 	private Connection conn = null;
 
@@ -14,6 +11,9 @@ public class Context {
 		return conn;
 	}
 
+	/**
+	 * Metoda otwieraj¹ca po³¹czenie z baz¹ danych.
+	 */
 	public void openDB() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -24,7 +24,9 @@ public class Context {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Metoda zamykaj¹ca po³¹czenie z baz¹ danych.
+	 */
 	public void closeDB() {
 		try {
             if (conn != null) {

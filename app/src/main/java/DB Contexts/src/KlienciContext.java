@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Created by Asus on 2018-01-04.
+ * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "klienci" w bazie danych "hurtownia".
  */
 public class KlienciContext {
 	
@@ -19,7 +19,9 @@ public class KlienciContext {
 		
 	}
 
-	
+	/**
+	 * Metoda pobieraj¹ca z bazy dane klientów hurtowni.
+	 */
     public ArrayList<Klient> getKlientZBazy(){
     	ArrayList<Klient> klienci = new ArrayList<>();
 		try {

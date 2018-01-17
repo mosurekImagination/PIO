@@ -2,7 +2,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 	Klasa umo¿liwiaj¹ca wymianê danych z relacj¹ "zamowienia" w bazie danych "hurtownia".
+ */
 public class ZamowienieContext {
 	private Context context;
 	private Connection connection;
@@ -10,7 +12,9 @@ public class ZamowienieContext {
 	public ZamowienieContext(Context context) {
 		this.context = context;
 	}
-
+	/**
+	 * 	Metoda przesy³aj¹ca do bazy dane zamówienia.
+	 */
 	public void przeslijZamowienie(Zamowienie zamowienie) {
 		String status = zamowienie.getStatus().toString();
 		String dataZlozZam = "0000-00-00";
