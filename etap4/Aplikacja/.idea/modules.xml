@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/Controllers/Controllers.iml" filepath="$PROJECT_DIR$/src/main/java/Controllers/Controllers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/DB Contexts/DB Contexts.iml" filepath="$PROJECT_DIR$/src/main/java/DB Contexts/DB Contexts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Hurtownia.iml" filepath="$PROJECT_DIR$/.idea/Hurtownia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/Model/Model.iml" filepath="$PROJECT_DIR$/src/main/java/Model/Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/Repositories/Repositories.iml" filepath="$PROJECT_DIR$/src/main/java/Repositories/Repositories.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/Utils/Utils.iml" filepath="$PROJECT_DIR$/src/main/java/Utils/Utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/View/View.iml" filepath="$PROJECT_DIR$/src/main/java/View/View.iml" />
+    </modules>
+  </component>
+</project>
