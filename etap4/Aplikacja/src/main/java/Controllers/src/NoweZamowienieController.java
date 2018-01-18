@@ -23,45 +23,47 @@ public class NoweZamowienieController extends ViewController implements Initiali
     private static final String ZLA_ILOSC_KOMUNIKAT = "Podano zla ilosc. Ilosc musi byc liczba calkowita wieksza od 0";
 
     @FXML
-    Button btnWybierz;
+    private Button btnWybierz;
     @FXML
-    Button btnDodajKlienta;
+    private Button btnDodajKlienta;
     @FXML
-    Button btnDodajTowar;
+    private Button btnDodajTowar;
     @FXML
-    Button btnDodajPozycje;
+    private Button btnDodajPozycje;
     @FXML
-    Button btnWyslijZapytanie;
+    private Button btnWyslijZapytanie;
     @FXML
-    Button btnPodzielZamowienie;
+    private Button btnPodzielZamowienie;
     @FXML
-    Button btnZlozZamowienie;
+    private Button btnZlozZamowienie;
     @FXML
-    Button btnPowrot;
+    private Button btnPowrot;
 
     @FXML
     Label lbDataZlozeniaZamowienia;
 
     @FXML
-    Label lbNazwaTowaru;
+    private Label lbNazwaTowaru;
     @FXML
-    Label lbBrakDostepnosci;
+    private Label lbBrakDostepnosci;
     @FXML
-    Label lbNrZamowienia;
+    private Label lbNrZamowienia;
     @FXML
-    Label lbSuma;
+    private Label lbSuma;
     @FXML
-    Label lbDataRealizacji;
-    @FXML Label lbNazwaFirmy;
-    @FXML Label lbNip;
+    private Label lbDataRealizacji;
+    @FXML
+    private Label lbNazwaFirmy;
+    @FXML
+    private Label lbNip;
 
     @FXML
-    TextField tfIlosc;
+    private TextField tfIlosc;
     @FXML
-    TextField tfRabat;
+    private TextField tfRabat;
 
     @FXML
-    GridPane gpPozycjeZamowienia;
+    private GridPane gpPozycjeZamowienia;
 
 
     private ZamowieniaRepository zamowieniaRepository;
@@ -253,7 +255,7 @@ public class NoweZamowienieController extends ViewController implements Initiali
 
     /**
      * Wywolywana przy zamknieciu okienka przyciskiem X lub powrot
-     * @param e
+     *      * @param e -ActionEvent przekazywany dalej do zamkniecia odpowiedniego okna.
      */
     @FXML
     private void powrot(ActionEvent e)

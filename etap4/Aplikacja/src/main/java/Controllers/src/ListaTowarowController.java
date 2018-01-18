@@ -19,13 +19,13 @@ public class ListaTowarowController extends ViewController implements Initializa
     private ZamowieniaRepository pozycjaZamRepo;
 
     @FXML
-    Button btnX;
+    private Button btnX;
 
     @FXML
-    TextField tfNazwaSzukana;
+    private TextField tfNazwaSzukana;
 
     @FXML
-    GridPane gpListaTowarow;
+    private GridPane gpListaTowarow;
 
     private LinkedList<Button> buttons = new LinkedList<>();
     private ArrayList<Towar> towaryList;
@@ -92,7 +92,7 @@ public class ListaTowarowController extends ViewController implements Initializa
 
     /**
      * Wywolywana przy zamknieciu okienka przyciskiem X lub powrot
-     * @param e
+    * @param e -ActionEvent przekazywany dalej do zamkniecia odpowiedniego okna.
      */
     @FXML
     private void powrot(javafx.event.ActionEvent e)

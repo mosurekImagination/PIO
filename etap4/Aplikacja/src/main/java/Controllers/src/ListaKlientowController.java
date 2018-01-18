@@ -22,13 +22,13 @@ public class ListaKlientowController extends ViewController implements Initializ
     private ZamowieniaRepository pozycjaZamRepo;
 
     @FXML
-    Button btnX;
+    private Button btnX;
 
     @FXML
-    GridPane gpListaKlientow;
+    private GridPane gpListaKlientow;
 
     @FXML
-    TextField tfKlientSzukany;
+    private TextField tfKlientSzukany;
 
     private LinkedList<Button> buttons = new LinkedList<>();
     private ArrayList<Klient> klienciList;
@@ -87,7 +87,7 @@ public class ListaKlientowController extends ViewController implements Initializ
 
     /**
      * Wywolywana przy zamknieciu okienka przyciskiem X lub powrot
-     * @param e
+     * @param e -ActionEvent przekazywany dalej do zamkniecia odpowiedniego okna.
      */
     @FXML
     private void powrot(javafx.event.ActionEvent e)
@@ -97,9 +97,8 @@ public class ListaKlientowController extends ViewController implements Initializ
 
     /**
      * Wywolanie akcji szukaj na Liscie klientow w z ustalonym kryterium (NIP)
-     * @param event - ActionEvent nacisniecia przycisku szukaj
      */
-    public void szukaj(ActionEvent event) {
+    public void szukaj() {
         fillGridView(tfKlientSzukany.getText());
     }
 

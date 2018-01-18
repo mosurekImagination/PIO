@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ViewController {
 
     @FXML
-    Button closeButton;
+    protected Button closeButton;
 
     public final int DUZE_OKNO = 1;
     public final int MALE_OKNO = 2;
@@ -24,7 +24,7 @@ public class ViewController {
      * Otwiera okienko odpowiedniej wielkosci z podanej sciezki
      * @param resource - sciezka do okienka
      * @param typ - rozmiar okienka
-     * @return
+     * @return Kontroler nowo otwartego okienka
      */
 
     public Object otworzOkno(String resource, int typ)

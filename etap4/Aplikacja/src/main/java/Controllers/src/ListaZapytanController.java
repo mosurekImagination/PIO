@@ -10,7 +10,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -22,15 +21,14 @@ import java.util.ResourceBundle;
 public class ListaZapytanController extends ViewController implements Initializable,Observer {
 
     @FXML
-    Button btnPowrot;
+    private Button btnPowrot;
 
     @FXML
-    GridPane gpListaZapytan;
+    private GridPane gpListaZapytan;
 
     private ZapytaniaRepository zapytaniaRepo;
 
     private ArrayList<Button> buttons = new ArrayList<>();
-    private ArrayList<Zapytanie> zapytania= new ArrayList<>();
 
     private static Background ODRZUCONE = new Background( new BackgroundFill(Color.PALEVIOLETRED, new CornerRadii(1),
             new Insets(0.0,0.0,0.0,0.0)));

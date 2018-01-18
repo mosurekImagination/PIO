@@ -7,13 +7,8 @@ public class Walidator {
      * @param ilosc - ilosc sztuk w Stringu
      * @return zwraca czy podana wartosc jest Integerem
      */
-    public static boolean czyDobraIlosc(String ilosc){
-        if(isInteger(ilosc)){
-            return Integer.parseInt(ilosc) > 0;
-        }
-        else {
-            return false;
-        }
+    public static boolean czyDobraIlosc(String ilosc) {
+        return isInteger(ilosc) && Integer.parseInt(ilosc) > 0;
     }
 
     /**

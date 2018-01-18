@@ -9,6 +9,10 @@ public class Main extends Application  {
         launch(args);
     }
 
+    /**
+     *
+     * Funckja poczatkowa aplikacji, otwierajaca okno glowne.
+     */
     @Override
     public void start(Stage primaryStage) {
         ViewController vc = new ViewController();

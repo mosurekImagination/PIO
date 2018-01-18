@@ -13,20 +13,20 @@ import java.util.ResourceBundle;
 public class ObslugaZapytaniaController extends ViewController implements Initializable{
 
     @FXML
-    Button btnPowrot;
+    private Button btnPowrot;
     @FXML
-    Button btnX;
+    private Button btnX;
     @FXML
-    Button btnZatwierdz;
+    private Button btnZatwierdz;
     @FXML
-    Button btnOdrzuc;
+    private Button btnOdrzuc;
 
     @FXML
-    Label lbNazwaTowaru;
+    private Label lbNazwaTowaru;
     @FXML
-    Label lbIlosc;
+    private Label lbIlosc;
     @FXML
-    Label lbTerminRealizacji;
+    private Label lbTerminRealizacji;
 
     private ZapytaniaRepository zapRepo;
 
@@ -42,7 +42,7 @@ public class ObslugaZapytaniaController extends ViewController implements Initia
 
     /**
      * Wywolywana przy zamknieciu okienka przyciskiem X lub powrot
-     * @param e
+     * @param e -ActionEvent przekazywany dalej do zamknięcia odpowiedniego okna
      */
     @FXML
     private void powrot(ActionEvent e)

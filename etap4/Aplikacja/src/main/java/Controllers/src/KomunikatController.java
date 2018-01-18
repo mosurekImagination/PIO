@@ -12,9 +12,9 @@ import java.util.ResourceBundle;
 public class KomunikatController extends ViewController implements Initializable{
 
     @FXML
-    Label lbKomunikat;
+    private Label lbKomunikat;
     @FXML
-    Button btnX;
+    private Button btnX;
 
     /**
      *Metoda wywowylana przy tworzeniu okienka

@@ -15,22 +15,22 @@ import java.util.ResourceBundle;
 public class TworzenieZapytaniaController extends ViewController implements Initializable{
 
     @FXML
-    Button btnX;
+    private Button btnX;
 
     @FXML
-    Label lbIlosc;
+    private Label lbIlosc;
 
     @FXML
-    Label lbNazwaTowaru;
+    private Label lbNazwaTowaru;
 
     @FXML
-    Button btnAnuluj;
+    private Button btnAnuluj;
 
     @FXML
-    Button btnWyslij;
+    private Button btnWyslij;
 
     @FXML
-    DatePicker dateTermin;
+    private DatePicker dateTermin;
 
     private PozycjeZamowieniaRepository pozycje;
     private ZamowieniaRepository zamowieniaRepository;
@@ -44,10 +44,15 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         closeButton = btnX; pozycje = new PozycjeZamowieniaRepository();
     }
 
+    /**
+     *
+     * ustala pozycje zamownienia
+     */
     public void setPozycjaZamowienia(PozycjeZamowieniaRepository zp)
     {
         pozycje=zp;
     }
+
     public void setZamowieniaRepository(ZamowieniaRepository zr)
     {
         zamowieniaRepository=zr;
@@ -105,8 +110,4 @@ public class TworzenieZapytaniaController extends ViewController implements Init
         zamowieniaRepository.setCzyMoznaZamowic(true);
         zamknijOkno(e);
     }
-
-
-
-
 }
